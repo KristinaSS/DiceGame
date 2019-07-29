@@ -9,24 +9,21 @@ import java.util.*;
 
 class Game extends GameUtils {
     private int roundsLeft;
-    private int players;
-    private static int gameNumber = 1;
+    private final int playerCount;
 
-    Game(int rounds, int players) {
+    Game(int rounds, int playerCount) {
         this.roundsLeft = rounds;
-        this.players = players;
+        this.playerCount = playerCount;
     }
 
     private GameUtils gameUtils = GameUtils.getInstance();
 
     void playGame(){
         int  initialRounds =  roundsLeft;
-        List<Player> playerList = gameUtils.fillPlayerList(players);
+        List<Player> playerList = gameUtils.fillPlayerList(playerCount);
         Dice dice = Dice.getInstance();
 
         System.out.println(">>> WELCOME TO THE DICE GAME <<<");
-        System.out.println("    >> GAME NUMBER "+ gameNumber+ " <<");
-        gameNumber++;
 
         while(roundsLeft-->0){
             System.out.println();
