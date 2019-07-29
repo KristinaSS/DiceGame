@@ -13,25 +13,29 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            readPropertiesFile(Paths.get("src/dicegame/resources/config.properties"));
+            readPropertiesFile(Paths
+                    .get("C:/Users/kristina.stoyanova/IdeaProjects/DiceGame/src/resources/config.properties"));
 
             Game diceGame = new Game(roundCount, playerCount);
             diceGame.playGame();
-        } catch (NullPointerException ex) {
+        }catch (NullPointerException ex){
             ex.printStackTrace();
-            System.exit(-1);
-        } catch (IOException exception) {
-            exception.printStackTrace();
-            System.exit(-2);
         }
     }
 
-    private static void readPropertiesFile(Path path) throws IOException {
-        InputStream input = Files.newInputStream(path);
-        Properties prop = new Properties();
-        prop.load(input);
+    private static void readPropertiesFile (Path path){
 
-        roundCount = Integer.parseInt(prop.getProperty("roundCount"));
-        playerCount = Integer.parseInt(prop.getProperty("playerCount"));
+        try(InputStream input = Files.newInputStream(path)){
+            Properties prop = new Properties();
+            prop.load(input);
+
+            roundCount = Integer.parseInt(prop.getProperty("roundCount"));
+            playerCount = Integer.parseInt(prop.getProperty("playerCount"));
+
+
+        } catch (IOException exception){
+            exception.printStackTrace();
+            System.exit(-1);
+        }
     }
 }
