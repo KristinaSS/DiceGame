@@ -5,31 +5,36 @@ import java.util.*;
 public final class Player {
     private int playerNumber;
     private int score = 0;
-    private boolean [] playedCombinations = new boolean[7];
-    private static List<Integer> diceRolled = new ArrayList<>();
-    private static Map<Integer,Integer> sortScore = new HashMap<>();
+    private Map<CombinationEnum, Boolean> playedCombinations = new HashMap<>();
 
-    public static Map<Integer, Integer> getSortScore() {
+    private static List<Integer> diceRolled = new ArrayList<>();
+    private static Map<CombinationEnum, Integer> sortScore = new HashMap<>();
+
+    //Methods
+
+    public static Map<CombinationEnum, Integer> getSortScore() {
         return sortScore;
     }
 
-    public static void setSortScore(Map<Integer, Integer> sortScore) {
+    public static void setSortScore(Map<CombinationEnum, Integer> sortScore) {
         Player.sortScore = sortScore;
     }
 
     public Player(int playerNumber) {
         this.playerNumber = playerNumber;
+        for (CombinationEnum e : CombinationEnum.values())
+            playedCombinations.put(e, false);
     }
 
     public int getPlayerNumber() {
         return playerNumber;
     }
 
-    public boolean[] getPlayedCombinations() {
+    public Map<CombinationEnum, Boolean> getPlayedCombinations() {
         return playedCombinations;
     }
 
-    public void setPlayedCombinations(boolean[] playedCombinations) {
+    public void setPlayedCombinations(Map<CombinationEnum, Boolean> playedCombinations) {
         this.playedCombinations = playedCombinations;
     }
 

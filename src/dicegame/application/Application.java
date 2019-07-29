@@ -12,25 +12,26 @@ public class Application {
     private static int playerCount;
 
     public static void main(String[] args) {
-        readPropertiesFile(Paths.get("src/dicegame/resources/config.properties"));
+        try {
+            readPropertiesFile(Paths.get("src/dicegame/resources/config.properties"));
 
-        Game diceGame = new Game(roundCount,playerCount);
-        diceGame.playGame();
+            Game diceGame = new Game(roundCount, playerCount);
+            diceGame.playGame();
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+            System.exit(-1);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+            System.exit(-2);
+        }
     }
 
-    private static void readPropertiesFile(Path path){
+    private static void readPropertiesFile(Path path) throws IOException {
+        InputStream input = Files.newInputStream(path);
+        Properties prop = new Properties();
+        prop.load(input);
 
-        try(InputStream input = Files.newInputStream(path)){
-            Properties prop = new Properties();
-            prop.load(input);
-
-            roundCount = Integer.parseInt(prop.getProperty("roundCount"));
-            playerCount = Integer.parseInt(prop.getProperty("playerCount"));
-
-
-        } catch (IOException exception){
-            exception.printStackTrace();
-            System.exit(-1);
-        }
+        roundCount = Integer.parseInt(prop.getProperty("roundCount"));
+        playerCount = Integer.parseInt(prop.getProperty("playerCount"));
     }
 }
