@@ -12,7 +12,6 @@ public class Application {
     private static int playerCount;
 
     public static void main(String[] args) {
-        System.out.println("test");
         try {
             readPropertiesFile(Paths
                     .get("C:/Users/kristina.stoyanova/IdeaProjects/DiceGame/src/resources/config.properties"));
