@@ -2,7 +2,7 @@ package dicegame.elements;
 
 import java.util.*;
 
-public class Player {
+public final class Player {
     private int playerNumber;
     private int score = 0;
     private boolean [] playedCombinations = new boolean[7];

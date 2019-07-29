@@ -7,7 +7,6 @@ public class DiceGameRunner {
         while(numberOfGames-->0){
             diceGame = new Game(5,3);
             diceGame.playGame();
-
         }
     }
 }
