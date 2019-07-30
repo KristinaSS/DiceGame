@@ -1,6 +1,5 @@
 package dicegame.application;
 
-import dicegame.elements.Combinations;
 import dicegame.GameUtils;
 import dicegame.elements.CombinationEnum;
 import dicegame.elements.Dice;
@@ -80,7 +79,7 @@ class Game extends GameUtils {
                             round,
                             oldScore,
                             entryValue,
-                            Combinations.getEnumWithIndex(i).getLabel());
+                            getEnumWithIndex(i).getLabel());
                     return;
                 }
             } else
@@ -96,8 +95,8 @@ class Game extends GameUtils {
 
         for (int i = 0, j = 1; j < diceRolled.size(); i++, j++) {
             if (diceRolled.get(i).compareTo(diceRolled.get(j)) == 0) {
-                if (Combinations.calcuatePair(diceRolled.get(i)) > maxScore)
-                    maxScore = Combinations.calcuatePair(diceRolled.get(i));
+                if (CombinationEnum.PAIR.calculateCombination(diceRolled.get(i),0) > maxScore)
+                    maxScore = CombinationEnum.PAIR.calculateCombination(diceRolled.get(i), 0);
             }
         }
         return maxScore;
@@ -118,8 +117,8 @@ class Game extends GameUtils {
                 pair2 = diceRolled.get(i);
                 if (pair1 > 0
                         && pair2 > 0
-                        && Combinations.calcuateDoublePair(pair1, pair2) > maxScore)
-                    maxScore = Combinations.calcuateDoublePair(pair1, pair2);
+                        && CombinationEnum.DOUBLE_PAIR.calculateCombination(pair1, pair2) > maxScore)
+                    maxScore = CombinationEnum.DOUBLE_PAIR.calculateCombination(pair1, pair2);
             }
         }
         return maxScore;
@@ -131,8 +130,8 @@ class Game extends GameUtils {
         for (int i = 0, j = 1, k = 2; k < diceRolled.size(); i++, j++, k++) {
             if (diceRolled.get(i).compareTo(diceRolled.get(j)) == 0
                     && diceRolled.get(k).compareTo(diceRolled.get(j)) == 0) {
-                if (Combinations.calcuateTriple(diceRolled.get(i)) > maxScore)
-                    maxScore = Combinations.calcuateTriple(diceRolled.get(i));
+                if (CombinationEnum.TRIPLE.calculateCombination(diceRolled.get(i),0) > maxScore)
+                    maxScore = CombinationEnum.TRIPLE.calculateCombination(diceRolled.get(i),0);
             }
         }
         return maxScore;
@@ -143,12 +142,12 @@ class Game extends GameUtils {
         if (diceRolled.get(0).compareTo(diceRolled.get(1)) == 0
                 && (diceRolled.get(2).compareTo(diceRolled.get(3)) == 0
                 && diceRolled.get(3).compareTo(diceRolled.get(4)) == 0))
-            maxScore = Combinations.calcuateFullHouse(diceRolled.get(0), diceRolled.get(4));
+            maxScore = CombinationEnum.FULL_HOUSE.calculateCombination(diceRolled.get(0), diceRolled.get(4));
 
         if (diceRolled.get(3).compareTo(diceRolled.get(4)) == 0
                 && (diceRolled.get(0).compareTo(diceRolled.get(1)) == 0
                 && diceRolled.get(1).compareTo(diceRolled.get(2)) == 0))
-            maxScore = Combinations.calcuateFullHouse(diceRolled.get(4), diceRolled.get(0));
+            maxScore = CombinationEnum.FULL_HOUSE.calculateCombination(diceRolled.get(4), diceRolled.get(0));
 
         return maxScore;
     }
@@ -164,14 +163,14 @@ class Game extends GameUtils {
             if (!(diceRolled.get(i) == (i + 1 + j)))
                 return 0;
         }
-        return Combinations.calcuateStraight(diceRolled.get(4) == 5);
+        return CombinationEnum.STRAIGHT.calculateCombination(diceRolled.get(4) == 5?1:0,0);
     }
 
     private int checkFourOfaKind(List<Integer> diceRolled) {
         if (diceRolled.get(0).compareTo(diceRolled.get(3)) == 0)
-            return Combinations.calcuateFourOfAKind(diceRolled.get(0));
+            return CombinationEnum.FOUR_OF_A_KIND.calculateCombination(diceRolled.get(0),0);
         if (diceRolled.get(1).compareTo(diceRolled.get(4)) == 0)
-            return Combinations.calcuateFourOfAKind(diceRolled.get(1));
+            return CombinationEnum.FOUR_OF_A_KIND.calculateCombination(diceRolled.get(1),0);
         return 0;
     }
 
@@ -180,6 +179,6 @@ class Game extends GameUtils {
             if (!(diceRolled.get(i).compareTo(diceRolled.get(0)) == 0))
                 return 0;
         }
-        return Combinations.calcuateGenerala(diceRolled.get(0));
+        return CombinationEnum.GENERALA.calculateCombination(diceRolled.get(0),0);
     }
 }

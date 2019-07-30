@@ -83,5 +83,12 @@ public class GameUtils {
         }
         return playerList;
     }
+    protected static CombinationEnum getEnumWithIndex(int i) throws NullPointerException {
+        for (CombinationEnum e : CombinationEnum.values()) {
+            if (e.getIndex() == i)
+                return e;
+        }
+        throw new NullPointerException("No Combination Enum with index " + i + " exist");
+    }
 }
 
