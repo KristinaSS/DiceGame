@@ -68,10 +68,14 @@ public class GameUtils {
                            int oldScore,
                            int rolledScore,
                            String typeOfCombination) {
+        String rolledDice = p.getDiceRolled().toString();
+        rolledDice =rolledDice.replace('[',' ');
+        rolledDice =rolledDice.replace(']',' ');
+
         System.out.println(">>> round: " + round);
         System.out.println(">player " + p.getPlayerNumber() + ":");
         System.out.println("current score: " + oldScore);
-        System.out.println("dice roll: " + p.getDiceRolled() + " -> " + typeOfCombination + " (" + rolledScore + ") ");
+        System.out.println("dice roll:" + rolledDice + "-> " + typeOfCombination + " (" + rolledScore + ") ");
         System.out.println("new score: " + p.getScore());
         System.out.println();
     }
@@ -83,6 +87,7 @@ public class GameUtils {
         }
         return playerList;
     }
+
     protected static CombinationEnum getEnumWithIndex(int i) throws NullPointerException {
         for (CombinationEnum e : CombinationEnum.values()) {
             if (e.getIndex() == i)

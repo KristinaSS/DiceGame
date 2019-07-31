@@ -53,7 +53,7 @@ public enum CombinationEnum implements Calculable {
             case 6:
                 return (5 * dieNumber1) + CombinationEnum.GENERALA.getValue();
             default:
-                System.out.println("Something went wronge XD");
+                System.out.println("Something went wrong XD");
         }
         return 0;
     }
