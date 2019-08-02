@@ -65,27 +65,19 @@ public class Game {
     //evaluation
 
     private void evaluate(Player player, int round) throws NullPointerException {
+        //System.out.println("new");
         int oldScore = player.getScore();
         List<Integer> list = Dice.getDiceRolled();
-
-        System.out.println("list" + list);
 
         List<CombinationEnum> combinationEnums = new ArrayList<>();
 
         checkMethods();
         doSomethingMethod(player, combinationEnums);
 
-        System.out.println(combinationEnums);
+        combinationEnums.sort((o1, o2) -> Integer.compare(o2.getScore(),o1.getScore()));
 
-        combinationEnums = combinationEnums.stream()
-                .sorted(Comparator.comparing(CombinationEnum::getScore).reversed())
-                .collect(Collectors.toList());
-        System.out.println(combinationEnums);
-
-        for(CombinationEnum combinationEnum: CombinationEnum.values()){
-            combinationEnum.setScore(0);
-            combinationEnum.setDieNumber(0);
-        }
+        for(CombinationEnum combinationEnum: combinationEnums){
+            System.out.println(combinationEnum.getLabel()+" score " + combinationEnum.getScore());}
 
         if(combinationEnums.size()>0){
             player.getPlayedCombinations().add(combinationEnums.get(0));
@@ -96,9 +88,18 @@ public class Game {
                     combinationEnums.get(0).getScore(),
                     combinationEnums.get(0).getLabel(),
                     list);
+            for(CombinationEnum combinationEnum: CombinationEnum.values()){
+                combinationEnum.setScore(0);
+                combinationEnum.setDieNumber(0);
+            }
             return;
         }
         GameUtils.getInstance().printRound(player, round, oldScore, 0, "No Combination", list);
+
+        for(CombinationEnum combinationEnum: CombinationEnum.values()){
+            combinationEnum.setScore(0);
+            combinationEnum.setDieNumber(0);
+        }
     }
 
     //checking for combinations
@@ -114,10 +115,8 @@ public class Game {
     }
 
     private void doSomethingMethod(Player player, List<CombinationEnum>combinationEnumList){
-        System.out.println("player"+ player.getPlayedCombinations());
         for(CombinationEnum combinationEnum: CombinationEnum.values()){
             combinationEnum.calculateCombination();
-            System.out.println("score" + combinationEnum.getScore());
             if(player.getPlayedCombinations().contains(combinationEnum))
                 continue;
             if(combinationEnum.getScore()>0)
@@ -166,9 +165,9 @@ public class Game {
     }
 
     private void returnFullHouseRemainder() {
-        if(CombinationEnum.TRIPLE.getDieNumber()> 0) {
+        //if(CombinationEnum.TRIPLE.getDieNumber()> 0) {
             CombinationEnum.FULL_HOUSE.setDieNumber(0);
-        }
+       // }
     }
 
     private void returnStraightFirstDie() {

@@ -4,6 +4,7 @@ package dicegame.elements;
 import dicegame.application.Game;
 
 import java.util.Collections;
+import java.util.Iterator;
 
 public enum CombinationEnum implements Calculable {
 
@@ -62,7 +63,7 @@ public enum CombinationEnum implements Calculable {
             for (int i = 0; i < Dice.getInstance().getNumberOfDice(); i++) {
                 score += (dieNumber - i);
             }
-            this.score = score;
+            this.score = score + this.combinationValue;
         }
     },
     FOUR_OF_A_KIND(2, 40, "Four of a Kind"){
@@ -189,9 +190,15 @@ public enum CombinationEnum implements Calculable {
         }
         @Override
         public void setDieNumber(int i) {
+            System.out.println("----------");
+            System.out.println(Dice.getDiceRolled());
             this.tripleDie = Game.getInstance().returnTripleDie();
-            Dice.getDiceRolled().removeAll(Collections.singleton(tripleDie));
+            Dice.getDiceRolled().removeIf(it -> it == tripleDie);
             this.pairDie = Game.getInstance().setPairDie();
+            if(tripleDie==0 || pairDie==0) {
+                tripleDie = 0;
+                pairDie = 0;
+            }
         }
         @Override
         public int getDieNumber() {
@@ -199,7 +206,7 @@ public enum CombinationEnum implements Calculable {
         }
         @Override
         public void calculateCombination() {
-            if(pairDie == 0)
+            if(pairDie == 0 || tripleDie ==0)
                 return;
             score = (2 * pairDie) + (3 * tripleDie) + this.getValue();
         }
