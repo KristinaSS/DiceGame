@@ -9,7 +9,7 @@ public class Dice {
     private static Dice diceInstance = null;
     private static Random random = new Random();
     private static List<Integer> diceRolled = new ArrayList<>();
-    private static Map<CombinationEnum, Integer> sortScore = new HashMap<>();
+    private static List<CombinationEnum> sortScore = new ArrayList<>();
 
     //Methods
 
@@ -46,12 +46,8 @@ public class Dice {
         Dice.diceRolled = diceRolled;
     }
 
-    public static Map<CombinationEnum, Integer> getSortScore() {
-        return sortScore;
-    }
-
-    public static void setSortScore(Map<CombinationEnum, Integer> sortScore) {
-        Dice.sortScore = sortScore;
+    public void setNumberOfDice(int numberOfDice) {
+        this.numberOfDice = numberOfDice;
     }
 
     //Utils

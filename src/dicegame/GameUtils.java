@@ -25,7 +25,7 @@ public class GameUtils {
 
     //Utils
 
-    public Map.Entry<CombinationEnum, Integer> getEntry(int i) {
+/*    public Map.Entry<CombinationEnum, Integer> getEntry(int i) {
         int j = 0;
         for (Map.Entry<CombinationEnum, Integer> entry : Dice.getSortScore().entrySet()) {
             if (j++ == i)
@@ -45,7 +45,7 @@ public class GameUtils {
         for (Map.Entry<CombinationEnum, Integer> aa : list)
             temp.put(aa.getKey(), aa.getValue());
         return temp;
-    }
+    }*/
 
     public void endGame(List<Player> playerList, Player winner) {
         int previousScore = -1;
@@ -73,10 +73,9 @@ public class GameUtils {
                            int round,
                            int oldScore,
                            int rolledScore,
-                           String typeOfCombination) {
-        Dice.getInstance().sortDiceNaturalOrder();
-
-        String rolledDice =Dice.getDiceRolled().toString();
+                           String typeOfCombination,
+                           List<Integer>list) {
+        String rolledDice =list.toString();
         rolledDice =rolledDice.replace('[',' ');
         rolledDice =rolledDice.replace(']',' ');
 
