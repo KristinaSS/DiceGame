@@ -1,60 +1,164 @@
 package dicegame.elements;
 
 
-public enum CombinationEnum implements Calculable {
-    PAIR(0, 10, "Pair"),
-    DOUBLE_PAIR(1, 15, "Double Pair"),
-    TRIPLE(2, 20, "Triple"),
-    FULL_HOUSE(3, 25, "Full House"),
-    STRAIGHT(4, 30, "straight"),
-    FOUR_OF_A_KIND(5, 40, "Four of a Kind"),
-    GENERALA(6, 50, "Generala");
+import dicegame.application.Game;
 
-    int INDEX;
-    int constValue;
-    String LABEL;
+import java.util.Collections;
+import java.util.List;
+
+public enum CombinationEnum implements Calculable {
+
+    GENERALA(0, 50, "Generala"){
+        int dieNumber;
+
+        @Override
+        public int getDieNumber() {
+            return dieNumber;
+        }
+        @Override
+        public void setDieNumber(int dieNumber) {
+            this.dieNumber = dieNumber;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer>dieNumbers) {
+            return (5 * dieNumber) + this.getValue();
+        }
+    },
+    STRAIGHT(1, 30, "Straight"){
+        int dieNumber;
+
+        @Override
+        public void setDieNumber(int dieNumber) {
+            this.dieNumber = dieNumber;
+        }
+
+        @Override
+        public int getDieNumber() {
+            return dieNumber;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer>dieNumbers) {
+            int score = 0;
+            for (int i = 0; i < Dice.getInstance().getNumberOfDice(); i++) {
+                score += (dieNumber + i);
+            }
+            return score;
+        }
+    },
+    FOUR_OF_A_KIND(2, 40, "Four of a Kind"){
+        int dieNumber;
+
+        @Override
+        public int getDieNumber() {
+            return dieNumber;
+        }
+
+        @Override
+        public void setDieNumber(int dieNumber) {
+            this.dieNumber = dieNumber;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer>dieNumbers) {
+            return (4 * dieNumber) + this.getValue();
+        }
+    },
+    DOUBLE_PAIR(3, 15, "Double Pair"){
+        int dieNumber;
+
+        @Override
+        public int getDieNumber() {
+            return dieNumber;
+        }
+
+        @Override
+        public void setDieNumber(int dieNumber) {
+            this.dieNumber = dieNumber;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer>dieNumbers) {
+            return (dieNumber* 2) + this.getValue();
+        }
+    },
+    PAIR(4, 10, "Pair"){
+        int dieNumber;
+
+        @Override
+        public void setDieNumber(int dieNumber) {
+            this.dieNumber = dieNumber;
+        }
+
+        public int getDieNumber() {
+            return dieNumber;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer> dieNumbers) {
+            return (dieNumber * 2) + this.getValue();
+        }
+    },
+    TRIPLE(5, 20, "Triple"){
+        int dieNumber;
+
+        @Override
+        public int getDieNumber() {
+            return dieNumber;
+        }
+        @Override
+        public void setDieNumber(int dieNumber) {
+            this.dieNumber = dieNumber;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer>dieNumbers) {
+            return (3 * dieNumber) + this.getValue();
+        }
+    },
+    FULL_HOUSE(6, 25, "Full House"){
+        int tripleDie;
+        int pairDie ;
+
+
+        public void setDieNumber(int i) {
+            this.tripleDie = Game.getInstance().returnTripleDie();
+            Dice.getDiceRolled().removeAll(Collections.singleton(tripleDie));
+            this.pairDie = Game.getInstance().setPairDie();
+        }
+
+        @Override
+        public int getDieNumber() {
+            return pairDie;
+        }
+
+        @Override
+        public int calculateCombination(List<Integer>dieNumbers) {
+            return (2 * pairDie) + (3 * tripleDie) + this.getValue();
+        }
+    };
+
+
+    int index;
+    int combinationValue;
+    String label;
 
     CombinationEnum(int index, int value, String label) {
-        INDEX = index;
-        LABEL = label;
-        constValue = value;
+        this.index = index;
+        this.label = label;
+        combinationValue = value;
     }
 
     public int getValue() {
-        return constValue;
+        return combinationValue;
     }
 
     public String getLabel() throws NullPointerException {
-        return LABEL;
+        return label;
     }
 
     public int getIndex() {
-        return INDEX;
-    }
-
-    @Override
-    public int calculateCombination(int dieNumber1, int dieNumber2) {
-        switch (this.getIndex()){
-            case 0:
-                return (dieNumber1 * 2) + CombinationEnum.PAIR.getValue();
-            case 1:
-                return (2 * (dieNumber1 + dieNumber2)) + CombinationEnum.DOUBLE_PAIR.getValue();
-            case 2:
-                return (3 * dieNumber1) + CombinationEnum.TRIPLE.getValue();
-            case 3:
-                return (2 * dieNumber1) + (3 * dieNumber2) + CombinationEnum.FULL_HOUSE.getValue();
-            case 4:
-                if (dieNumber1== 1)
-                    return 15 + CombinationEnum.STRAIGHT.getValue();
-                else
-                    return 20 + CombinationEnum.STRAIGHT.getValue();
-            case 5:
-                return (4 * dieNumber1) + CombinationEnum.FOUR_OF_A_KIND.getValue();
-            case 6:
-                return (5 * dieNumber1) + CombinationEnum.GENERALA.getValue();
-            default:
-                System.out.println("Something went wrong XD");
-        }
-        return 0;
+        return index;
     }
 }

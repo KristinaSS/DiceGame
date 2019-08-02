@@ -1,8 +1,14 @@
 package dicegame;
 
+import dicegame.application.Game;
 import dicegame.elements.CombinationEnum;
+import dicegame.elements.Dice;
 import dicegame.elements.Player;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class GameUtils {
@@ -14,14 +20,14 @@ public class GameUtils {
         return gameUtilsInstance;
     }
 
-    protected GameUtils() {
+    private GameUtils() {
     }
 
     //Utils
 
     public Map.Entry<CombinationEnum, Integer> getEntry(int i) {
         int j = 0;
-        for (Map.Entry<CombinationEnum, Integer> entry : Player.getSortScore().entrySet()) {
+        for (Map.Entry<CombinationEnum, Integer> entry : Dice.getSortScore().entrySet()) {
             if (j++ == i)
                 return entry;
         }
@@ -31,7 +37,7 @@ public class GameUtils {
     public HashMap<CombinationEnum, Integer> sortByValue() {
 
         List<Map.Entry<CombinationEnum, Integer>> list =
-                new LinkedList<>(Player.getSortScore().entrySet());
+                new LinkedList<>(Dice.getSortScore().entrySet());
 
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
@@ -68,9 +74,12 @@ public class GameUtils {
                            int oldScore,
                            int rolledScore,
                            String typeOfCombination) {
-        String rolledDice = p.getDiceRolled().toString();
+        Dice.getInstance().sortDiceNaturalOrder();
+
+        String rolledDice =Dice.getDiceRolled().toString();
         rolledDice =rolledDice.replace('[',' ');
         rolledDice =rolledDice.replace(']',' ');
+
 
         System.out.println(">>> round: " + round);
         System.out.println(">player " + p.getPlayerNumber() + ":");
@@ -94,6 +103,23 @@ public class GameUtils {
                 return e;
         }
         throw new NullPointerException("No Combination Enum with index " + i + " exist");
+    }
+
+    public void readPropertiesFile(Path path){
+        try(InputStream input = Files.newInputStream(path)){
+            Properties prop = new Properties();
+            prop.load(input);
+
+            Game.getInstance().setRounds(Integer.parseInt(prop.getProperty("roundCount")));
+            Game.getInstance().setPlayerCount(Integer.parseInt(prop.getProperty("playerCount")));
+
+            Dice.getInstance().setNumberOfDices(Integer.parseInt(prop.getProperty("diceCount")));
+            Dice.getInstance().setNumberOfSides(Integer.parseInt(prop.getProperty("numberOfSidesOnDice")));
+
+        } catch (IOException exception){
+            exception.printStackTrace();
+            System.exit(-1);
+        }
     }
 }
 

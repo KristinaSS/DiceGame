@@ -1,15 +1,17 @@
 package dicegame.elements;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Dice {
-    private static Random random = new Random();
-    private static final int NUMBER_OF_DICES = 5;
-    private static final int NUMBER_OF_SIDES = 6;
+    private int numberOfDice;
+    private int numberOfSides;
 
     private static Dice diceInstance = null;
+    private static Random random = new Random();
+    private static List<Integer> diceRolled = new ArrayList<>();
+    private static Map<CombinationEnum, Integer> sortScore = new HashMap<>();
+
+    //Methods
 
     public static Dice getInstance() {
         if (diceInstance == null)
@@ -20,17 +22,55 @@ public class Dice {
     private Dice() {
     }
 
-    public void rollDice(Player player) {
-        for (int i = 0; i < NUMBER_OF_DICES; i++) {
-            player.getDiceRolled().add(i, random.nextInt(NUMBER_OF_SIDES) + 1);
+    public void setNumberOfDices(int numberOfDices) {
+        this.numberOfDice = numberOfDices;
+    }
+
+    public void setNumberOfSides(int numberOfSides) {
+        this.numberOfSides = numberOfSides;
+    }
+
+    public int getNumberOfDice() {
+        return numberOfDice;
+    }
+
+    public int getNumberOfSides() {
+        return numberOfSides;
+    }
+
+    public static List<Integer> getDiceRolled() {
+        return diceRolled;
+    }
+
+    public static void setDiceRolled(List<Integer> diceRolled) {
+        Dice.diceRolled = diceRolled;
+    }
+
+    public static Map<CombinationEnum, Integer> getSortScore() {
+        return sortScore;
+    }
+
+    public static void setSortScore(Map<CombinationEnum, Integer> sortScore) {
+        Dice.sortScore = sortScore;
+    }
+
+    //Utils
+
+    public void rollDice() {
+        for (int i = 0; i < numberOfDice; i++) {
+            diceRolled.add(i, random.nextInt(numberOfSides) + 1);
         }
     }
 
-    public void resetDice(Player player) {
-        player.getDiceRolled().clear();
+    public void resetDice() {
+        diceRolled.clear();
     }
 
-    public void sortDice(Player player) {
-        player.getDiceRolled().sort(Comparator.naturalOrder());
+    public void sortDiceReverseOrder() {
+        diceRolled.sort(Comparator.reverseOrder());
+    }
+
+    public void sortDiceNaturalOrder() {
+        diceRolled.sort(Comparator.naturalOrder());
     }
 }

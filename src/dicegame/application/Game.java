@@ -7,75 +7,80 @@ import dicegame.elements.Player;
 
 import java.util.*;
 
-class Game extends GameUtils {
-    private int roundsLeft;
-    private final int playerCount;
+public class Game {
+    private static Game gameInstance = null;
 
-    Game(int rounds, int playerCount) {
-        this.roundsLeft = rounds;
+    private int rounds;
+    private int playerCount;
+
+    //Methods
+
+    private Game() {
+    }
+
+    public static Game getInstance() {
+        if (gameInstance == null)
+            gameInstance = new Game();
+        return gameInstance;
+    }
+
+    public void setRounds(int rounds) {
+        this.rounds = rounds;
+    }
+
+    public void setPlayerCount(int playerCount) {
         this.playerCount = playerCount;
     }
 
-    private GameUtils gameUtils = GameUtils.getInstance();
+    //play Game
 
     void playGame() throws NullPointerException {
-        int initialRounds = roundsLeft;
-        List<Player> playerList = gameUtils.fillPlayerList(playerCount);
+
+        List<Player> playerList = GameUtils.getInstance().fillPlayerList(playerCount);
         Dice dice = Dice.getInstance();
 
         System.out.println(">>> WELCOME TO THE DICE GAME <<<");
 
-        while (roundsLeft-- > 0) {
+        for(int round = 1; round<= rounds; round++) {
             System.out.println();
 
-            for (Player p : playerList) {
-                dice.resetDice(p);
-                dice.rollDice(p);
-                dice.sortDice(p);
-                evaluate(p, (-(roundsLeft - initialRounds)));
+            for (Player player : playerList) {
+                dice.resetDice();
+                dice.rollDice();
+                dice.sortDiceReverseOrder();
+                evaluate(player,round);
 
-                if (p.getPlayedCombinations().get(CombinationEnum.GENERALA)) {
-                    gameUtils.endGame(playerList, p);
+                if (player.getPlayedCombinations().contains(CombinationEnum.GENERALA)) {
+                    GameUtils.getInstance().endGame(playerList, player);
                     return;
                 }
                 System.out.println();
             }
         }
-        gameUtils.endGame(playerList, null);
+        GameUtils.getInstance().endGame(playerList, null);
     }
 
     //evaluation
 
-    private void evaluate(Player p, int round) throws NullPointerException {
-        int oldScore = p.getScore();
+    private void evaluate(Player player, int round) throws NullPointerException {
+        int oldScore = player.getScore();
         CombinationEnum entryKey;
         int entryValue;
 
-        Player.getSortScore().put(CombinationEnum.PAIR, checkPair(p.getDiceRolled()));
+        Dice.setSortScore(GameUtils.getInstance().sortByValue());
 
-        Player.getSortScore().put(CombinationEnum.DOUBLE_PAIR, checkDoublePair(p.getDiceRolled()));
 
-        Player.getSortScore().put(CombinationEnum.TRIPLE, checkTriple(p.getDiceRolled()));
-
-        Player.getSortScore().put(CombinationEnum.FULL_HOUSE, checkFullHouse(p.getDiceRolled()));
-
-        Player.getSortScore().put(CombinationEnum.STRAIGHT, checkStraight(p.getDiceRolled()));
-
-        Player.getSortScore().put(CombinationEnum.FOUR_OF_A_KIND, checkFourOfaKind(p.getDiceRolled()));
-
-        Player.getSortScore().put(CombinationEnum.GENERALA, checkGenerala(p.getDiceRolled()));
-
-        Player.setSortScore(gameUtils.sortByValue());
 
         for (int i = 0; i < CombinationEnum.values().length; i++) {
-            entryKey = gameUtils.getEntry(i).getKey();
-            entryValue = gameUtils.getEntry(i).getValue();
+            entryKey = GameUtils.getInstance().getEntry(i).getKey();
+            entryValue = GameUtils.getInstance().getEntry(i).getValue();
             if (entryValue > 0) {
-                if (!p.getPlayedCombinations().get(entryKey)) {
-                    p.getPlayedCombinations().replace(entryKey, false, true);
-                    p.setScore(p.getScore() + entryValue);
+                if (!player.getPlayedCombinations().contains(entryKey)){
 
-                    gameUtils.printRound(p,
+                    player.getPlayedCombinations().add(entryKey);
+                    player.setScore(player.getScore() + entryValue);
+
+                    GameUtils.getInstance().printRound(player,
                             round,
                             oldScore,
                             entryValue,
@@ -85,100 +90,88 @@ class Game extends GameUtils {
             } else
                 break;
         }
-        gameUtils.printRound(p, round, oldScore, 0, "No Combination");
+        GameUtils.getInstance().printRound(player, round, oldScore, 0, "No Combination");
     }
 
     //checking for combinations
 
-    private int checkPair(List<Integer> diceRolled) {
-        int maxScore = 0;
+    private void checkMethods(List<Integer> diceRolled){
 
-        for (int i = 0, j = 1; j < diceRolled.size(); i++, j++) {
-            if (diceRolled.get(i).compareTo(diceRolled.get(j)) == 0) {
-                if (CombinationEnum.PAIR.calculateCombination(diceRolled.get(i), 0) > maxScore)
-                    maxScore = CombinationEnum.PAIR.calculateCombination(diceRolled.get(i), 0);
-            }
-        }
-        return maxScore;
+
     }
 
-    private int checkDoublePair(List<Integer> diceRolled) {
-        int pair1 = 0, pair2;
-        int maxScore = 0;
-
-        for (int i = 0, j = 1; j < diceRolled.size(); i++, j++) {
-            if (diceRolled.get(i).compareTo(diceRolled.get(j)) == 0) {
-                if (pair1 == 0) {
-                    pair1 = diceRolled.get(i);
-                    i = ++i;
-                    j = ++j;
-                    continue;
-                }
-                pair2 = diceRolled.get(i);
-                if (pair1 > 0
-                        && pair2 > 0
-                        && CombinationEnum.DOUBLE_PAIR.calculateCombination(pair1, pair2) > maxScore)
-                    maxScore = CombinationEnum.DOUBLE_PAIR.calculateCombination(pair1, pair2);
-            }
-        }
-        return maxScore;
-    }
-
-    private int checkTriple(List<Integer> diceRolled) {
-        int maxScore = 0;
-
-        for (int i = 0, j = 1, k = 2; k < diceRolled.size(); i++, j++, k++) {
-            if (diceRolled.get(i).compareTo(diceRolled.get(j)) == 0
-                    && diceRolled.get(k).compareTo(diceRolled.get(j)) == 0) {
-                if (CombinationEnum.TRIPLE.calculateCombination(diceRolled.get(i), 0) > maxScore)
-                    maxScore = CombinationEnum.TRIPLE.calculateCombination(diceRolled.get(i), 0);
-            }
-        }
-        return maxScore;
-    }
-
-    private int checkFullHouse(List<Integer> diceRolled) {
-        int maxScore = 0;
-        if (diceRolled.get(0).compareTo(diceRolled.get(1)) == 0
-                && (diceRolled.get(2).compareTo(diceRolled.get(3)) == 0
-                && diceRolled.get(3).compareTo(diceRolled.get(4)) == 0))
-            maxScore = CombinationEnum.FULL_HOUSE.calculateCombination(diceRolled.get(0), diceRolled.get(4));
-
-        if (diceRolled.get(3).compareTo(diceRolled.get(4)) == 0
-                && (diceRolled.get(0).compareTo(diceRolled.get(1)) == 0
-                && diceRolled.get(1).compareTo(diceRolled.get(2)) == 0))
-            maxScore = CombinationEnum.FULL_HOUSE.calculateCombination(diceRolled.get(4), diceRolled.get(0));
-
-        return maxScore;
-    }
-
-    private int checkStraight(List<Integer> diceRolled) {
-        int i = 1;
-        int j = 0;
-        if (diceRolled.get(0) == 2) {
-            j = 1;
-            i = 2;
-        }
-        for (; i < diceRolled.size(); i++) {
-            if (!(diceRolled.get(i) == (i + 1 + j)))
-                return 0;
-        }
-        return CombinationEnum.STRAIGHT.calculateCombination(diceRolled.get(4) == 5 ? 1 : 0, 0);
-    }
-
-    private int checkFourOfaKind(List<Integer> diceRolled) {
-        if (diceRolled.get(0).compareTo(diceRolled.get(3)) == 0)
-            return CombinationEnum.FOUR_OF_A_KIND.calculateCombination(diceRolled.get(0), 0);
-        if (diceRolled.get(1).compareTo(diceRolled.get(4)) == 0)
-            return CombinationEnum.FOUR_OF_A_KIND.calculateCombination(diceRolled.get(1), 0);
+    public int setPairDie() {
+        for (int i = 1; i < Dice.getDiceRolled().size(); i++) {
+            if (Dice.getDiceRolled().get(i-1).compareTo(Dice.getDiceRolled().get(i)) == 0) {
+                CombinationEnum.PAIR.setDieNumber(Dice.getDiceRolled().get(i));
+                return Dice.getDiceRolled().get(i);
+            } }
+        CombinationEnum.PAIR.setDieNumber(0);
         return 0;
     }
 
-    private int checkGenerala(List<Integer> diceRolled) {
-        for (int i = 1; i < diceRolled.size(); i++) {
-            if (!(diceRolled.get(i).compareTo(diceRolled.get(0)) == 0))
-                return 0;
+    private void returnDoublePairDie() {
+        int pair1 = 0;
+        for (int i = 1; i < Dice.getDiceRolled().size(); i++) {
+            if (Dice.getDiceRolled().get(i-1).compareTo(Dice.getDiceRolled().get(i)) == 0) {
+                if (pair1 == 0) {
+                    pair1 = Dice.getDiceRolled().get(i);
+                    i = ++i;
+                    continue;
+                }
+                pair1 += Dice.getDiceRolled().get(i);
+                CombinationEnum.DOUBLE_PAIR.setDieNumber(pair1);
+                return;
+            }
         }
-        return CombinationEnum.GENERALA.calculateCombination(diceRolled.get(0), 0);
+        CombinationEnum.DOUBLE_PAIR.setDieNumber(0);
+    }
+
+    public int returnTripleDie() {
+        for (int i = 2; i < Dice.getDiceRolled().size(); i++) {
+            if (Dice.getDiceRolled().get(i-2).compareTo(Dice.getDiceRolled().get(i)) == 0){
+                CombinationEnum.TRIPLE.setDieNumber(i);
+                return Dice.getDiceRolled().get(i);
+            }
+        }
+        CombinationEnum.TRIPLE.setDieNumber(0);
+        return 0;
+    }
+
+    private int returnFullHouseRemainder() {
+        if(CombinationEnum.TRIPLE.getDieNumber()> 0) {
+            CombinationEnum.FULL_HOUSE.setDieNumber(0);
+            if(CombinationEnum.FULL_HOUSE.getDieNumber()>0){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    private void returnStraightFirstDie() {
+        for(int i = 1; i< Dice.getInstance().getNumberOfDice(); i++){
+            if(!(Dice.getDiceRolled().get(i-1)-1 ==Dice.getDiceRolled().get(i))) {
+                CombinationEnum.STRAIGHT.setDieNumber(Dice.getDiceRolled().get(i));
+                return;
+            }
+        }
+        CombinationEnum.STRAIGHT.setDieNumber(0);
+    }
+
+    private void returnFourOfAKindDie() {
+        for (int i = 3; i < Dice.getDiceRolled().size(); i++) {
+            if (Dice.getDiceRolled().get(i-3).compareTo(Dice.getDiceRolled().get(i)) == 0){
+                CombinationEnum.FOUR_OF_A_KIND.setDieNumber(i);
+                return;            }
+        }
+        CombinationEnum.FOUR_OF_A_KIND.setDieNumber(0);
+    }
+
+    private void returnGeneralaDie() {
+        for (int i = 1; i < Dice.getDiceRolled().size(); i++) {
+            if (!(Dice.getDiceRolled().get(i).compareTo(Dice.getDiceRolled().get(0)) == 0))
+                CombinationEnum.GENERALA.setDieNumber(0);
+        }
+        CombinationEnum.TRIPLE.setDieNumber(Dice.getDiceRolled().get(0));
     }
 }
