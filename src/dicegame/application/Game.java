@@ -67,7 +67,7 @@ public class Game {
     private void evaluate(Player player, int round) throws NullPointerException {
         //System.out.println("new");
         int oldScore = player.getScore();
-        List<Integer> list = Dice.getDiceRolled();
+        List<Integer> list = new ArrayList<>(Dice.getDiceRolled());
 
         List<CombinationEnum> combinationEnums = new ArrayList<>();
 

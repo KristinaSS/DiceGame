@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 public class Application {
 
     public static void main(String[] args) {
+
         try {
             Game diceGame = Game.getInstance();
             GameUtils.getInstance().readPropertiesFile(Paths

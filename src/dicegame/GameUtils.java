@@ -79,11 +79,11 @@ public class GameUtils {
         rolledDice =rolledDice.replace('[',' ');
         rolledDice =rolledDice.replace(']',' ');
 
-
         System.out.println(">>> round: " + round);
         System.out.println(">player " + p.getPlayerNumber() + ":");
         System.out.println("current score: " + oldScore);
-        System.out.println("dice roll:" + rolledDice + "-> " + typeOfCombination + " (" + rolledScore + ") ");
+        System.out.println("dice roll:" + rolledDice + "-> "
+                + typeOfCombination + " (" + rolledScore + ") ");
         System.out.println("new score: " + p.getScore());
         System.out.println();
     }

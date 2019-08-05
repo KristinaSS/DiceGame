@@ -190,8 +190,6 @@ public enum CombinationEnum implements Calculable {
         }
         @Override
         public void setDieNumber(int i) {
-            System.out.println("----------");
-            System.out.println(Dice.getDiceRolled());
             this.tripleDie = Game.getInstance().returnTripleDie();
             Dice.getDiceRolled().removeIf(it -> it == tripleDie);
             this.pairDie = Game.getInstance().setPairDie();
