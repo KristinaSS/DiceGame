@@ -49,10 +49,6 @@ public class Game {
                 Dice.rollDice();
                 Dice.sortDiceReverseOrder(Dice.diceRolledList);
                 evaluate(player,round);
-                if (player.getPlayedCombinationsMap().containsKey(CombinationEnum.GENERALA)) {
-                    GameUtils.endGame(playerList, player);
-                    return;
-                }
                 System.out.println();
             }
         }
@@ -64,8 +60,9 @@ public class Game {
     private void evaluate(Player player, int round) throws NullPointerException {
         int oldScore = player.getScore();
 
-        fillSortedMap();
-        findLargestCombination(player);
+        fillSortedMap(player);
+        if(roundScore > 0)
+            findLargestCombination(player);
 
         if(roundScore!= 0){
             player.getPlayedCombinationsMap().put(highestPlayedCombination,roundScore);
@@ -82,9 +79,18 @@ public class Game {
 
     //checking for combinations
 
-    private void fillSortedMap(){
+    private void fillSortedMap(Player player){
         int score;
-
+        score = calculateGenerala();
+        if(score > 0) {
+            Dice.sortedScoreMap.put(CombinationEnum.GENERALA, score);
+            if(player.getPlayedCombinationsMap().size()>= CombinationEnum.values().length-1
+                    && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.GENERALA))){
+                this.highestPlayedCombination = CombinationEnum.GENERALA;
+                this.roundScore = score;
+                return;
+            }
+        }
         score = calculatePair(Dice.diceRolledList);
         if(score > 0)
             Dice.sortedScoreMap.put(CombinationEnum.PAIR,score);
@@ -108,10 +114,6 @@ public class Game {
         score = calculateStraight();
         if(score > 0)
             Dice.sortedScoreMap.put(CombinationEnum.STRAIGHT,score);
-
-        score = calculateGenerala();
-        if(score > 0)
-            Dice.sortedScoreMap.put(CombinationEnum.GENERALA,score);
 
         //System.out.println(Dice.sortedScoreMap);
     }
