@@ -24,24 +24,15 @@ public class GameUtils {
     }
 
     //Utils
-
-    public Map.Entry<CombinationEnum, Integer> getEntry(int i) {
-        int j = 0;
-        for (Map.Entry<CombinationEnum, Integer> entry : Dice.getSortedScore().entrySet()) {
-            if (j++ == i)
-                return entry;
-        }
-        return null;
-    }
-
-    public HashMap<CombinationEnum, Integer> sortByValue() {
+    public void sortByValue() {
         List<Map.Entry<CombinationEnum, Integer>> list =
                 new LinkedList<>(Dice.getSortedScore().entrySet());
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
+
         HashMap<CombinationEnum, Integer> temp = new LinkedHashMap<>();
         for (Map.Entry<CombinationEnum, Integer> aa : list)
             temp.put(aa.getKey(), aa.getValue());
-        return temp;
+        Dice.setSortedScore(temp);
     }
 
     public void endGame(List<Player> playerList, Player winner) {
@@ -60,6 +51,8 @@ public class GameUtils {
         for (Player p : playerList) {
             if (previousScore > p.getScore() || previousScore == -1)
                 i++;
+            if(winner == null && previousScore == -1)
+                i--;
             System.out.println(i + ".         Player " + p.getPlayerNumber() + "   ->  " + p.getScore());
             previousScore = p.getScore();
         }

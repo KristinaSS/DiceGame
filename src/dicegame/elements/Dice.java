@@ -1,16 +1,25 @@
 package dicegame.elements;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Dice {
     private int numberOfDice;
     private int numberOfSides;
 
     private static Dice diceInstance = null;
-    private static Random random = new Random();
+   // private static ThreadLocalRandom random = new ThreadLocalRandom();
     private static List<Integer> diceRolled = new ArrayList<>();
+    private static HashMap<CombinationEnum,Integer> sortedScore = new HashMap<>();
 
     //Methods
+    public static HashMap<CombinationEnum, Integer> getSortedScore() {
+        return sortedScore;
+    }
+
+    public static void setSortedScore(HashMap<CombinationEnum, Integer> sortedScore) {
+        Dice.sortedScore = sortedScore;
+    }
 
     public static Dice getInstance() {
         if (diceInstance == null)
@@ -29,10 +38,6 @@ public class Dice {
         this.numberOfSides = numberOfSides;
     }
 
-    public int getNumberOfDice() {
-        return numberOfDice;
-    }
-
     public static List<Integer> getDiceRolled() {
         return diceRolled;
     }
@@ -42,7 +47,8 @@ public class Dice {
 
     public void rollDice() {
         for (int i = 0; i < numberOfDice; i++) {
-            diceRolled.add(i, random.nextInt(numberOfSides) + 1);
+            //diceRolled.add(i, random.nextInt(numberOfSides) + 1);
+            diceRolled.add(i,ThreadLocalRandom.current().nextInt(numberOfSides)+1);
         }
     }
 
@@ -50,11 +56,11 @@ public class Dice {
         diceRolled.clear();
     }
 
-    public void sortDiceReverseOrder() {
+    public void sortDiceReverseOrder(List<Integer> diceRolled) {
         diceRolled.sort(Comparator.reverseOrder());
     }
 
-    public void sortDiceNaturalOrder() {
+    public void sortDiceNaturalOrder(List<Integer> diceRolled) {
         diceRolled.sort(Comparator.naturalOrder());
     }
 }

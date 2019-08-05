@@ -1,11 +1,6 @@
 package dicegame.elements;
 
 
-import dicegame.application.Game;
-
-import java.util.Collections;
-import java.util.Iterator;
-
 public enum CombinationEnum implements Calculable {
     PAIR(4, 10, "Pair"){
         @Override
@@ -65,7 +60,7 @@ return 0;
     STRAIGHT(1, 30, "Straight"){
         public int calculateCombination(int dieNumber) {
             int score = 0;
-            for (int i = 0; i < Dice.getInstance().getNumberOfDice(); i++) {
+            for (int i = 0; i < 5; i++) {
                 score += (dieNumber - i);
             }
             return score + this.combinationValue;

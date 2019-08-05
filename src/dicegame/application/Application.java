@@ -3,10 +3,12 @@ package dicegame.application;
 import dicegame.GameUtils;
 
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 public class Application {
 
     public static void main(String[] args) {
+       long start = System.nanoTime();
 
         try {
             Game diceGame = Game.getInstance();
@@ -18,5 +20,9 @@ public class Application {
         }catch (NullPointerException ex){
             ex.printStackTrace();
         }
+        LocalDateTime later = LocalDateTime.now();
+
+        long end = System.nanoTime();
+        System.out.println("Took" + (end - start));
     }
 }

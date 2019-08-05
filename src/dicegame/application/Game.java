@@ -16,7 +16,7 @@ public class Game {
     private int rounds;
     private int playerCount;
     private int score = 0;
-    private CombinationEnum playedCombination;
+    private CombinationEnum playedCombination = null;
     //Methods
 
     private Game() {
@@ -51,9 +51,8 @@ public class Game {
             for (Player player : playerList) {
                 dice.resetDice();
                 dice.rollDice();
-                dice.sortDiceReverseOrder();
+                dice.sortDiceReverseOrder(Dice.getDiceRolled());
                 evaluate(player,round);
-//todo i dont like this contains
                 if (player.getPlayedCombinations().containsKey(CombinationEnum.GENERALA)) {
                     GameUtils.getInstance().endGame(playerList, player);
                     return;
@@ -69,8 +68,6 @@ public class Game {
     private void evaluate(Player player, int round) throws NullPointerException {
         int oldScore = player.getScore();
         List<Integer> list = new ArrayList<>(Dice.getDiceRolled());
-
-        List<CombinationEnum> combinationEnums = new ArrayList<>();
 
         checkMethods();
         doSomethingMethod(player);
@@ -102,13 +99,13 @@ public class Game {
     }
 
     private void doSomethingMethod(Player player){
-            GameUtils.getInstance().sortByValue();
+        GameUtils.getInstance().sortByValue();
         for (Map.Entry<CombinationEnum, Integer> entry : Dice.getSortedScore().entrySet()){
-            if(!(player.getPlayedCombinations().containsKey(entry.getKey()))){
-                this.score = entry.getValue();
-                this.playedCombination = entry.getKey();
-                return;
-            }
+            if(player.getPlayedCombinations().containsKey(entry.getKey()))
+                continue;
+            this.score = entry.getValue();
+            this.playedCombination = entry.getKey();
+            return;
         }
         this.score = 0;
         this.playedCombination = null;
@@ -153,8 +150,15 @@ public class Game {
     } //todo need to be fixed
 
     private int returnStraightFirstDie() {
-        for(int i = 1; i< Dice.getInstance().getNumberOfDice(); i++){
-            if(!(Dice.getDiceRolled().get(i-1)-1 ==Dice.getDiceRolled().get(i))) {
+        System.out.println("Rolled dice " + Dice.getDiceRolled());
+        Set<Integer> diceRolledSet = new HashSet<>(Dice.getDiceRolled());
+        List<Integer>listNoDublictaes = new ArrayList<>(diceRolledSet);
+        Dice.getInstance().sortDiceReverseOrder(listNoDublictaes);
+        System.out.println(listNoDublictaes);
+        if(listNoDublictaes.size()<5)
+            return 0;
+        for(int i = 1; i< 5; i++){
+            if(!(listNoDublictaes.get(i-1)-1 ==Dice.getDiceRolled().get(i))) {
                 return 0;
             }
         }
