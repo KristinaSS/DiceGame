@@ -3,7 +3,6 @@ package dicegame.application;
 import dicegame.GameUtils;
 
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 
 public class Application {
 
@@ -12,7 +11,7 @@ public class Application {
 
         try {
             Game diceGame = Game.getInstance();
-            GameUtils.getInstance().readPropertiesFile(Paths
+            GameUtils.readPropertiesFile(Paths
                     .get("C:/Users/kristina.stoyanova/IdeaProjects/DiceGame/src/resources/config.properties"));
 
             //game is ready to be played
@@ -20,9 +19,9 @@ public class Application {
         }catch (NullPointerException ex){
             ex.printStackTrace();
         }
-        LocalDateTime later = LocalDateTime.now();
 
         long end = System.nanoTime();
-        System.out.println("Took" + (end - start));
+        System.out.println("Took: " + ((end - start) / 1000000) + " ms");
+        System.out.println("Took: " + (end - start)/ 1000000000 + " seconds");
     }
 }

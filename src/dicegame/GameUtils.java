@@ -12,30 +12,22 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class GameUtils {
-    private static GameUtils gameUtilsInstance = null;
-
-    public static GameUtils getInstance() {
-        if (gameUtilsInstance == null)
-            gameUtilsInstance = new GameUtils();
-        return gameUtilsInstance;
-    }
-
     private GameUtils() {
     }
 
     //Utils
-    public void sortByValue() {
+    public static void sortByValue() {
         List<Map.Entry<CombinationEnum, Integer>> list =
-                new LinkedList<>(Dice.getSortedScore().entrySet());
+                new LinkedList<>(Dice.sortedScore.entrySet());
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
-        HashMap<CombinationEnum, Integer> temp = new LinkedHashMap<>();
+        Dice.sortedScore.clear();
+
         for (Map.Entry<CombinationEnum, Integer> aa : list)
-            temp.put(aa.getKey(), aa.getValue());
-        Dice.setSortedScore(temp);
+            Dice.sortedScore.put(aa.getKey(), aa.getValue());
     }
 
-    public void endGame(List<Player> playerList, Player winner) {
+    public static void endGame(List<Player> playerList, Player winner) {
         int previousScore = -1;
         System.out.println(">>>  RESULTS  <<<<");
         System.out.println("Place       Player       Score");
@@ -59,26 +51,26 @@ public class GameUtils {
         System.out.println("----------------------------------------------------------------------------");
     }
 
-    public void printRound(Player p,
+    public static void printRound(Player player,
                            int round,
                            int oldScore,
                            int rolledScore,
-                           String typeOfCombination,
-                           List<Integer>list) {
-        String rolledDice =list.toString();
-        rolledDice =rolledDice.replace('[',' ');
-        rolledDice =rolledDice.replace(']',' ');
+                           String typeOfCombination) {
+        Dice.sortDiceNaturalOrder(Dice.diceRolled);
+
+        StringBuilder rolledDice = new StringBuilder(Dice.diceRolled.toString());
+        rolledDice.deleteCharAt(0);
+        rolledDice.deleteCharAt(rolledDice.length()-1);
 
         System.out.println(">>> round: " + round);
-        System.out.println(">player " + p.getPlayerNumber() + ":");
+        System.out.println(">player " + player.getPlayerNumber() + ":");
         System.out.println("current score: " + oldScore);
-        System.out.println("dice roll:" + rolledDice + "-> "
-                + typeOfCombination + " (" + rolledScore + ") ");
-        System.out.println("new score: " + p.getScore());
+        System.out.println("dice roll:" + rolledDice + "-> " + typeOfCombination + " (" + rolledScore + ") ");
+        System.out.println("new score: " + player.getScore());
         System.out.println();
     }
 
-    public List<Player> fillPlayerList(int playerNum) {
+    public static List<Player> fillPlayerList(int playerNum) {
         List<Player> playerList = new ArrayList<>();
         while (playerNum-- > 0) {
             playerList.add(new Player(playerList.size() + 1));
@@ -86,15 +78,7 @@ public class GameUtils {
         return playerList;
     }
 
-    protected static CombinationEnum getEnumWithIndex(int i) throws NullPointerException {
-        for (CombinationEnum e : CombinationEnum.values()) {
-            if (e.getIndex() == i)
-                return e;
-        }
-        throw new NullPointerException("No Combination Enum with index " + i + " exist");
-    }
-
-    public void readPropertiesFile(Path path){
+    public static void readPropertiesFile(Path path){
         try(InputStream input = Files.newInputStream(path)){
             Properties prop = new Properties();
             prop.load(input);
@@ -102,8 +86,8 @@ public class GameUtils {
             Game.getInstance().setRounds(Integer.parseInt(prop.getProperty("roundCount")));
             Game.getInstance().setPlayerCount(Integer.parseInt(prop.getProperty("playerCount")));
 
-            Dice.getInstance().setNumberOfDices(Integer.parseInt(prop.getProperty("diceCount")));
-            Dice.getInstance().setNumberOfSides(Integer.parseInt(prop.getProperty("numberOfSidesOnDice")));
+            Dice.numberOfDice = Integer.parseInt(prop.getProperty("diceCount"));
+            Dice.numberOfSides = Integer.parseInt(prop.getProperty("numberOfSidesOnDice"));
 
         } catch (IOException exception){
             exception.printStackTrace();
