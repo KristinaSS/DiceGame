@@ -23,38 +23,9 @@ public enum CombinationEnum implements Calculable {
         }
     },
     FULL_HOUSE(6, 25, "Full House"){
-/*        int tripleDie;
-        int pairDie = 0;
-        int score;
-
-        @Override
-        public int getScore() {
-            return score;
-        }
-        @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public void setDieNumber(int i) {
-            this.tripleDie = Game.getInstance().returnTripleDie();
-            Dice.getDiceRolled().removeIf(it -> it == tripleDie);
-            this.pairDie = Game.getInstance().setPairDie();
-            if(tripleDie==0 || pairDie==0) {
-                tripleDie = 0;
-                pairDie = 0;
-            }
-        }
-        @Override
-        public int getDieNumber() {
-            return pairDie;
-        }*/
         @Override
         public int calculateCombination(int dieNumber) {
-/*            if(pairDie == 0 || tripleDie ==0)
-                return;
-            score = (2 * pairDie) + (3 * tripleDie) + this.getValue();*/
-return 0;
+            return dieNumber + this.getValue();
         }
     }, //todo need to be fixed
     STRAIGHT(1, 30, "Straight"){

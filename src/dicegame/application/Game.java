@@ -89,10 +89,10 @@ public class Game {
     //checking for combinations
 
     private void checkMethods(){
-        Dice.getSortedScore().put(CombinationEnum.PAIR,setPairDie());
+        Dice.getSortedScore().put(CombinationEnum.PAIR,setPairDie(Dice.getDiceRolled()));
         Dice.getSortedScore().put(CombinationEnum.DOUBLE_PAIR,returnDoublePairDie());
         Dice.getSortedScore().put(CombinationEnum.TRIPLE,returnTripleDie());
-        //Dice.getSortedScore().put(CombinationEnum.TRIPLE,returnFullHouseRemainder());
+        Dice.getSortedScore().put(CombinationEnum.FULL_HOUSE,returnFullHouseRemainder());
         Dice.getSortedScore().put(CombinationEnum.FOUR_OF_A_KIND,returnFourOfAKindDie());
         Dice.getSortedScore().put(CombinationEnum.STRAIGHT,returnStraightFirstDie());
         Dice.getSortedScore().put(CombinationEnum.GENERALA,returnGeneralaDie());
@@ -113,8 +113,8 @@ public class Game {
 
     //methods
 
-    private int setPairDie() {
-        for (int i = 1; i < Dice.getDiceRolled().size(); i++) {
+    private int setPairDie(List<Integer> rolledDice) {
+        for (int i = 1; i < rolledDice.size(); i++) {
             if (Dice.getDiceRolled().get(i-1).compareTo(Dice.getDiceRolled().get(i)) == 0) {
                 return CombinationEnum.PAIR.calculateCombination(Dice.getDiceRolled().get(i));
             } }
@@ -146,19 +146,25 @@ public class Game {
         return 0;
     }
 
-    private void returnFullHouseRemainder() {
-    } //todo need to be fixed
+    private int returnFullHouseRemainder() {
+        List<Integer> fullHouseList = new ArrayList<>(Dice.getDiceRolled());
+        int tripleDie = (returnTripleDie()-CombinationEnum.TRIPLE.getValue())/3;
+        fullHouseList.removeAll(Collections.singleton(tripleDie));
+        int pairDie = (setPairDie(fullHouseList)-CombinationEnum.PAIR.getValue())/2;
+        if(tripleDie <= 0 || pairDie <= 0)
+            return 0;
+        return CombinationEnum.FULL_HOUSE.calculateCombination((3*tripleDie)+(2*pairDie));
+    }
 
     private int returnStraightFirstDie() {
-        System.out.println("Rolled dice " + Dice.getDiceRolled());
         Set<Integer> diceRolledSet = new HashSet<>(Dice.getDiceRolled());
         List<Integer>listNoDublictaes = new ArrayList<>(diceRolledSet);
         Dice.getInstance().sortDiceReverseOrder(listNoDublictaes);
-        System.out.println(listNoDublictaes);
+
         if(listNoDublictaes.size()<5)
             return 0;
         for(int i = 1; i< 5; i++){
-            if(!(listNoDublictaes.get(i-1)-1 ==Dice.getDiceRolled().get(i))) {
+            if(!(listNoDublictaes.get(i-1)-1 == listNoDublictaes.get(i))) {
                 return 0;
             }
         }
