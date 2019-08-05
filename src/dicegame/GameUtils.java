@@ -23,29 +23,33 @@ public class GameUtils {
 
         Dice.sortedScore.clear();
 
-        for (Map.Entry<CombinationEnum, Integer> aa : list)
-            Dice.sortedScore.put(aa.getKey(), aa.getValue());
+        HashMap<CombinationEnum, Integer> temp = new LinkedHashMap<>();
+        for (Map.Entry<CombinationEnum, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        Dice.sortedScore = temp;
     }
 
-    public static void endGame(List<Player> playerList, Player winner) {
+    public static void endGame(List<Player> playerList, Player playerWithGenerala) {
         int previousScore = -1;
         System.out.println(">>>  RESULTS  <<<<");
         System.out.println("Place       Player       Score");
-        int i = 1;
+
+        int placeInGame = 1;
         playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
 
-        if (!(winner == null)) {
-            System.out.println("GENERALA! Player " + winner.getPlayerNumber());
-            playerList.remove(winner);
-            System.out.println(i + ".         Player " + winner.getPlayerNumber() + "   ->  " + winner.getScore());
+        if (!(playerWithGenerala == null)) {
+            System.out.println("GENERALA! Player " + playerWithGenerala.getPlayerNumber());
+            playerList.remove(playerWithGenerala);
+            System.out.println(placeInGame + ".         Player " + playerWithGenerala.getPlayerNumber() + "   ->  " + playerWithGenerala.getScore());
         }
 
         for (Player p : playerList) {
             if (previousScore > p.getScore() || previousScore == -1)
-                i++;
-            if(winner == null && previousScore == -1)
-                i--;
-            System.out.println(i + ".         Player " + p.getPlayerNumber() + "   ->  " + p.getScore());
+                placeInGame++;
+            if(playerWithGenerala == null && previousScore == -1)
+                placeInGame--;
+            System.out.println(placeInGame + ".         Player " + p.getPlayerNumber() + "   ->  " + p.getScore());
             previousScore = p.getScore();
         }
         System.out.println("----------------------------------------------------------------------------");

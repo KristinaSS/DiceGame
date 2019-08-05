@@ -23,6 +23,7 @@ public class Dice {
 
     public static void resetDice() {
         diceRolled.clear();
+        sortedScore.clear();
     }
 
     public static void sortDiceReverseOrder(List<Integer> diceRolled) {

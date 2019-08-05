@@ -112,10 +112,13 @@ public class Game {
         score = calculateGenerala();
         if(score > 0)
             Dice.sortedScore.put(CombinationEnum.GENERALA,score);
+
+        System.out.println(Dice.sortedScore);
     }
 
     private void findLargestCombination(Player player){
         GameUtils.sortByValue();
+        System.out.println(Dice.sortedScore);
         for (Map.Entry<CombinationEnum, Integer> entry : Dice.sortedScore.entrySet()){
             if(player.getPlayedCombinations().containsKey(entry.getKey()))
                 continue;
@@ -126,8 +129,6 @@ public class Game {
         this.roundScore = 0;
         this.highestPlayedCombination = null;
     }
-
-    //methods
 
     private int calculatePair(List<Integer> rolledDice) {
         for (int i = 1; i < rolledDice.size(); i++) {
