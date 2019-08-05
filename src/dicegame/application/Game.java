@@ -113,12 +113,12 @@ public class Game {
         if(score > 0)
             Dice.sortedScoreMap.put(CombinationEnum.GENERALA,score);
 
-        System.out.println(Dice.sortedScoreMap);
+        //System.out.println(Dice.sortedScoreMap);
     }
 
     private void findLargestCombination(Player player){
         GameUtils.sortByValue();
-        System.out.println(Dice.sortedScoreMap);
+        //System.out.println(Dice.sortedScoreMap);
         for (Map.Entry<CombinationEnum, Integer> entry : Dice.sortedScoreMap.entrySet()){
             if(player.getPlayedCombinationsMap().containsKey(entry.getKey()))
                 continue;
@@ -175,18 +175,26 @@ public class Game {
     }
 
     private int calculateStraight() {
+        int straightCounter = 0;
+
         Set<Integer> diceRolledSet = new HashSet<>(Dice.diceRolledList);
         List<Integer>noDuplicateList = new ArrayList<>(diceRolledSet);
         Dice.sortDiceReverseOrder(noDuplicateList);
 
         if(noDuplicateList.size()<5)
             return 0;
-        for(int i = 1; i< 5; i++){
-            if(!(noDuplicateList.get(i-1)-1 == noDuplicateList.get(i))) {
-                return 0;
-            }
+        int i;
+        for(i = 1; i< noDuplicateList.size(); i++){
+            if(noDuplicateList.get(i-1)-1 == noDuplicateList.get(i)) {
+                straightCounter++;
+            }else
+                straightCounter = 0;
+            if(straightCounter == 4)
+                break;
         }
-        return CombinationEnum.STRAIGHT.calculateCombination(noDuplicateList.get(0));
+        if(straightCounter == 4)
+            return CombinationEnum.STRAIGHT.calculateCombination(noDuplicateList.get(i-4));
+        return 0;
     }
 
     private int calculateFourOfAKind() {
