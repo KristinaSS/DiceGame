@@ -5,7 +5,7 @@ import java.util.*;
 public final class Player {
     private int playerNumber;
     private int score = 0;
-    private List<CombinationEnum> playedCombinations = new ArrayList<>();
+    private Map <CombinationEnum,Integer> playedCombinations = new HashMap<>();
 
     //Methods
 
@@ -17,12 +17,8 @@ public final class Player {
         return playerNumber;
     }
 
-    public List<CombinationEnum> getPlayedCombinations() {
+    public Map<CombinationEnum, Integer> getPlayedCombinations() {
         return playedCombinations;
-    }
-
-    public void setPlayedCombinations(List<CombinationEnum> playedCombinations) {
-        this.playedCombinations = playedCombinations;
     }
 
     public int getScore() {
@@ -31,9 +27,5 @@ public final class Player {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public void setPlayerNumber(int playerNumber) {
-        this.playerNumber = playerNumber;
     }
 }

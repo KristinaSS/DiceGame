@@ -9,7 +9,6 @@ public class Dice {
     private static Dice diceInstance = null;
     private static Random random = new Random();
     private static List<Integer> diceRolled = new ArrayList<>();
-    private static List<CombinationEnum> sortScore = new ArrayList<>();
 
     //Methods
 
@@ -34,21 +33,10 @@ public class Dice {
         return numberOfDice;
     }
 
-    public int getNumberOfSides() {
-        return numberOfSides;
-    }
-
     public static List<Integer> getDiceRolled() {
         return diceRolled;
     }
 
-    public static void setDiceRolled(List<Integer> diceRolled) {
-        Dice.diceRolled = diceRolled;
-    }
-
-    public void setNumberOfDice(int numberOfDice) {
-        this.numberOfDice = numberOfDice;
-    }
 
     //Utils
 

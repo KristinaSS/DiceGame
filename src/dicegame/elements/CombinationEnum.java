@@ -7,176 +7,28 @@ import java.util.Collections;
 import java.util.Iterator;
 
 public enum CombinationEnum implements Calculable {
-
-    GENERALA(0, 50, "Generala"){
-        int dieNumber =0;
-        int score;
-
-        @Override
-        public int getScore() {
-            return score;
-        }
-        @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public int getDieNumber() {
-            return dieNumber;
-        }
-        @Override
-        public void setDieNumber(int dieNumber) {
-            this.dieNumber = dieNumber;
-        }
-        @Override
-        public void calculateCombination() {
-            if(dieNumber == 0)
-                return;
-            score = (5 * dieNumber) + this.getValue();
-        }
-    },
-    STRAIGHT(1, 30, "Straight"){
-        int dieNumber =0;
-        int score;
-
-        @Override
-        public int getScore() {
-            return score;
-        }
-        @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public void setDieNumber(int dieNumber) {
-            this.dieNumber = dieNumber;
-        }
-        @Override
-        public int getDieNumber() {
-            return dieNumber;
-        }
-        @Override
-        public void calculateCombination() {
-            if(dieNumber == 0)
-                return;
-            int score = 0;
-            for (int i = 0; i < Dice.getInstance().getNumberOfDice(); i++) {
-                score += (dieNumber - i);
-            }
-            this.score = score + this.combinationValue;
-        }
-    },
-    FOUR_OF_A_KIND(2, 40, "Four of a Kind"){
-        int dieNumber = 0;
-        int score;
-        @Override
-        public int getScore() {
-            return score;
-        }
-        @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public int getDieNumber() {
-            return dieNumber;
-        }
-        @Override
-        public void setDieNumber(int dieNumber) {
-            this.dieNumber = dieNumber;
-        }
-        @Override
-        public void calculateCombination() {
-            if(dieNumber == 0)
-                return;
-            score = (4 * dieNumber) + this.getValue();
-        }
-    },
-    DOUBLE_PAIR(3, 15, "Double Pair"){
-        int dieNumber =0;
-        int score;
-
-        @Override
-        public int getScore() {
-            return score;
-        }
-        @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public int getDieNumber() {
-            return dieNumber;
-        }
-        @Override
-        public void setDieNumber(int dieNumber) {
-            this.dieNumber = dieNumber;
-        }
-        @Override
-        public void calculateCombination() {
-            if(dieNumber == 0)
-                return;
-            score = (dieNumber* 2) + this.getValue();
-        }
-    },
     PAIR(4, 10, "Pair"){
-        int dieNumber=0;
-        int score;
-
         @Override
-        public int getScore() {
-            return score;
-        }
-        @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public void setDieNumber(int dieNumber) {
-            this.dieNumber = dieNumber;
-        }
-        @Override
-        public int getDieNumber() {
-            return dieNumber;
-        }
-        @Override
-        public void calculateCombination() {
-            if(dieNumber == 0)
-                return;
-            score = (dieNumber * 2) + this.getValue();
+        public int calculateCombination(int dieNumber) {
+            return  (dieNumber * 2) + this.getValue();
         }
     },
     TRIPLE(5, 20, "Triple"){
-        int dieNumber = 0;
-        int score;
-
         @Override
-        public int getScore() {
-            return score;
+        public int calculateCombination(int dieNumber) {
+/*            if(dieNumber == 0)
+                return;*/
+            return  (3 * dieNumber) + this.getValue();
         }
+    },
+    DOUBLE_PAIR(3, 15, "Double Pair"){
         @Override
-        public void setScore(int score) {
-            this.score = score;
-        }
-        @Override
-        public int getDieNumber() {
-            return dieNumber;
-        }
-        @Override
-        public void setDieNumber(int dieNumber) {
-            //System.out.println("triple set die number "+ dieNumber);
-            this.dieNumber = dieNumber;
-        }
-        @Override
-        public void calculateCombination() {
-            if(dieNumber == 0)
-                return;
-            //System.out.println("triple "+ dieNumber);
-            score= (3 * dieNumber) + this.getValue();
+        public int calculateCombination(int dieNumber) {
+            return (dieNumber* 2) + this.getValue();
         }
     },
     FULL_HOUSE(6, 25, "Full House"){
-        int tripleDie;
+/*        int tripleDie;
         int pairDie = 0;
         int score;
 
@@ -201,12 +53,34 @@ public enum CombinationEnum implements Calculable {
         @Override
         public int getDieNumber() {
             return pairDie;
-        }
+        }*/
         @Override
-        public void calculateCombination() {
-            if(pairDie == 0 || tripleDie ==0)
+        public int calculateCombination(int dieNumber) {
+/*            if(pairDie == 0 || tripleDie ==0)
                 return;
-            score = (2 * pairDie) + (3 * tripleDie) + this.getValue();
+            score = (2 * pairDie) + (3 * tripleDie) + this.getValue();*/
+return 0;
+        }
+    }, //todo need to be fixed
+    STRAIGHT(1, 30, "Straight"){
+        public int calculateCombination(int dieNumber) {
+            int score = 0;
+            for (int i = 0; i < Dice.getInstance().getNumberOfDice(); i++) {
+                score += (dieNumber - i);
+            }
+            return score + this.combinationValue;
+        }
+    },
+    FOUR_OF_A_KIND(2, 40, "Four of a Kind"){
+        @Override
+        public int calculateCombination(int dieNumber) {
+            return  (4 * dieNumber) + this.getValue();
+        }
+    },
+    GENERALA(0, 50, "Generala"){
+        @Override
+        public int calculateCombination(int dieNumber) {
+             return (5 * dieNumber) + this.getValue();
         }
     };
 

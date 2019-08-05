@@ -25,9 +25,9 @@ public class GameUtils {
 
     //Utils
 
-/*    public Map.Entry<CombinationEnum, Integer> getEntry(int i) {
+    public Map.Entry<CombinationEnum, Integer> getEntry(int i) {
         int j = 0;
-        for (Map.Entry<CombinationEnum, Integer> entry : Dice.getSortScore().entrySet()) {
+        for (Map.Entry<CombinationEnum, Integer> entry : Dice.getSortedScore().entrySet()) {
             if (j++ == i)
                 return entry;
         }
@@ -35,17 +35,14 @@ public class GameUtils {
     }
 
     public HashMap<CombinationEnum, Integer> sortByValue() {
-
         List<Map.Entry<CombinationEnum, Integer>> list =
-                new LinkedList<>(Dice.getSortScore().entrySet());
-
+                new LinkedList<>(Dice.getSortedScore().entrySet());
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
-
         HashMap<CombinationEnum, Integer> temp = new LinkedHashMap<>();
         for (Map.Entry<CombinationEnum, Integer> aa : list)
             temp.put(aa.getKey(), aa.getValue());
         return temp;
-    }*/
+    }
 
     public void endGame(List<Player> playerList, Player winner) {
         int previousScore = -1;
