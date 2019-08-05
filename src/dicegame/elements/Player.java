@@ -5,7 +5,7 @@ import java.util.*;
 public final class Player {
     private int playerNumber;
     private int score = 0;
-    private Map <CombinationEnum,Integer> playedCombinations = new HashMap<>();
+    private Map <CombinationEnum,Integer> playedCombinationsMap = new HashMap<>();
 
     //Methods
 
@@ -17,8 +17,8 @@ public final class Player {
         return playerNumber;
     }
 
-    public Map<CombinationEnum, Integer> getPlayedCombinations() {
-        return playedCombinations;
+    public Map<CombinationEnum, Integer> getPlayedCombinationsMap() {
+        return playedCombinationsMap;
     }
 
     public int getScore() {

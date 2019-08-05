@@ -18,16 +18,16 @@ public class GameUtils {
     //Utils
     public static void sortByValue() {
         List<Map.Entry<CombinationEnum, Integer>> list =
-                new LinkedList<>(Dice.sortedScore.entrySet());
+                new LinkedList<>(Dice.sortedScoreMap.entrySet());
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
-        Dice.sortedScore.clear();
+        Dice.sortedScoreMap.clear();
 
         HashMap<CombinationEnum, Integer> temp = new LinkedHashMap<>();
         for (Map.Entry<CombinationEnum, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
-        Dice.sortedScore = temp;
+        Dice.sortedScoreMap = temp;
     }
 
     public static void endGame(List<Player> playerList, Player playerWithGenerala) {
@@ -60,9 +60,9 @@ public class GameUtils {
                            int oldScore,
                            int rolledScore,
                            String typeOfCombination) {
-        Dice.sortDiceNaturalOrder(Dice.diceRolled);
+        Dice.sortDiceNaturalOrder(Dice.diceRolledList);
 
-        StringBuilder rolledDice = new StringBuilder(Dice.diceRolled.toString());
+        StringBuilder rolledDice = new StringBuilder(Dice.diceRolledList.toString());
         rolledDice.deleteCharAt(0);
         rolledDice.deleteCharAt(rolledDice.length()-1);
 
