@@ -6,6 +6,7 @@ import dicegame.elements.Dice;
 import dicegame.elements.Player;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Game {
     private static Game gameInstance = null;
@@ -60,9 +61,9 @@ public class Game {
     private void evaluate(Player player, int round) throws NullPointerException {
         int oldScore = player.getScore();
 
-        fillSortedMap(player);
+        //fillSortedMap(player);
         if(roundScore > 0)
-            findLargestCombination(player);
+           // findLargestCombination(player);
 
         if(roundScore!= 0){
             player.getPlayedCombinationsMap().put(highestPlayedCombination,roundScore);
@@ -77,19 +78,20 @@ public class Game {
         GameUtils.printRound(player, round, oldScore, 0, "No Combination");
     }
 
-    //checking for combinations
+/*    //checking for combinations
 
     private void fillSortedMap(Player player){
         int score;
         score = calculateGenerala();
-        if(score > 0) {
-            Dice.sortedScoreMap.put(CombinationEnum.GENERALA, score);
-            if(player.getPlayedCombinationsMap().size()>= CombinationEnum.values().length-1
+
+        if(player.getPlayedCombinationsMap().size()>= CombinationEnum.values().length-1
                     && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.GENERALA))){
-                this.highestPlayedCombination = CombinationEnum.GENERALA;
-                this.roundScore = score;
-                return;
-            }
+            this.highestPlayedCombination = CombinationEnum.GENERALA;
+            this.roundScore = score;
+            return;
+        }else {
+            if (score > 0)
+                Dice.sortedScoreMap.put(CombinationEnum.GENERALA, score);
         }
         score = calculatePair(Dice.diceRolledList);
         if(score > 0)
@@ -214,5 +216,278 @@ public class Game {
                 return 0;
         }
         return CombinationEnum.GENERALA.calculateCombination(Dice.diceRolledList.get(0));
+    }*/
+    public void method(Player player){
+        if(Dice.listTemp.size() == 1){
+            //Dice.sortedScoreMap.put(CombinationEnum.GENERALA, CombinationEnum.GENERALA.calculateCombination(Dice.listTemp.;
+            return;
+        }
+        int temp = stramMap(4);
+
+        if(temp > 0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.FOUR_OF_A_KIND))) {
+            Dice.sortedScoreMap.put(CombinationEnum.FOUR_OF_A_KIND,
+                    CombinationEnum.FOUR_OF_A_KIND.calculateCombination(temp));
+        }
+        int triple = stramMap(3);
+        Dice.listTemp.remove(temp);
+        int pair = stramMap(2);
+
+        if(triple>0 && pair>0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.FULL_HOUSE)))
+            Dice.sortedScoreMap.put(CombinationEnum.FULL_HOUSE,0/*calculateFullHouse()*/);
+
+        if(triple>0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.TRIPLE)))
+            Dice.sortedScoreMap.put(CombinationEnum.FULL_HOUSE,0/*calculateFullHouse()*/);
+
+        if(triple>0 && triple > pair && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.PAIR)))
+            Dice.sortedScoreMap.put(CombinationEnum.PAIR,0/*calculatePair(new List<Integer>() {
+                @Override
+                public int size() {
+                    return 0;
+                }
+
+                @Override
+                public boolean isEmpty() {
+                    return false;
+                }
+
+                @Override
+                public boolean contains(Object o) {
+                    return false;
+                }
+
+                @Override
+                public Iterator<Integer> iterator() {
+                    return null;
+                }
+
+                @Override
+                public Object[] toArray() {
+                    return new Object[0];
+                }
+
+                @Override
+                public <T> T[] toArray(T[] a) {
+                    return null;
+                }
+
+                @Override
+                public boolean add(Integer integer) {
+                    return false;
+                }
+
+                @Override
+                public boolean remove(Object o) {
+                    return false;
+                }
+
+                @Override
+                public boolean containsAll(Collection<?> c) {
+                    return false;
+                }
+
+                @Override
+                public boolean addAll(Collection<? extends Integer> c) {
+                    return false;
+                }
+
+                @Override
+                public boolean addAll(int index, Collection<? extends Integer> c) {
+                    return false;
+                }
+
+                @Override
+                public boolean removeAll(Collection<?> c) {
+                    return false;
+                }
+
+                @Override
+                public boolean retainAll(Collection<?> c) {
+                    return false;
+                }
+
+                @Override
+                public void clear() {
+
+                }
+
+                @Override
+                public Integer get(int index) {
+                    return null;
+                }
+
+                @Override
+                public Integer set(int index, Integer element) {
+                    return null;
+                }
+
+                @Override
+                public void add(int index, Integer element) {
+
+                }
+
+                @Override
+                public Integer remove(int index) {
+                    return null;
+                }
+
+                @Override
+                public int indexOf(Object o) {
+                    return 0;
+                }
+
+                @Override
+                public int lastIndexOf(Object o) {
+                    return 0;
+                }
+
+                @Override
+                public ListIterator<Integer> listIterator() {
+                    return null;
+                }
+
+                @Override
+                public ListIterator<Integer> listIterator(int index) {
+                    return null;
+                }
+
+                @Override
+                public List<Integer> subList(int fromIndex, int toIndex) {
+                    return null;
+                }
+            })*/);
+        else if(pair > 0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.PAIR)))
+//            Dice.sortedScoreMap.put(CombinationEnum.PAIR,0calculatePair(new List<Integer>() {
+//                @Override
+//                public int size() {
+//                    return 0;
+//                }
+//
+//                @Override
+//                public boolean isEmpty() {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean contains(Object o) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public Iterator<Integer> iterator() {
+//                    return null;
+//                }
+//
+//                @Override
+//                public Object[] toArray() {
+//                    return new Object[0];
+//                }
+//
+//                @Override
+//                public <T> T[] toArray(T[] a) {
+//                    return null;
+//                }
+//
+//                @Override
+//                public boolean add(Integer integer) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean remove(Object o) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean containsAll(Collection<?> c) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean addAll(Collection<? extends Integer> c) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean addAll(int index, Collection<? extends Integer> c) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean removeAll(Collection<?> c) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean retainAll(Collection<?> c) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public void clear() {
+//
+//                }
+//
+//                @Override
+//                public Integer get(int index) {
+//                    return null;
+//                }
+//
+//                @Override
+//                public Integer set(int index, Integer element) {
+//                    return null;
+//                }
+//
+//                @Override
+//                public void add(int index, Integer element) {
+//
+//                }
+//
+//                @Override
+//                public Integer remove(int index) {
+//                    return null;
+//                }
+//
+//                @Override
+//                public int indexOf(Object o) {
+//                    return 0;
+//                }
+//
+//                @Override
+//                public int lastIndexOf(Object o) {
+//                    return 0;
+//                }
+//
+//                @Override
+//                public ListIterator<Integer> listIterator() {
+//                    return null;
+//                }
+//
+//                @Override
+//                public ListIterator<Integer> listIterator(int index) {
+//                    return null;
+//                }
+//
+//                @Override
+//                public List<Integer> subList(int fromIndex, int toIndex) {
+//                    return null;
+//                }
+//            }));
+        if(pair > 0){
+            Dice.listTemp.remove(pair);
+            int doublePair = stramMap(2);
+            if(doublePair > 0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.DOUBLE_PAIR)))
+                Dice.sortedScoreMap.put(CombinationEnum.DOUBLE_PAIR,0/*calculateDoublePair()*/);
+
+        }
+
+    }
+    public int stramMap (int compareBy){
+        List<Integer> temp;
+        temp = Dice.listTemp.entrySet().stream()
+                .filter(entry -> entry.getValue() > compareBy)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+        Dice.sortDiceReverseOrder(temp);
+        return temp.size()>0?temp.get(0):-1;
     }
 }

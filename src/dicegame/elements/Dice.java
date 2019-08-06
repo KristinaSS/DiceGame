@@ -8,6 +8,7 @@ public class Dice {
     public static int numberOfSides;
     public static List<Integer> diceRolledList = new ArrayList<>();
     public static HashMap<CombinationEnum,Integer> sortedScoreMap = new HashMap<>();
+    public static Map<Integer,Integer> listTemp = new HashMap<>();
 
     private Dice() {
     }
@@ -16,17 +17,22 @@ public class Dice {
 
     public static void rollDice() {
         for (int i = 0; i < numberOfDice; i++) {
-            //diceRolledList.add(i, random.nextInt(numberOfSides) + 1);
             diceRolledList.add(i,ThreadLocalRandom.current().nextInt(numberOfSides)+1);
+            int in = ThreadLocalRandom.current().nextInt(numberOfSides);
+            if (listTemp.containsKey(in))
+                listTemp.computeIfPresent(in, (k, v) -> v + 1);
+            else listTemp.put(in, 1);
         }
     }
 
     public static void resetDice() {
         diceRolledList.clear();
         sortedScoreMap.clear();
+        listTemp.clear();
     }
 
     public static void sortDiceReverseOrder(List<Integer> diceRolled) {
+        System.out.println(listTemp);
         diceRolled.sort(Comparator.reverseOrder());
     }
 

@@ -12,7 +12,7 @@ public class Application {
         try {
             Game diceGame = Game.getInstance();
             GameUtils.readPropertiesFile(Paths
-                    .get("C:/Users/kristina.stoyanova/IdeaProjects/DiceGame/src/resources/config.properties"));
+                    .get("C:/Users/Kristina/IdeaProjects/DiceGame1/src/resources/config.properties"));
 
             //game is ready to be played
             diceGame.playGame();
