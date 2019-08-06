@@ -62,16 +62,11 @@ public class GameUtils {
                            int oldScore,
                            int rolledScore,
                            String typeOfCombination) {
-        Dice.sortDiceNaturalOrder(Dice.diceRolledList);
-
-        StringBuilder rolledDice = new StringBuilder(Dice.diceRolledList.toString());
-        rolledDice.deleteCharAt(0);
-        rolledDice.deleteCharAt(rolledDice.length()-1);
 
         System.out.println(">>> round: " + round);
         System.out.println(">player " + player.getPlayerNumber() + ":");
         System.out.println("current score: " + oldScore);
-        System.out.println("dice roll:" + rolledDice + "-> " + typeOfCombination + " (" + rolledScore + ") ");
+        System.out.println("dice roll:" + Dice.getDiceRolledStr() + "-> " + typeOfCombination + " (" + rolledScore + ") ");
         System.out.println("new score: " + player.getScore());
         System.out.println();
     }

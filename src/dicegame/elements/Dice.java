@@ -7,9 +7,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Dice {
     public static int numberOfDice;
     public static int numberOfSides;
-    public static List<Integer> diceRolledList = new ArrayList<>();
-    public static Map<CombinationEnum,Integer> sortedScoreMap = new HashMap<>();
-    public static Map<Integer,Integer> listTemp = new TreeMap<>(Collections.reverseOrder());
+    private static StringBuilder diceRolledStr = new StringBuilder();
+    private static Map<CombinationEnum,Integer> sortedScoreMap = new HashMap<>();
+    private static Map<Integer,Integer> bucketSortTreeMap = new TreeMap<>(Collections.reverseOrder());
 
     private Dice() {
     }
@@ -20,20 +20,33 @@ public class Dice {
         for (int i = 0; i < numberOfDice; i++) {
             int in = ThreadLocalRandom.current().nextInt(numberOfSides);
 
-            diceRolledList.add(i, in + 1);
+            diceRolledStr.append(in+1).append(" ");
 
-            int count = listTemp.getOrDefault(in + 1, 0);
-            listTemp.put(in + 1, count + 1);
+            int count = bucketSortTreeMap.getOrDefault(in + 1, 0);
+            bucketSortTreeMap.put(in + 1, count + 1);
         }
     }
 
     public static void resetDice() {
-        diceRolledList.clear();
+        diceRolledStr.setLength(0);
         sortedScoreMap.clear();
-        listTemp.clear();
+        bucketSortTreeMap.clear();
     }
 
-    public static void sortDiceNaturalOrder(List<Integer> diceRolled) {
-        diceRolled.sort(Comparator.naturalOrder());
+    public static StringBuilder getDiceRolledStr() {
+        return diceRolledStr;
     }
+
+    public static Map<CombinationEnum, Integer> getSortedScoreMap() {
+        return sortedScoreMap;
+    }
+
+    public static void setSortedScoreMap(Map<CombinationEnum, Integer> sortedScoreMap) {
+        Dice.sortedScoreMap = sortedScoreMap;
+    }
+
+    public static Map<Integer, Integer> getBucketSortTreeMap() {
+        return bucketSortTreeMap;
+    }
+
 }

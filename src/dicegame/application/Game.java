@@ -13,7 +13,8 @@ public class Game {
 
     private int rounds;
     private int playerCount;
-    private Map.Entry<CombinationEnum,Integer> entry;
+    private int largestRoundScore = 0;
+    private CombinationEnum playedRoundCombination = null;
 
     //Methods
     private Game() {
@@ -44,12 +45,12 @@ public class Game {
         for(int round = 1; round<= rounds; round++) {
             System.out.println();
             for (Player player : playerList) {
-                entry = null;
+                largestRoundScore = 0;
                 Dice.resetDice();
                 Dice.rollDice();
                 evaluate(player,round);
                 System.out.println();
-                /*if(player.getPlayedCombinationsMap().containsKey(CombinationEnum.GENERALA))
+                /*if(player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA))
                     GameUtils.endGame(playerList, player);*/
             }
         }
@@ -58,19 +59,19 @@ public class Game {
 
     //evaluation
 
-    private void evaluate(Player player, int round) throws NullPointerException, ConcurrentModificationException{
+    private void evaluate(Player player, int round) throws NullPointerException{
         int oldScore = player.getScore();
 
         fillSortedScoreMap(player);
 
-        if(entry!=null){
-            player.getPlayedCombinationsMap().put(entry.getKey(),entry.getValue());
-            player.setScore(player.getScore() + entry.getValue());
+        if(largestRoundScore>0){
+            player.getPlayedCombinationsSet().add(playedRoundCombination);
+            player.setScore(player.getScore() + largestRoundScore);
             GameUtils.printRound(player,
                     round,
                     oldScore,
-                    entry.getValue(),
-                    entry.getKey().getLabel());
+                    largestRoundScore,
+                    playedRoundCombination.getLabel());
             return;
         }
 
@@ -78,16 +79,15 @@ public class Game {
     }
 
     private void fillSortedScoreMap(Player player){
-        if(Dice.listTemp.size() == 1){
-            Dice.sortedScoreMap.put(CombinationEnum.GENERALA,
-                    CombinationEnum.GENERALA.calculateCombination(findFirstValueGreaterThanOrEqualTo(5)));
-            this.entry = Dice.sortedScoreMap.entrySet().iterator().next();
+        if(Dice.getBucketSortTreeMap().size() == 1 && !player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA)){
+            this.playedRoundCombination = CombinationEnum.GENERALA;
+            this.largestRoundScore = CombinationEnum
+                    .GENERALA.calculateCombination(findFirstValueGreaterThanOrEqualTo(5));
             return;
         }
-        if(player.getPlayedCombinationsMap().size() == CombinationEnum.values().length-1){
-            this.entry = null;
+
+        if(player.getPlayedCombinationsSet().size() >= CombinationEnum.values().length-1)
             return;
-        }
 
         int fourOfAKind = checkFourOfAKind(player);
 
@@ -101,18 +101,19 @@ public class Game {
 
         checkForDoublePair(pair, player);
 
-        Dice.sortedScoreMap = GameUtils.sortByValue(Dice.sortedScoreMap);
+        Dice.setSortedScoreMap(GameUtils.sortByValue(Dice.getSortedScoreMap()));
 
-        if(Dice.sortedScoreMap.size()> 0)
-            this.entry = Dice.sortedScoreMap.entrySet().iterator().next();
-        else
-            this.entry = null;
+        if(Dice.getSortedScoreMap().size()> 0){
+            this.largestRoundScore = Dice.getSortedScoreMap().entrySet().iterator().next().getValue();
+            this.playedRoundCombination = Dice.getSortedScoreMap().entrySet().iterator().next().getKey();
+
+        }
     }
 
     private int checkFourOfAKind(Player player){
         int foundFourOfAKind = findFirstValueGreaterThanOrEqualTo(4);
-        if(foundFourOfAKind > 0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.FOUR_OF_A_KIND))) {
-            Dice.sortedScoreMap.put(CombinationEnum.FOUR_OF_A_KIND,
+        if(foundFourOfAKind > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.FOUR_OF_A_KIND))) {
+            Dice.getSortedScoreMap().put(CombinationEnum.FOUR_OF_A_KIND,
                     CombinationEnum.FOUR_OF_A_KIND.calculateCombination(foundFourOfAKind));
             return foundFourOfAKind;
         }
@@ -126,35 +127,35 @@ public class Game {
         else
             triple= findFirstValueGreaterThanOrEqualTo(3);
 
-        if(triple>0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.TRIPLE)))
-            Dice.sortedScoreMap.put(CombinationEnum.TRIPLE,CombinationEnum.TRIPLE.calculateCombination(triple));
+        if(triple>0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.TRIPLE)))
+            Dice.getSortedScoreMap().put(CombinationEnum.TRIPLE,CombinationEnum.TRIPLE.calculateCombination(triple));
         return triple;
     }
 
     private int checkForFullHouse(Player player,int triple){
-        Dice.listTemp.remove(triple);
+        Dice.getBucketSortTreeMap().remove(triple);
         int pair = findFirstValueGreaterThanOrEqualTo(2);
 
-        if(triple>0 && pair>0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.FULL_HOUSE)))
-            Dice.sortedScoreMap.put(CombinationEnum.FULL_HOUSE,
+        if(triple>0 && pair>0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.FULL_HOUSE)))
+            Dice.getSortedScoreMap().put(CombinationEnum.FULL_HOUSE,
                     CombinationEnum.FULL_HOUSE.calculateCombination((3*triple)+(2*pair)));
         return pair;
     }
 
     private void checkForPair(int triple, int pair, Player player){
-        if(triple>0 && triple > pair && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.PAIR)))
-            Dice.sortedScoreMap.put(CombinationEnum.PAIR, CombinationEnum.PAIR.calculateCombination(triple));
-        else if(pair > 0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.PAIR))) {
-            Dice.sortedScoreMap.put(CombinationEnum.PAIR, CombinationEnum.PAIR.calculateCombination(pair));
+        if(triple>0 && triple > pair && !(player.getPlayedCombinationsSet().contains(CombinationEnum.PAIR)))
+            Dice.getSortedScoreMap().put(CombinationEnum.PAIR, CombinationEnum.PAIR.calculateCombination(triple));
+        else if(pair > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.PAIR))) {
+            Dice.getSortedScoreMap().put(CombinationEnum.PAIR, CombinationEnum.PAIR.calculateCombination(pair));
         }
     }
 
     private void checkForDoublePair(int pair, Player player){
         if(pair > 0){
-            Dice.listTemp.remove(pair);
+            Dice.getBucketSortTreeMap().remove(pair);
             int secondPair = findFirstValueGreaterThanOrEqualTo(2);
-            if(secondPair > 0 && !(player.getPlayedCombinationsMap().containsKey(CombinationEnum.DOUBLE_PAIR)))
-                Dice.sortedScoreMap.put(CombinationEnum.DOUBLE_PAIR,
+            if(secondPair > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.DOUBLE_PAIR)))
+                Dice.getSortedScoreMap().put(CombinationEnum.DOUBLE_PAIR,
                         CombinationEnum.DOUBLE_PAIR.calculateCombination(pair+secondPair));
         }
     }
@@ -163,13 +164,12 @@ public class Game {
         int straightCounter = 0;
         int beginningOfStraight = 0;
 
-        if(Dice.listTemp.size()<5 || player.getPlayedCombinationsMap().containsKey(CombinationEnum.STRAIGHT))
+        if(Dice.getBucketSortTreeMap().size()<5 || player.getPlayedCombinationsSet().contains(CombinationEnum.STRAIGHT))
             return;
 
         int i;
-        for(i = 0; i< Dice.listTemp.size(); i++){
-            System.out.println("straight " + i + " " + straightCounter);
-            if(Dice.listTemp.containsKey(Dice.numberOfSides-i)){
+        for(i = 0; i< Dice.getBucketSortTreeMap().size(); i++){
+            if(Dice.getBucketSortTreeMap().containsKey(Dice.numberOfSides-i)){
                 if(straightCounter == 0)
                     beginningOfStraight = Dice.numberOfSides-i;
                 straightCounter++;
@@ -179,13 +179,13 @@ public class Game {
                 break;
         }
         if(straightCounter == 5) {
-            Dice.sortedScoreMap.put(CombinationEnum.STRAIGHT,
+            Dice.getSortedScoreMap().put(CombinationEnum.STRAIGHT,
                     CombinationEnum.STRAIGHT.calculateCombination(beginningOfStraight));
         }
     }
 
     private static int findFirstValueGreaterThanOrEqualTo(int compareBy) {
-        for (Map.Entry<Integer, Integer> entry : Dice.listTemp.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : Dice.getBucketSortTreeMap().entrySet()) {
             if (entry.getValue() >= compareBy) {
                 return entry.getKey();
             }
