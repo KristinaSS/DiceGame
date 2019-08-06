@@ -3,16 +3,17 @@ package dicegame.application;
 import dicegame.GameUtils;
 
 import java.nio.file.Paths;
+import java.util.ConcurrentModificationException;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ConcurrentModificationException {
        long start = System.nanoTime();
 
         try {
             Game diceGame = Game.getInstance();
             GameUtils.readPropertiesFile(Paths
-                    .get("C:/Users/Kristina/IdeaProjects/DiceGame1/src/resources/config.properties"));
+                    .get("C:/Users/kristina.stoyanova/IdeaProjects/DiceGame/rescources/config.properties"));
 
             //game is ready to be played
             diceGame.playGame();

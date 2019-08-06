@@ -5,10 +5,12 @@ import dicegame.elements.CombinationEnum;
 import dicegame.elements.Dice;
 import dicegame.elements.Player;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.Key;
 import java.util.*;
 
 public class GameUtils {
@@ -16,18 +18,18 @@ public class GameUtils {
     }
 
     //Utils
-    public static void sortByValue() {
-        List<Map.Entry<CombinationEnum, Integer>> list =
-                new LinkedList<>(Dice.sortedScoreMap.entrySet());
+    public static <K extends Comparable> Map sortByValue(Map<K,Integer> map) {
+        List<Map.Entry<K, Integer>> list =
+                new LinkedList<>(map.entrySet());
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
-        Dice.sortedScoreMap.clear();
+        map.clear();
 
-        HashMap<CombinationEnum, Integer> temp = new LinkedHashMap<>();
-        for (Map.Entry<CombinationEnum, Integer> aa : list) {
+        HashMap<K, Integer> temp = new LinkedHashMap<>();
+        for (Map.Entry<K, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
-        Dice.sortedScoreMap = temp;
+        return temp;
     }
 
     public static void endGame(List<Player> playerList, Player playerWithGenerala) {
