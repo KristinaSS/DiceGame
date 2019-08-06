@@ -18,43 +18,12 @@ public class GameUtils {
     }
 
     //Utils
-    public static <K extends Comparable> Map sortByValue(Map<K,Integer> map) {
-        List<Map.Entry<K, Integer>> list =
-                new LinkedList<>(map.entrySet());
-        list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
-        map.clear();
+    public static void printEndGamePlayerStats(int placeInGame,Player player){
+        System.out.println(placeInGame + ".         Player "
+                + player.getPlayerNumber() + "   ->  "
+                + player.getScore());
 
-        HashMap<K, Integer> temp = new LinkedHashMap<>();
-        for (Map.Entry<K, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        return temp;
-    }
-
-    public static void endGame(List<Player> playerList, Player playerWithGenerala) {
-        int previousScore = -1;
-        System.out.println(">>>  RESULTS  <<<<");
-        System.out.println("Place       Player       Score");
-
-        int placeInGame = 1;
-        playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
-
-        if (!(playerWithGenerala == null)) {
-            System.out.println("GENERALA! Player " + playerWithGenerala.getPlayerNumber());
-            playerList.remove(playerWithGenerala);
-            System.out.println(placeInGame + ".         Player " + playerWithGenerala.getPlayerNumber() + "   ->  " + playerWithGenerala.getScore());
-        }
-
-        for (Player p : playerList) {
-            if (previousScore > p.getScore() || previousScore == -1)
-                placeInGame++;
-            if(playerWithGenerala == null && previousScore == -1)
-                placeInGame--;
-            System.out.println(placeInGame + ".         Player " + p.getPlayerNumber() + "   ->  " + p.getScore());
-            previousScore = p.getScore();
-        }
-        System.out.println("----------------------------------------------------------------------------");
     }
 
     public static void printRound(Player player,
@@ -77,6 +46,15 @@ public class GameUtils {
             playerList.add(new Player(playerList.size() + 1));
         }
         return playerList;
+    }
+
+    public static int findFirstValueGreaterThanOrEqualTo(int compareBy) {
+        for (Map.Entry<Integer, Integer> entry : Dice.getTimesRepeatedEachDieSideTreeMap().entrySet()) {
+            if (entry.getValue() >= compareBy) {
+                return entry.getKey();
+            }
+        }
+        return -1;
     }
 
     public static void readPropertiesFile(Path path){

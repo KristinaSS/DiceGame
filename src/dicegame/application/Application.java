@@ -1,25 +1,21 @@
 package dicegame.application;
 
 import dicegame.GameUtils;
+import dicegame.elements.PathEnum;
 
 import java.nio.file.Paths;
-import java.util.ConcurrentModificationException;
 
 public class Application {
 
-    public static void main(String[] args) throws ConcurrentModificationException {
+    public static void main(String[] args){
        long start = System.nanoTime();
 
-        try {
-            Game diceGame = Game.getInstance();
-            GameUtils.readPropertiesFile(Paths
-                    .get("C:/Users/kristina.stoyanova/IdeaProjects/DiceGame/rescources/config.properties"));
+       Game diceGame = Game.getInstance();
+       GameUtils.readPropertiesFile(Paths
+               .get(PathEnum.KRISTINA_WORK_PATH.getFilePathStr()));
 
             //game is ready to be played
-            diceGame.playGame();
-        }catch (NullPointerException ex){
-            ex.printStackTrace();
-        }
+        diceGame.playGame();
 
         long end = System.nanoTime();
         System.out.println("Took: " + ((end - start) / 1000000) + " ms");
