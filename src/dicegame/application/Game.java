@@ -44,23 +44,30 @@ public class Game {
 
         System.out.println(">>> WELCOME TO THE DICE GAME <<<");
 
+        Iterator<Player> playerIterator;
+        Player player;
+        Player playerWithGenerala;
         for (int round = 1; round <= rounds; round++) {
             System.out.println();
-            for (Player player : playerList) {
+            playerIterator = playerList.iterator();
+            while (playerIterator.hasNext()) {
+                player = playerIterator.next();
                 maxCurRoundCurPlayerScore = 0;
                 Dice.resetDice();
                 Dice.rollDice();
                 updatePlayerAndPrintPlayerRound(player, round);
                 System.out.println();
-                /*if(player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA))
-                    GameUtils.endGame(playerList, player);*/
+                if (player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA)) {
+                    playerWithGenerala = player;
+                    playerIterator.remove();
+                    endGame(playerList, playerWithGenerala);
+                }
             }
         }
         endGame(playerList, null);
     }
 
     private void endGame(List<Player> playerList, Player playerWithGenerala) {
-        int previousScore = -1;
         System.out.println(">>>  RESULTS  <<<<");
         System.out.println("Place       Player       Score");
 
@@ -68,19 +75,21 @@ public class Game {
         playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
 
         if (!(playerWithGenerala == null)) {
-            playerList.remove(playerWithGenerala);
-            GameUtils.printEndGamePlayerStats(1,playerWithGenerala);
+            playerList.set(0,playerWithGenerala);
         }
 
         for (Player player : playerList) {
-            if (previousScore > player.getScore() || previousScore == -1)
-                placeInGame++;
-            if(playerWithGenerala == null && previousScore == -1)
-                placeInGame--;
             GameUtils.printEndGamePlayerStats(placeInGame,player);
-            previousScore = player.getScore();
+            placeInGame++;
         }
         System.out.println("----------------------------------------------------------------------------");
+
+        //non task related
+        long end = System.nanoTime();
+        System.out.println("Took: " + ((end - Application.start) / 1000000) + " ms");
+        System.out.println("Took: " + (end - Application.start)/ 1000000000 + " seconds");
+
+        System.exit(0);
     }
 
     //evaluation
@@ -138,7 +147,7 @@ public class Game {
                 !player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA)) {
             this.comboForMaxScore = CombinationEnum.GENERALA;
             this.maxCurRoundCurPlayerScore = CombinationEnum
-                    .GENERALA.calculateCombination(findFirstValueGreaterThanOrEqualTo(5));
+                    .GENERALA.calculateCombination(findFirstValueGreaterThanOrEqualTo(Dice.numberOfDice));
         }
     }
 

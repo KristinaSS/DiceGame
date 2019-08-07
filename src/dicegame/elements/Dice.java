@@ -25,6 +25,7 @@ public class Dice {
             int count = timesRepeatedEachDieSideTreeMap.getOrDefault(in + 1, 0);
             timesRepeatedEachDieSideTreeMap.put(in + 1, count + 1);
         }
+
     }
 
     public static void resetDice() {
