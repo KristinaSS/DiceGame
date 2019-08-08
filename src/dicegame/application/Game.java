@@ -74,7 +74,7 @@ public class Game {
         int placeInGame = 1;
         playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
 
-        if (!(playerWithGenerala == null)) {
+        if (!(playerWithGenerala == null)) { //todo ask Pav About this
             playerList.set(0,playerWithGenerala);
         }
 
@@ -154,26 +154,28 @@ public class Game {
     private void updateRoundScoreIfStraightValid(Player player) {
         int straightCounter = 0;
         int beginningOfStraight = 0;
+        Map<Integer, Integer> timesRepeatedEachDieSideMap = Dice.getTimesRepeatedEachDieSideTreeMap();
 
-        if (Dice.getTimesRepeatedEachDieSideTreeMap().size() < 5 || player.getPlayedCombinationsSet().contains(CombinationEnum.STRAIGHT))
+        if (timesRepeatedEachDieSideMap.size() < 5 || player.getPlayedCombinationsSet().contains(CombinationEnum.STRAIGHT))
             return;
 
         int i;
-        for (i = 0; i < Dice.getTimesRepeatedEachDieSideTreeMap().size(); i++) {
-            if (Dice.getTimesRepeatedEachDieSideTreeMap().containsKey(Dice.numberOfSides - i)) {
+        for (i = 0; i < timesRepeatedEachDieSideMap.size(); i++) {
+            if (timesRepeatedEachDieSideMap.containsKey(Dice.numberOfSides - i)) {
                 if (straightCounter == 0)
                     beginningOfStraight = Dice.numberOfSides - i;
                 straightCounter++;
             } else
                 straightCounter = 0;
-            if (straightCounter == 5)
-                break;
-        }
-        if (straightCounter == 5) {
-            tempScore = CombinationEnum.STRAIGHT.calculateCombination(beginningOfStraight);
-            if (tempScore > this.maxCurRoundCurPlayerScore) {
-                this.maxCurRoundCurPlayerScore = tempScore;
-                this.comboForMaxScore = CombinationEnum.STRAIGHT;
+
+            if (straightCounter == 5) {
+                tempScore = CombinationEnum.STRAIGHT.calculateCombination(beginningOfStraight);
+
+                if (tempScore > this.maxCurRoundCurPlayerScore) {
+                    this.maxCurRoundCurPlayerScore = tempScore;
+                    this.comboForMaxScore = CombinationEnum.STRAIGHT;
+                    return;
+                }
             }
         }
     }

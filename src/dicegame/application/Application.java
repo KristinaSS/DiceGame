@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 public class Application {
     static long start;
-
     public static void main(String[] args){
         start = System.nanoTime();
 
