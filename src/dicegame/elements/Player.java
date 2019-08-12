@@ -1,8 +1,10 @@
 package dicegame.elements;
 
+import dicegame.enums.CombinationEnum;
+
 import java.util.*;
 
-public final class Player {
+public final class Player{
     private int playerNumber;
     private int score = 0;
     private Set <CombinationEnum> playedCombinationsSet = new HashSet<>();

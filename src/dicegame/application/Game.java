@@ -1,22 +1,18 @@
 package dicegame.application;
 
 import dicegame.GameUtils;
-import dicegame.elements.CombinationEnum;
-import dicegame.elements.Dice;
+import dicegame.elements.DiceRolled;
+import dicegame.elements.Round;
+import dicegame.enums.CombinationEnum;
 import dicegame.elements.Player;
 
 import java.util.*;
 
-import static dicegame.GameUtils.findFirstValueGreaterThanOrEqualTo;
-
 public class Game {
     private static Game gameInstance = null;
-    private static int tempScore;
 
     private int rounds;
     private int playerCount;
-    private int maxCurRoundCurPlayerScore = 0;
-    private CombinationEnum comboForMaxScore = null;
 
     //Methods
     private Game() {
@@ -36,227 +32,57 @@ public class Game {
         this.playerCount = playerCount;
     }
 
-    //play Game
+    //play or end Game
 
     void playGame() {
 
         List<Player> playerList = GameUtils.fillPlayerList(playerCount);
+        DiceRolled diceRolled = DiceRolled.getInstance();
+        Round currentRound;
 
         System.out.println(">>> WELCOME TO THE DICE GAME <<<");
 
-        Iterator<Player> playerIterator;
-        Player player;
-        Player playerWithGenerala;
         for (int round = 1; round <= rounds; round++) {
-            System.out.println();
-            playerIterator = playerList.iterator();
-            while (playerIterator.hasNext()) {
-                player = playerIterator.next();
-                maxCurRoundCurPlayerScore = 0;
-                Dice.resetDice();
-                Dice.rollDice();
-                updatePlayerAndPrintPlayerRound(player, round);
-                System.out.println();
-                if (player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA)) {
-                    playerWithGenerala = player;
-                    playerIterator.remove();
-                    endGame(playerList, playerWithGenerala);
+            for(Player player: playerList) {
+                diceRolled.resetElement();
+                diceRolled.playElement();
+
+                currentRound = new Round(player);
+                currentRound.updatePlayerAndPrintPlayerRound(round);
+
+                if (player.getPlayedCombinationsSet().contains(CombinationEnum.STRAIGHT)) {
+                    endGame(playerList);
                 }
             }
         }
-        endGame(playerList, null);
+        endGame(playerList);
     }
 
-    private void endGame(List<Player> playerList, Player playerWithGenerala) {
+    private void endGame(List<Player> playerList) {
         System.out.println(">>>  RESULTS  <<<<");
         System.out.println("Place       Player       Score");
 
         int placeInGame = 1;
-        playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
+        //playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
+        playerList.sort((o1, o2) -> {
+            boolean hasGeneralaO1 = o1.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
+            boolean hasGeneralaO2 = o2.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
 
-        if (!(playerWithGenerala == null)) { //todo ask Pav About this
-            playerList.set(0,playerWithGenerala);
-        }
+            int boolHasGeneralaCompare = Boolean.compare(hasGeneralaO2,hasGeneralaO1);
+
+            if(boolHasGeneralaCompare!= 0)
+                return boolHasGeneralaCompare;
+            return Integer.compare(o2.getScore(),o1.getScore());
+        });
 
         for (Player player : playerList) {
-            GameUtils.printEndGamePlayerStats(placeInGame,player);
+            GameUtils.printEndGamePlayerStats(placeInGame,player.getPlayerNumber(),player.getScore());
             placeInGame++;
         }
-        System.out.println("----------------------------------------------------------------------------");
 
-        //non task related
-        long end = System.nanoTime();
+/*        long end = System.nanoTime();
         System.out.println("Took: " + ((end - Application.start) / 1000000) + " ms");
-        System.out.println("Took: " + (end - Application.start)/ 1000000000 + " seconds");
-
+        System.out.println("Took: " + (end - Application.start)/ 1000000000 + " seconds");*/
         System.exit(0);
-    }
-
-    //evaluation
-
-    private void updatePlayerAndPrintPlayerRound(Player player, int round) {
-        int oldScore = player.getScore();
-
-        callMethodsForUpdatingPlayerRoundScore(player);
-
-        if (maxCurRoundCurPlayerScore > 0) {
-            player.getPlayedCombinationsSet().add(comboForMaxScore);
-            player.setScore(player.getScore() + maxCurRoundCurPlayerScore);
-            GameUtils.printRound(player,
-                    round,
-                    oldScore,
-                    maxCurRoundCurPlayerScore,
-                    comboForMaxScore.getLabel());
-            return;
-        }
-        GameUtils.printRound(player, round, oldScore, 0, "No Combination");
-    }
-
-    private void callMethodsForUpdatingPlayerRoundScore(Player player) {
-
-        updateRoundScoreIfGeneralaValid(player);
-
-        if (player.getPlayedCombinationsSet().size() >= CombinationEnum.values().length - 1
-                || this.maxCurRoundCurPlayerScore >0 )
-            return;
-
-        updateRoundScoreIfStraightValid(player);
-
-        int fourOfAKind = getFourOfAKind();
-        int triple = getTriple(fourOfAKind);
-        int pair = getPair(triple);
-        int secondPair = getSecondPair(pair);
-
-        updateRoundScoreIfFourOfAKindValid(player, fourOfAKind);
-
-        updateRoundScoreIfTripleValid(triple,player);
-
-        updateRoundScoreIfFullHouseValid(player, triple, pair);
-
-        updateRoundScoreIfPairValid(triple, pair, player);
-
-        updateRoundScoreIfDoublePairValid(pair, player, secondPair);
-
-        tempScore = 0;
-    }
-
-    //Updating score and getting combo die numbers
-
-    private void updateRoundScoreIfGeneralaValid(Player player){
-        if (Dice.getTimesRepeatedEachDieSideTreeMap().size() == 1 &&
-                !player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA)) {
-            this.comboForMaxScore = CombinationEnum.GENERALA;
-            this.maxCurRoundCurPlayerScore = CombinationEnum
-                    .GENERALA.calculateCombination(findFirstValueGreaterThanOrEqualTo(Dice.numberOfDice));
-        }
-    }
-
-    private void updateRoundScoreIfStraightValid(Player player) {
-        int straightCounter = 0;
-        int beginningOfStraight = 0;
-        Map<Integer, Integer> timesRepeatedEachDieSideMap = Dice.getTimesRepeatedEachDieSideTreeMap();
-
-        if (timesRepeatedEachDieSideMap.size() < 5 || player.getPlayedCombinationsSet().contains(CombinationEnum.STRAIGHT))
-            return;
-
-        int i;
-        for (i = 0; i < timesRepeatedEachDieSideMap.size(); i++) {
-            if (timesRepeatedEachDieSideMap.containsKey(Dice.numberOfSides - i)) {
-                if (straightCounter == 0)
-                    beginningOfStraight = Dice.numberOfSides - i;
-                straightCounter++;
-            } else
-                straightCounter = 0;
-
-            if (straightCounter == 5) {
-                tempScore = CombinationEnum.STRAIGHT.calculateCombination(beginningOfStraight);
-
-                if (tempScore > this.maxCurRoundCurPlayerScore) {
-                    this.maxCurRoundCurPlayerScore = tempScore;
-                    this.comboForMaxScore = CombinationEnum.STRAIGHT;
-                    return;
-                }
-            }
-        }
-    }
-
-    private void updateRoundScoreIfFourOfAKindValid(Player player, int foundFourOfAKind){
-        if (foundFourOfAKind > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.FOUR_OF_A_KIND))) {
-            tempScore = CombinationEnum.FOUR_OF_A_KIND.calculateCombination(foundFourOfAKind);
-            if (tempScore > this.maxCurRoundCurPlayerScore) {
-                this.maxCurRoundCurPlayerScore = tempScore;
-                this.comboForMaxScore = CombinationEnum.FOUR_OF_A_KIND;
-            }
-        }
-    }
-
-    private void updateRoundScoreIfTripleValid(int triple, Player player){
-        if (triple > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.TRIPLE))) {
-            tempScore = CombinationEnum.TRIPLE.calculateCombination(triple);
-            if (tempScore > this.maxCurRoundCurPlayerScore) {
-                this.maxCurRoundCurPlayerScore = tempScore;
-                this.comboForMaxScore = CombinationEnum.TRIPLE;
-            }
-        }
-    }
-
-    private void updateRoundScoreIfFullHouseValid(Player player, int triple, int pair) {
-        if (triple > 0 && pair > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.FULL_HOUSE))) {
-            tempScore = CombinationEnum.FULL_HOUSE.calculateCombination((3 * triple) + (2 * pair));
-            if (tempScore > this.maxCurRoundCurPlayerScore) {
-                this.maxCurRoundCurPlayerScore = tempScore;
-                this.comboForMaxScore = CombinationEnum.FULL_HOUSE;
-            }
-        }
-    }
-
-    private void updateRoundScoreIfPairValid(int triple, int pair, Player player) {
-        if (triple > 0
-                && triple > pair
-                && !(player.getPlayedCombinationsSet().contains(CombinationEnum.PAIR))) {
-            tempScore = CombinationEnum.PAIR.calculateCombination(triple);
-            if (tempScore > this.maxCurRoundCurPlayerScore)
-                this.maxCurRoundCurPlayerScore = tempScore;
-        } else if (pair > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.PAIR))) {
-            tempScore = CombinationEnum.PAIR.calculateCombination(pair);
-            if (tempScore > this.maxCurRoundCurPlayerScore) {
-                this.maxCurRoundCurPlayerScore = tempScore;
-                this.comboForMaxScore = CombinationEnum.PAIR;
-            }
-        }
-    }
-
-    private void updateRoundScoreIfDoublePairValid(int pair, Player player, int secondPair) {
-        if (secondPair > 0 && !(player.getPlayedCombinationsSet().contains(CombinationEnum.DOUBLE_PAIR))) {
-            tempScore = CombinationEnum.DOUBLE_PAIR.calculateCombination(pair + secondPair);
-            if (tempScore > this.maxCurRoundCurPlayerScore) {
-                this.maxCurRoundCurPlayerScore = tempScore;
-                this.comboForMaxScore = CombinationEnum.DOUBLE_PAIR;
-            }
-        }
-    }
-
-    private int getFourOfAKind() {
-        return findFirstValueGreaterThanOrEqualTo(4);
-    }
-
-    private int getTriple(int fourOfAKind) {
-        int triple = findFirstValueGreaterThanOrEqualTo(3);
-        if (fourOfAKind > triple)
-            triple = fourOfAKind;
-        return triple;
-    }
-
-    private int getPair(int triple){
-        Dice.getTimesRepeatedEachDieSideTreeMap().remove(triple);
-        return findFirstValueGreaterThanOrEqualTo(2);
-    }
-
-    private int getSecondPair(int pair) {
-        if (pair > 0) {
-            Dice.getTimesRepeatedEachDieSideTreeMap().remove(pair);
-            return findFirstValueGreaterThanOrEqualTo(2);
-        }
-        return -1;
     }
 }
