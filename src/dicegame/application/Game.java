@@ -2,87 +2,94 @@ package dicegame.application;
 
 import dicegame.GameUtils;
 import dicegame.elements.DiceRolled;
-import dicegame.elements.Round;
+import dicegame.elements.PlayerRound;
 import dicegame.enums.CombinationEnum;
 import dicegame.elements.Player;
 
 import java.util.*;
 
-public class Game {
-    private static Game gameInstance = null;
+public class Game
+{
+	private static Game gameInstance = null;
 
-    private int rounds;
-    private int playerCount;
+	private int rounds;
 
-    //Methods
-    private Game() {
-    }
+	private int playerCount;
 
-    public static Game getInstance() {
-        if (gameInstance == null)
-            gameInstance = new Game();
-        return gameInstance;
-    }
+	//Methods
+	private Game()
+	{
+	}
 
-    public void setRounds(int rounds) {
-        this.rounds = rounds;
-    }
+	public static Game getInstance()
+	{
+		if (gameInstance == null)
+			gameInstance = new Game();
+		return gameInstance;
+	}
 
-    public void setPlayerCount(int playerCount) {
-        this.playerCount = playerCount;
-    }
+	public void setRounds(int rounds)
+	{
+		this.rounds = rounds;
+	}
 
-    //play or end Game
+	public void setPlayerCount(int playerCount)
+	{
+		this.playerCount = playerCount;
+	}
 
-    void playGame() {
+	//play or end Game
 
-        List<Player> playerList = GameUtils.fillPlayerList(playerCount);
-        DiceRolled diceRolled = DiceRolled.getInstance();
-        Round currentRound;
+	void playGame()
+	{
 
-        System.out.println(">>> WELCOME TO THE DICE GAME <<<");
+		List<Player> playerList = GameUtils.fillPlayerList(playerCount);
+		DiceRolled diceRolled = DiceRolled.getInstance();
+		PlayerRound currentPlayerRound;
 
-        for (int round = 1; round <= rounds; round++) {
-            for(Player player: playerList) {
-                diceRolled.resetElement();
-                diceRolled.playElement();
+		diceRolled.initializeDiceRolled();
 
-                currentRound = new Round(player);
-                currentRound.updatePlayerAndPrintPlayerRound(round);
+		System.out.println(">>> WELCOME TO THE DICE GAME <<<");
 
-                if (player.getPlayedCombinationsSet().contains(CombinationEnum.STRAIGHT)) {
-                    endGame(playerList);
-                }
-            }
-        }
-        endGame(playerList);
-    }
+		for (int curRound = 1; curRound <= rounds; curRound++)
+		{
+			for (Player player : playerList)
+			{
+				diceRolled.resetElement();
+				diceRolled.rotateElement();
 
-    private void endGame(List<Player> playerList) {
-        System.out.println(">>>  RESULTS  <<<<");
-        System.out.println("Place       Player       Score");
+				currentPlayerRound = new PlayerRound(player, curRound);
+				currentPlayerRound.playPlayerRound();
 
-        int placeInGame = 1;
-        //playerList.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
-        playerList.sort((o1, o2) -> {
-            boolean hasGeneralaO1 = o1.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
-            boolean hasGeneralaO2 = o2.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
+				if (player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA))
+				{
+					player.setHasGenerala(1);
+					//endGame(playerList);
+				}
+			}
+		}
+		endGame(playerList);
+	}
 
-            int boolHasGeneralaCompare = Boolean.compare(hasGeneralaO2,hasGeneralaO1);
+	private void endGame(List<Player> playerList)
+	{
+		System.out.println(">>>  RESULTS  <<<<");
+		System.out.println("Place       Player       Score");
 
-            if(boolHasGeneralaCompare!= 0)
-                return boolHasGeneralaCompare;
-            return Integer.compare(o2.getScore(),o1.getScore());
-        });
+		int placeInGame = 1;
 
-        for (Player player : playerList) {
-            GameUtils.printEndGamePlayerStats(placeInGame,player.getPlayerNumber(),player.getScore());
-            placeInGame++;
-        }
+		playerList.sort(Comparator.comparing(Player::getHasGenerala).thenComparing(Player::getScore)); // this is faster
+		//playerList.sort(Player.comparator); //todo Ask Dancho if this is ok
 
-/*        long end = System.nanoTime();
-        System.out.println("Took: " + ((end - Application.start) / 1000000) + " ms");
-        System.out.println("Took: " + (end - Application.start)/ 1000000000 + " seconds");*/
-        System.exit(0);
-    }
+		for (Player player : playerList)
+		{
+			GameUtils.printEndGamePlayerStats(placeInGame, player.getPlayerNumber(), player.getScore());
+			placeInGame++;
+		}
+
+		long end = System.nanoTime();
+		System.out.println("Took: " + ((end - Application.start) / 1000000) + " ms");
+		System.out.println("Took: " + (end - Application.start) / 1000000000 + " seconds");
+		System.exit(0);
+	}
 }

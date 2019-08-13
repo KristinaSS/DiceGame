@@ -1,7 +1,8 @@
 package dicegame.interfaces;
 
-public interface GameElementActions {
-    void playElement();
+public interface GameElementActions
+{
+	void rotateElement();
 
-    void resetElement();
+	void resetElement();
 }
