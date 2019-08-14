@@ -4,65 +4,48 @@ import dicegame.constants.CombinationEnum;
 
 import java.util.*;
 
-public final class Player
-{
-	private int playerNumber;
+public final class Player implements Comparable<Player> {
+    private int playerNumber;
 
-	private int score = 0;
+    private int score = 0;
 
-	private Set<CombinationEnum> playedCombinationsSet = new HashSet<>();
+    private Set<CombinationEnum> playedCombinationsSet = new HashSet<>();
 
-	/*public static Comparator<Player> comparator = (o1, o2) -> {
-		boolean hasGeneralaO1 = o1.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
-		boolean hasGeneralaO2 = o2.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
+    //Methods
+    public Player(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
 
-		int boolHasGeneralaCompare = Boolean.compare(hasGeneralaO2, hasGeneralaO1);
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
 
-		if (boolHasGeneralaCompare != 0)
-			return boolHasGeneralaCompare;
-		return Integer.compare(o2.getScore(), o1.getScore());
-	};*/
+    public Set<CombinationEnum> getPlayedCombinationsSet() {
+        return playedCombinationsSet;
+    }
 
-	private int hasGenerala = 0; //todo delete if not needed
+    public int getScore() {
+        return score;
+    }
 
-	//Methods
-	public Player(int playerNumber)
-	{
-		this.playerNumber = playerNumber;
-	}
+    void setScore(int score) {
+        this.score = score;
+    }
 
-	public int getPlayerNumber()
-	{
-		return playerNumber;
-	}
+    void rollDice() {
+        DiceRolled.rotateElement();
+    }
 
-	public int getHasGenerala()
-	{
-		return hasGenerala;
-	}
+    @Override
+    public int compareTo(Player o) {
+        boolean hasGeneralaO1 = this.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
+        boolean hasGeneralaO2 = o.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
 
-	public void setHasGenerala(int hasGenerala)
-	{
-		this.hasGenerala = hasGenerala;
-	}
+        int boolHasGeneralaCompare = Boolean.compare(hasGeneralaO2, hasGeneralaO1);
 
-	public Set<CombinationEnum> getPlayedCombinationsSet()
-	{
-		return playedCombinationsSet;
-	}
+        if (boolHasGeneralaCompare != 0)
+            return boolHasGeneralaCompare;
 
-	public int getScore()
-	{
-		return score;
-	}
-
-	void setScore(int score)
-	{
-		this.score = score;
-	}
-	
-	public void rollDice(){
-		DiceRolled.rotateElement();
-	}
-
+        return Integer.compare(o.getScore(), this.getScore());
+    }
 }

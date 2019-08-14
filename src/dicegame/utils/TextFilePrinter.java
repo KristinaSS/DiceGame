@@ -1,0 +1,30 @@
+package dicegame.utils;
+
+import dicegame.elements.Player;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.List;
+
+public class TextFilePrinter implements Printer {
+
+    @Override
+    public void printEndGamePlayerStats(List<Player> playerList) {
+        int placeInGame = 1;
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter("newTextFile.txt");
+            out.println(">>>  RESULTS  <<<<");
+            out.println("Place       Player       Score");
+            for (Player player : playerList) {
+                out.println(placeInGame + ".         Player " + player.getPlayerNumber() + "   ->  " + player.getScore());
+                placeInGame++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            assert out != null;
+            out.close();
+        }
+    }
+}

@@ -1,4 +1,4 @@
-package dicegame;
+package dicegame.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,23 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import dicegame.constants.CommonConstants;
 import dicegame.elements.Player;
-import dicegame.constants.PathEnum;
 
 public class GameUtils {
     private static Properties prop;
 
-    private static Path path = Paths.get(PathEnum.KRISTINA_WORK_PATH.getFilePathStr());
+    private static Path path = Paths.get(CommonConstants.PATH);
 
     private GameUtils() {
     }
 
     // Utils
-
-    public static void printEndGamePlayerStats(int placeInGame, int playerNumber, int playerScore) {
-        System.out.println(placeInGame + ".         Player " + playerNumber + "   ->  " + playerScore);
-
-    }
 
     public static List<Player> fillPlayerList(int playerNum) {
         List<Player> playerList = new ArrayList<>();

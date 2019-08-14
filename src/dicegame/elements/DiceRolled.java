@@ -7,65 +7,64 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import dicegame.GameUtils;
+import dicegame.utils.GameUtils;
 import dicegame.constants.CommonConstants;
 
-public class DiceRolled
-{
-	public static final int numberOfDice = Integer.parseInt(GameUtils
-			.readPropertiesFile().getProperty(CommonConstants.DICE_COUNT));
+public class DiceRolled {
+    public static final int numberOfDice = CommonConstants.DICE_COUNT;
+    //todo doesnt this kinda become redundant
 
-	private final static List<Die> diceRolled = new ArrayList<>();
+    private final static List<Die> diceRolled = new ArrayList<>();
 
-	private final static Map<Integer, Integer> timesRepeatedEachDice = new TreeMap<>(Collections.reverseOrder());
+    private final static Map<Integer, Integer> timesRepeatedEachDice = new TreeMap<>(Collections.reverseOrder());
 
-	static {
-		for (int i = 0; i < numberOfDice; i++) {
-			diceRolled.add(new Die());
-		}
-	}
-	// getters and setters and constructors
+    static {
+        for (int i = 0; i < numberOfDice; i++) {
+            diceRolled.add(new Die());
+        }
+    }
+    // getters and setters and constructors
 
-	private DiceRolled() {
-	}
+    private DiceRolled() {
+    }
 
-	static Map<Integer, Integer> getTimesRepeatedEachDice() {
-		return timesRepeatedEachDice;
-	}
+    static Map<Integer, Integer> getTimesRepeatedEachDice() {
+        return timesRepeatedEachDice;
+    }
 
-	// implemented methods
+    // implemented methods
 
-	public static void rotateElement() {
-		timesRepeatedEachDice.clear();
-		
-		int dieSide;
+    static void rotateElement() {
+        timesRepeatedEachDice.clear();
 
-		for (Die die : diceRolled) {
-			dieSide = die.rollDie();
+        int dieSide;
 
-			timesRepeatedEachDice.put(dieSide, timesRepeatedEachDice.getOrDefault(dieSide, 0) + 1);
-		}
+        for (Die die : diceRolled) {
+            dieSide = die.rollDie();
 
-	}
+            timesRepeatedEachDice.put(dieSide, timesRepeatedEachDice.getOrDefault(dieSide, 0) + 1);
+        }
 
-	// other Methods
+    }
 
-	static String rolledDiceListToString() {
-		diceRolled.sort(Comparator.comparingInt(Die::getDieSide));
-		StringBuilder diceRolledSB = new StringBuilder(" ");
-		for (Die die : diceRolled) {
-			diceRolledSB.append(die.getDieSide()).append(", ");
-		}
-		return diceRolledSB.toString();
-	}
+    // other Methods
 
-	static int findFirstValueGreaterThanOrEqualTo(int compareBy) {
-		for (Map.Entry<Integer, Integer> entry : timesRepeatedEachDice.entrySet()) {
-			if (entry.getValue() >= compareBy) {
-				return entry.getKey();
-			}
-		}
-		return -1;
-	}
-	
+    static String rolledDiceListToString() {
+        diceRolled.sort(Comparator.comparingInt(Die::getDieSide));
+        StringBuilder diceRolledSB = new StringBuilder(" ");
+        for (Die die : diceRolled) {
+            diceRolledSB.append(die.getDieSide()).append(", ");
+        }
+        return diceRolledSB.toString();
+    }
+
+    static int findFirstValueGreaterThanOrEqualTo(int compareBy) {
+        for (Map.Entry<Integer, Integer> entry : timesRepeatedEachDice.entrySet()) {
+            if (entry.getValue() >= compareBy) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+
 }
