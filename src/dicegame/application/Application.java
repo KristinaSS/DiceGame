@@ -1,22 +1,19 @@
 package dicegame.application;
 
 import dicegame.GameUtils;
-import dicegame.enums.PathEnum;
+import dicegame.constants.CommonConstants;
 
-import java.nio.file.Paths;
-
-public class Application
-{
+public class Application {
 	static long start;
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		start = System.nanoTime();
 
-		Game diceGame = Game.getInstance();
-		GameUtils.readPropertiesFile(Paths.get(PathEnum.KRISTINA_WORK_PATH.getFilePathStr()));
+		Game diceGame = Game.getInstance()
+				.setRounds(Integer.parseInt(GameUtils.readPropertiesFile().getProperty(CommonConstants.ROUND_COUNT)))
+				.addPlayers(Integer.parseInt(GameUtils.readPropertiesFile().getProperty(CommonConstants.PLAYER_COUNT)));
 
-		//game is ready to be played
+		// game is ready to be played
 		diceGame.playGame();
 	}
 }

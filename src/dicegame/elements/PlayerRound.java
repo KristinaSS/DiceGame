@@ -1,10 +1,10 @@
 package dicegame.elements;
 
-import dicegame.enums.CombinationEnum;
+import static dicegame.elements.DiceRolled.findFirstValueGreaterThanOrEqualTo;
 
 import java.util.Map;
 
-import static dicegame.elements.DiceRolled.findFirstValueGreaterThanOrEqualTo;
+import dicegame.constants.CombinationEnum;
 
 public class PlayerRound
 {
@@ -29,7 +29,9 @@ public class PlayerRound
 	public void playPlayerRound()
 	{
 		int oldScore = player.getScore();
-
+		
+		player.rollDice();
+		
 		callMethodsToUpdateScore();
 
 		if (maxRoundScore > 0)

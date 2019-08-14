@@ -1,59 +1,53 @@
 package dicegame;
 
-import dicegame.application.Game;
-import dicegame.elements.DiceRolled;
-import dicegame.elements.Die;
-import dicegame.elements.Player;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
-public class GameUtils
-{
-	private GameUtils()
-	{
-	}
+import dicegame.elements.Player;
+import dicegame.constants.PathEnum;
 
-	//Utils
+public class GameUtils {
+    private static Properties prop;
 
-	public static void printEndGamePlayerStats(int placeInGame, int playerNumber, int playerScore)
-	{
-		System.out.println(placeInGame + ".         Player " + playerNumber + "   ->  " + playerScore);
+    private static Path path = Paths.get(PathEnum.KRISTINA_WORK_PATH.getFilePathStr());
 
-	}
+    private GameUtils() {
+    }
 
-	public static List<Player> fillPlayerList(int playerNum)
-	{
-		List<Player> playerList = new ArrayList<>();
-		while (playerNum-- > 0)
-		{
-			playerList.add(new Player(playerList.size() + 1));
-		}
-		return playerList;
-	}
+    // Utils
 
-	public static void readPropertiesFile(Path path)
-	{
-		try (InputStream input = Files.newInputStream(path))
-		{
-			Properties prop = new Properties();
-			prop.load(input);
+    public static void printEndGamePlayerStats(int placeInGame, int playerNumber, int playerScore) {
+        System.out.println(placeInGame + ".         Player " + playerNumber + "   ->  " + playerScore);
 
-			Game.getInstance().setRounds(Integer.parseInt(prop.getProperty("roundCount")));
-			Game.getInstance().setPlayerCount(Integer.parseInt(prop.getProperty("playerCount")));
+    }
 
-			DiceRolled.numberOfDice = Integer.parseInt(prop.getProperty("diceCount"));
-			Die.numberOfSides = Integer.parseInt(prop.getProperty("numberOfSidesOnDice"));
+    public static List<Player> fillPlayerList(int playerNum) {
+        List<Player> playerList = new ArrayList<>();
+        while (playerNum-- > 0) {
+            playerList.add(new Player(playerList.size() + 1));
+        }
+        return playerList;
+    }
 
-		}
-		catch (IOException exception)
-		{
-			exception.printStackTrace();
-			System.exit(-1);
-		}
-	}
+    public static Properties readPropertiesFile() {
+        if (prop == null) {
+            try (InputStream input = Files.newInputStream(path)) {
+                prop = new Properties();
+                prop.load(input);
+
+            } catch (IOException exception) {
+                exception.printStackTrace();
+                System.exit(-1);
+            }
+        }
+
+        return prop;
+    }
 
 }

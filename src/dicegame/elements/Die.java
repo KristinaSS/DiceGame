@@ -2,26 +2,25 @@ package dicegame.elements;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Die
-{
+import dicegame.GameUtils;
+import dicegame.constants.CommonConstants;
+
+public class Die {
 	private int dieSide;
 
-	public static int numberOfSides;
+	public static final int numberOfSides = Integer
+			.parseInt(GameUtils.readPropertiesFile().getProperty(CommonConstants.NUMBER_OF_SIDES));
 
-	Die()
-	{
+	Die() {
 	}
 
-	int getDieSide()
-	{
+	int getDieSide() {
 		return dieSide;
 	}
 
-	int rollDie()
-	{
+	int rollDie() {
 		dieSide = ThreadLocalRandom.current().nextInt(numberOfSides) + 1;
 		return dieSide;
 	}
 
 }
-

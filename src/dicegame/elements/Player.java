@@ -1,6 +1,6 @@
 package dicegame.elements;
 
-import dicegame.enums.CombinationEnum;
+import dicegame.constants.CombinationEnum;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ public final class Player
 
 	private Set<CombinationEnum> playedCombinationsSet = new HashSet<>();
 
-	public static Comparator<Player> comparator = (o1, o2) -> {
+	/*public static Comparator<Player> comparator = (o1, o2) -> {
 		boolean hasGeneralaO1 = o1.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
 		boolean hasGeneralaO2 = o2.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
 
@@ -21,7 +21,7 @@ public final class Player
 		if (boolHasGeneralaCompare != 0)
 			return boolHasGeneralaCompare;
 		return Integer.compare(o2.getScore(), o1.getScore());
-	};
+	};*/
 
 	private int hasGenerala = 0; //todo delete if not needed
 
@@ -59,6 +59,10 @@ public final class Player
 	void setScore(int score)
 	{
 		this.score = score;
+	}
+	
+	public void rollDice(){
+		DiceRolled.rotateElement();
 	}
 
 }

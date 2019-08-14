@@ -1,20 +1,20 @@
 package dicegame.application;
 
-import dicegame.GameUtils;
-import dicegame.elements.DiceRolled;
-import dicegame.elements.PlayerRound;
-import dicegame.enums.CombinationEnum;
-import dicegame.elements.Player;
+import java.util.Comparator;
+import java.util.List;
 
-import java.util.*;
+import dicegame.GameUtils;
+import dicegame.elements.Player;
+import dicegame.elements.PlayerRound;
+import dicegame.constants.CombinationEnum;
 
 public class Game
 {
 	private static Game gameInstance = null;
 
 	private int rounds;
-
-	private int playerCount;
+	
+	List<Player> playerList;
 
 	//Methods
 	private Game()
@@ -28,26 +28,24 @@ public class Game
 		return gameInstance;
 	}
 
-	public void setRounds(int rounds)
+	public Game setRounds(int rounds)
 	{
 		this.rounds = rounds;
+		return gameInstance;
 	}
 
-	public void setPlayerCount(int playerCount)
+	public Game addPlayers(int playerCount)
 	{
-		this.playerCount = playerCount;
+		this.playerList = GameUtils.fillPlayerList(playerCount);
+		return gameInstance;
 	}
 
 	//play or end Game
 
 	void playGame()
 	{
-
-		List<Player> playerList = GameUtils.fillPlayerList(playerCount);
-		DiceRolled diceRolled = DiceRolled.getInstance();
 		PlayerRound currentPlayerRound;
 
-		diceRolled.initializeDiceRolled();
 
 		System.out.println(">>> WELCOME TO THE DICE GAME <<<");
 
@@ -55,10 +53,9 @@ public class Game
 		{
 			for (Player player : playerList)
 			{
-				diceRolled.resetElement();
-				diceRolled.rotateElement();
-
+				
 				currentPlayerRound = new PlayerRound(player, curRound);
+
 				currentPlayerRound.playPlayerRound();
 
 				if (player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA))
@@ -68,10 +65,10 @@ public class Game
 				}
 			}
 		}
-		endGame(playerList);
+		endGame();
 	}
 
-	private void endGame(List<Player> playerList)
+	private void endGame()
 	{
 		System.out.println(">>>  RESULTS  <<<<");
 		System.out.println("Place       Player       Score");
