@@ -1,10 +1,10 @@
 >>>  RESULTS  <<<<
 Place       Player       Score
-1.         Player 2   ->  226
-2.         Player 1   ->  240
-3.         Player 8   ->  223
-4.         Player 3   ->  211
-5.         Player 4   ->  206
-6.         Player 5   ->  204
-7.         Player 6   ->  184
-8.         Player 7   ->  155
+1.         Player 2   ->  297
+2.         Player 8   ->  226
+3.         Player 5   ->  223
+4.         Player 1   ->  220
+5.         Player 7   ->  214
+6.         Player 3   ->  213
+7.         Player 4   ->  212
+8.         Player 6   ->  204

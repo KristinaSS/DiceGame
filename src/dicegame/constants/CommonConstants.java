@@ -8,6 +8,7 @@ public class CommonConstants {
     private static final String DICE_COUNT_STR = "diceCount";
     public static final String NUMBER_OF_SIDES_STR = "numberOfSidesOnDice";
     public static final String PATH = "config.properties";
+    public static final String TEXT_FILE_NAME = "newTextFile.txt";
 
     //I dont know if this is ok
     public static final int ROUND_COUNT = (Integer.parseInt

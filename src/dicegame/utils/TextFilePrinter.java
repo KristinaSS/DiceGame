@@ -1,5 +1,6 @@
 package dicegame.utils;
 
+import dicegame.constants.CommonConstants;
 import dicegame.elements.Player;
 
 import java.io.FileNotFoundException;
@@ -13,7 +14,7 @@ public class TextFilePrinter implements Printer {
         int placeInGame = 1;
         PrintWriter out = null;
         try {
-            out = new PrintWriter("newTextFile.txt");
+            out = new PrintWriter(CommonConstants.TEXT_FILE_NAME);
             out.println(">>>  RESULTS  <<<<");
             out.println("Place       Player       Score");
             for (Player player : playerList) {
