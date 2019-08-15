@@ -86,7 +86,7 @@ public class PlayerRound {
         }
     }
 
-    //Updating score and getting combo die numbers todo ask about static
+    //Updating score and getting combo die numbers
 
     private void updateScoreIfGenerala() {
         CombinationEnum generala = CombinationEnum.GENERALA;

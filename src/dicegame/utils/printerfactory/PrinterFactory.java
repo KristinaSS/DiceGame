@@ -1,4 +1,4 @@
-package dicegame.utils;
+package dicegame.utils.printerfactory;
 
 public class PrinterFactory {
     public Printer getPrinter(String printerType) {

@@ -33,19 +33,19 @@ public final class Player implements Comparable<Player> {
     }
 
     void rollDice() {
-        DiceRolled.rotateElement();
+        DiceRolled.rollAllDice();
     }
 
     @Override
-    public int compareTo(Player o) {
+    public int compareTo(Player player) {
         boolean hasGeneralaO1 = this.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
-        boolean hasGeneralaO2 = o.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
+        boolean hasGeneralaO2 = player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
 
         int boolHasGeneralaCompare = Boolean.compare(hasGeneralaO2, hasGeneralaO1);
 
         if (boolHasGeneralaCompare != 0)
             return boolHasGeneralaCompare;
 
-        return Integer.compare(o.getScore(), this.getScore());
+        return Integer.compare(player.getScore(), this.getScore());
     }
 }

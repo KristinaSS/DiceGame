@@ -1,4 +1,4 @@
-package dicegame.utils;
+package dicegame.utils.printerfactory;
 
 import dicegame.elements.Player;
 

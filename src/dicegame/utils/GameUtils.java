@@ -44,5 +44,17 @@ public class GameUtils {
 
         return prop;
     }
+    public static int getRoundCountFromProp(){
+        return Integer.parseInt
+                (GameUtils.readPropertiesFile().getProperty(CommonConstants.ROUND_COUNT_STR));
+    }
+    public static int getPlayerCountFromProp(){
+        return Integer.parseInt
+                (GameUtils.readPropertiesFile().getProperty(CommonConstants.PLAYER_COUNT_STR));
+    }
+    public static int getDiceCountFromProp(){
+        return Integer.parseInt
+                (GameUtils.readPropertiesFile().getProperty(CommonConstants.DICE_COUNT_STR));
+    }
 
 }

@@ -7,12 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import dicegame.utils.GameUtils;
 import dicegame.constants.CommonConstants;
+import dicegame.utils.GameUtils;
 
 public class DiceRolled {
-    public static final int numberOfDice = CommonConstants.DICE_COUNT;
-    //todo doesnt this kinda become redundant
+    public static final int numberOfDice = GameUtils.getDiceCountFromProp();
 
     private final static List<Die> diceRolled = new ArrayList<>();
 
@@ -32,9 +31,9 @@ public class DiceRolled {
         return timesRepeatedEachDice;
     }
 
-    // implemented methods
+    // other methods
 
-    static void rotateElement() {
+    static void rollAllDice() {
         timesRepeatedEachDice.clear();
 
         int dieSide;
@@ -46,8 +45,6 @@ public class DiceRolled {
         }
 
     }
-
-    // other Methods
 
     static String rolledDiceListToString() {
         diceRolled.sort(Comparator.comparingInt(Die::getDieSide));
