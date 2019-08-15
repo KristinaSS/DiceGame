@@ -6,7 +6,8 @@ import java.util.Map;
 
 import dicegame.constants.CombinationEnum;
 
-public class PlayerRound {
+public class
+PlayerRound {
     private int round;
 
     private Player player;

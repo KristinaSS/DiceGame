@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
+import dicegame.exceptions.IllegalCountException;
 import dicegame.exceptions.IllegalPrinterTypeException;
 import dicegame.utils.*;
 import dicegame.elements.Player;
@@ -73,14 +74,26 @@ public class Game {
         private int rounds;
 
         public Builder setPlayerList(int playerCount) {
-            assert playerCount>0:"Players need to be more than 0";
+            try {
+                if(playerCount < 1)
+                    throw new IllegalCountException("Your player count needs to be higher than 0");
+            }catch (IllegalCountException e){
+                Application.LOGGER.log(Level.SEVERE,"An IllegalCountException was thrown!",e);
+                System.exit(-1);
+            }
             this.playerList = GameUtils.fillPlayerList(playerCount);
 
             return this;
         }
 
         public Builder setRounds(int rounds) {
-            assert rounds> 0:"Rounds need to be more than 0";
+            try {
+                if(rounds < 1)
+                    throw new IllegalCountException("Your round count needs to be higher than 0");
+            }catch (IllegalCountException e){
+                Application.LOGGER.log(Level.SEVERE,"An IllegalCountException was thrown!",e);
+                System.exit(-1);
+            }
             this.rounds = rounds;
 
             return this;
