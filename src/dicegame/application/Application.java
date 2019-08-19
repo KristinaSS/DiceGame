@@ -1,15 +1,17 @@
 package dicegame.application;
 
+import dicegame.exceptions.IllegalCountException;
 import dicegame.exceptions.IllegalGameTypeException;
+import dicegame.exceptions.IllegalPrinterTypeException;
 import dicegame.utils.gametypefactory.GameType;
 import dicegame.utils.gametypefactory.GameTypeFactory;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class Application {
-    public static final Logger LOGGER = Logger.getAnonymousLogger();
-    static long start;
+    //private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
+    private static Logger log = Logger.getRootLogger();
+        static long start;
+
 
     public static void main(String[] args) {
         start = System.nanoTime();
@@ -18,17 +20,23 @@ public class Application {
         GameType gameType = new GameTypeFactory().getGameType(gameTypeStr);
 
         try{
-            if(gameType == null){
+            if(gameType != null) {
+                Game diceGame =gameType.buildGame();
+
+                // game is ready to be played
+                diceGame.playGame();
+            }else
                 throw new IllegalGameTypeException("There is no such game: " + gameTypeStr);
-            }
+
         }catch (IllegalGameTypeException e){
-            LOGGER.log(Level.SEVERE, "An IllegalGameTypeException was thrown", e);
-            System.exit(-1 );
+            //LOGGER.log(Level.SEVERE, "An IllegalGameTypeException was thrown", e);
+            log.debug( "An IllegalGameTypeException was thrown");
+        }catch (IllegalPrinterTypeException e){
+            //Application.log.log(Level.WARNING, "An IllegalPrinterTypeException was thrown", e);
+            log.debug("An IllegalPrinterTypeException was thrown");
+        }catch (IllegalCountException e){
+            //Application.log.log(Level.SEVERE,"An IllegalCountException was thrown!",e);
+            log.debug("An IllegalCountException was thrown!");
         }
-
-        Game diceGame =gameType.buildGame();
-
-        // game is ready to be played
-        diceGame.playGame();
     }
 }

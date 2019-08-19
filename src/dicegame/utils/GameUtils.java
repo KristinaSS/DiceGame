@@ -8,9 +8,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 
+import dicegame.application.Application;
+import dicegame.application.Game;
 import dicegame.constants.CommonConstants;
 import dicegame.elements.Player;
+import dicegame.exceptions.IllegalCountException;
 
 public class GameUtils {
     private static Properties prop;
@@ -44,17 +48,15 @@ public class GameUtils {
 
         return prop;
     }
-    public static int getRoundCountFromProp(){
-        return Integer.parseInt
-                (GameUtils.readPropertiesFile().getProperty(CommonConstants.ROUND_COUNT_STR));
-    }
-    public static int getPlayerCountFromProp(){
-        return Integer.parseInt
-                (GameUtils.readPropertiesFile().getProperty(CommonConstants.PLAYER_COUNT_STR));
-    }
-    public static int getDiceCountFromProp(){
-        return Integer.parseInt
-                (GameUtils.readPropertiesFile().getProperty(CommonConstants.DICE_COUNT_STR));
+
+    public static int getCountFromProp (String property){
+        int count = Integer.parseInt(
+                GameUtils.readPropertiesFile().getProperty(property)
+        );
+        if (count < 1)
+            throw new IllegalCountException("Your " + property + " must be larger than 0");
+
+        return count;
     }
 
 }

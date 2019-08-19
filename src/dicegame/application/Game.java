@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
+import dicegame.elements.DiceRolled;
 import dicegame.exceptions.IllegalCountException;
 import dicegame.exceptions.IllegalPrinterTypeException;
 import dicegame.utils.*;
@@ -26,6 +27,8 @@ public class Game {
     //play or end Game
 
     void playGame() {
+        DiceRolled.setNumberOfDice();
+
         PlayerRound currentPlayerRound;
 
 
@@ -53,15 +56,11 @@ public class Game {
         String printerTypeStr = "textfile";
 
         Printer printer = new PrinterFactory().getPrinter(printerTypeStr);
-        try {
-            if (printer == null)
-                throw new IllegalPrinterTypeException("No such printer type: "+ printerTypeStr);
-            else
-                printer.printEndGamePlayerStats(playerList);
-        }catch (IllegalPrinterTypeException e){
-            Application.LOGGER.log(Level.WARNING, "An IllegalPrinterTypeException was thrown", e);
-            System.exit(-1 );
-        }
+
+        if (printer == null)
+            throw new IllegalPrinterTypeException("No such printer type: "+ printerTypeStr);
+        else
+            printer.printEndGamePlayerStats(playerList);
 
         long end = System.nanoTime();
         System.out.println("Took: " + ((end - Application.start) / 1000000) + " ms");
@@ -74,26 +73,19 @@ public class Game {
         private int rounds;
 
         public Builder setPlayerList(int playerCount) {
-            try {
+
                 if(playerCount < 1)
                     throw new IllegalCountException("Your player count needs to be higher than 0");
-            }catch (IllegalCountException e){
-                Application.LOGGER.log(Level.SEVERE,"An IllegalCountException was thrown!",e);
-                System.exit(-1);
-            }
+
             this.playerList = GameUtils.fillPlayerList(playerCount);
 
             return this;
         }
 
         public Builder setRounds(int rounds) {
-            try {
                 if(rounds < 1)
                     throw new IllegalCountException("Your round count needs to be higher than 0");
-            }catch (IllegalCountException e){
-                Application.LOGGER.log(Level.SEVERE,"An IllegalCountException was thrown!",e);
-                System.exit(-1);
-            }
+
             this.rounds = rounds;
 
             return this;

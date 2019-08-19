@@ -43,10 +43,10 @@ public enum CombinationEnum implements Calculable {
             return (4 * dieNumber) + this.getValue();
         }
     },
-    GENERALA(50, "Generala", DiceRolled.numberOfDice) {
+    GENERALA(50, "Generala", DiceRolled.getNumberOfDice()) {
         @Override
         public int calculateCombination(int dieNumber) {
-            return (DiceRolled.numberOfDice * dieNumber) + this.getValue();
+            return (DiceRolled.getNumberOfDice() * dieNumber) + this.getValue();
         }
     };
 

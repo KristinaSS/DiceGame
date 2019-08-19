@@ -8,20 +8,21 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import dicegame.constants.CommonConstants;
+import dicegame.exceptions.IllegalCountException;
 import dicegame.utils.GameUtils;
 
 public class DiceRolled {
-    public static final int numberOfDice = GameUtils.getDiceCountFromProp();
+    private static int numberOfDice;
 
     private final static List<Die> diceRolled = new ArrayList<>();
 
     private final static Map<Integer, Integer> timesRepeatedEachDice = new TreeMap<>(Collections.reverseOrder());
 
-    static {
+ /*   static {
         for (int i = 0; i < numberOfDice; i++) {
             diceRolled.add(new Die());
         }
-    }
+    }*/
     // getters and setters and constructors
 
     private DiceRolled() {
@@ -29,6 +30,17 @@ public class DiceRolled {
 
     static Map<Integer, Integer> getTimesRepeatedEachDice() {
         return timesRepeatedEachDice;
+    }
+
+    public static int getNumberOfDice() {
+        return numberOfDice;
+    }
+
+    public static void setNumberOfDice() {
+        DiceRolled.numberOfDice = GameUtils.getCountFromProp(CommonConstants.DICE_COUNT_STR);
+        for (int i = 0; i < numberOfDice; i++) {
+            diceRolled.add(new Die());
+        }
     }
 
     // other methods
