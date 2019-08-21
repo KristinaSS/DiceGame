@@ -1,0 +1,6 @@
+[ERROR] 2019-08-21 18:03:19.904 [main] Application - An IllegalGameTypeException was thrown
+[ERROR] 2019-08-21 18:57:47.897 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 18:58:14.269 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 19:02:02.262 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+NEW
+[ERROR] 2019-08-21 19:02:20.524 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1

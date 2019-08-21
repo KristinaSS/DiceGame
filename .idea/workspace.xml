@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="DiceGame:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/dicegame/application/runner/Application.java" line="35" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72ae057f-960a-4032-b5a0-da22a84a2f42" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_12_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DiceGame_jar/DiceGame.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/DiceGame/META-INF/DiceGame.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputfiles/resultLogFile.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/application/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/application/runner/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/constants/CombinationEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/constants/CommonConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/elements/DiceRolled.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/elements/Die.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/elements/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/elements/PlayerRound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/exceptions/IllegalCountException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/exceptions/IllegalGameTypeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/exceptions/IllegalPrinterTypeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/interfaces/Calculable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/GameUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/CustomGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/GameType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/GameTypeFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/LongGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/ShortGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/ConsolePrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/LogFilePrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/Printer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/PrinterFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/TextFilePrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/DiceGame-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/application/Game$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/application/Game$Builder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/application/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CombinationEnum.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/constants/CommonConstants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/elements/DiceRolled.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/elements/Die.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/elements/Player.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/elements/PlayerRound.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/exceptions/IllegalCountException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/exceptions/IllegalGameTypeException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/exceptions/IllegalPrinterTypeException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/interfaces/Calculable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/GameUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/gametypefactory/CustomGame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/gametypefactory/GameType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/gametypefactory/GameTypeFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/gametypefactory/LongGame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/gametypefactory/ShortGame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/printerfactory/ConsolePrinter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/printerfactory/Printer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/printerfactory/PrinterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dicegame/utils/printerfactory/TextFilePrinter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/log4j2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiceGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DiceGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputfiles/newTextFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/outputfiles/newTextFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/logger/LogBook.log" beforeDir="false" afterPath="$PROJECT_DIR$/outputfiles/logFile.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/logger/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/logger/log4j.xml" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="DiceGame" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/application/runner/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/LogFilePrinter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/outputfiles/resultLogFile.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state relative-caret-position="330">
+              <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/outputfiles/newTextFile.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/GameTypeFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/PrinterFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/outputfiles/logFile.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/application/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+              <folding>
+                <element signature="method#Game#0;class#Game#0" />
+                <element signature="method#playGame#0;class#Game#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>stream</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="Kristina/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/dicegame/enums/PathEnum.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/GameUtils.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/interfaces/Calculable2.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/Builder.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/enums/CombinationEnum.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/interfaces/GameElementActions.java" />
+        <option value="$PROJECT_DIR$/rescources/config.properties" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/Printer.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/constants/PathEnum.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/elements/Die.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/ConsolePrinter.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/PrinterFactory.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/TextFilePrinter.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/printerfactory/ConsolePrinter.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/elements/Player.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/constants/CommonConstants.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/elements/PlayerRound.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/gametypefactory/BigGameType.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/gametypefactory/CustomGame.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/gametypefactory/LongGame.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/gametypefactory/ShortGame.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/gametypefactory/GameTypeFactory.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/exceptions/IllegalGameTypeException.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/exceptions/IllegalPrinterTypeException.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/gametypefactory/GameType.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/utils/GameUtils.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/elements/DiceRolled.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/application/Game.java" />
+        <option value="$PROJECT_DIR$/resources/log4j.xml" />
+        <option value="$PROJECT_DIR$/resources/logger/log4j.xml" />
+        <option value="$PROJECT_DIR$/src/dicegame/constants/CombinationEnum.java" />
+        <option value="$PROJECT_DIR$/src/dicegame/interfaces/Calculable.java" />
+        <option value="$PROJECT_DIR$/resources/logger/log4j.properties" />
+        <option value="$PROJECT_DIR$/DiceGame.eml" />
+        <option value="$PROJECT_DIR$/src/dicegame/application/Application.java" />
+        <option value="$PROJECT_DIR$/resources/log4j2.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/constants/CommonConstants.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/TextFilePrinter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/utils/GameUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/GameType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/CustomGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/elements/DiceRolled.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/PrinterFactory.java" />
+        <option value="$PROJECT_DIR$/resources/config.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/LogFilePrinter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/application/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/application/runner/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dicegame/application/Game.java" />
+        <option value="$PROJECT_DIR$/outputfiles/resultLogFile.log" />
+        <option value="$PROJECT_DIR$/src/main/resources/log4j2.properties" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="DiceGame" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="DiceGame" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="92" />
+    <option name="y" value="-14" />
+    <option name="width" value="1382" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="CatdeaLogs" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DiceGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiceGame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DiceGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiceGame" type="462c0819:PsiDirectoryNode" />
+              <item name="outputfiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DiceGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiceGame" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DiceGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiceGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DiceGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiceGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DiceGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiceGame" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kristina.stoyanova\IdeaProjects\DiceGame\resources" />
+      <recent name="C:\Users\kristina.stoyanova\IdeaProjects\DiceGame\src\main\resources" />
+      <recent name="C:\Users\kristina.stoyanova\IdeaProjects\DiceGame\resources\logger" />
+      <recent name="C:\Users\kristina.stoyanova\IdeaProjects\DiceGame\outputfiles" />
+      <recent name="C:\Users\kristina.stoyanova\IdeaProjects\DiceGame" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="maven" />
+      <command value="mvn compile" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Application">
+    <configuration name="Application" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dicegame.application.runner.Application" />
+      <module name="DiceGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="DiceGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiceGame []" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+                <option value="exec:java" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Application" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Maven.DiceGame []" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72ae057f-960a-4032-b5a0-da22a84a2f42" name="Default Changelist" comment="" />
+      <created>1563974775629</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1563974775629</updated>
+      <workItem from="1563974778718" duration="632000" />
+      <workItem from="1564043700012" duration="18201000" />
+      <workItem from="1564063833556" duration="4195000" />
+      <workItem from="1564128261831" duration="22465000" />
+      <workItem from="1564382656243" duration="18551000" />
+      <workItem from="1564403318789" duration="10372000" />
+      <workItem from="1564469881148" duration="7772000" />
+      <workItem from="1564498805058" duration="56000" />
+      <workItem from="1564555371300" duration="56000" />
+      <workItem from="1564560760935" duration="6969000" />
+      <workItem from="1564644816553" duration="21886000" />
+      <workItem from="1564728953556" duration="25766000" />
+      <workItem from="1564987820630" duration="28308000" />
+      <workItem from="1565074347915" duration="26859000" />
+      <workItem from="1565159837112" duration="7398000" />
+      <workItem from="1565252848130" duration="4309000" />
+      <workItem from="1565344835358" duration="3749000" />
+      <workItem from="1565592982947" duration="20538000" />
+      <workItem from="1565619492041" duration="944000" />
+      <workItem from="1565680547420" duration="16022000" />
+      <workItem from="1565765337947" duration="17323000" />
+      <workItem from="1565853059689" duration="16059000" />
+      <workItem from="1565937202116" duration="6703000" />
+      <workItem from="1566196927277" duration="16714000" />
+      <workItem from="1566283304777" duration="7519000" />
+      <workItem from="1566310497247" duration="427000" />
+      <workItem from="1566311051538" duration="5118000" />
+      <workItem from="1566373199159" duration="10447000" />
+      <workItem from="1566398419997" duration="4895000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Enum, make priority File reader">
+      <created>1564390053978</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564390053978</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Made priority file reader, almost done">
+      <created>1564394476923</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564394476923</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Done, Whats left: make executable JAR">
+      <created>1564409679488</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1564409679488</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Done!">
+      <created>1564413288110</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1564413288110</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Test commit">
+      <created>1564413566484</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1564413566484</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Revert &quot;Test commit&quot;&#10;&#10;This reverts commit 15796dc3">
+      <created>1564413627055</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564413627055</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Calculable, took away a class">
+      <created>1564481401490</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1564481401490</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixed things">
+      <created>1564581376223</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1564581376223</updated>
+    </task>
+    <task id="LOCAL-00009" summary="still need to fix this spaghetti code">
+      <created>1564739529838</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1564739529838</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix full house,and diceRoll">
+      <created>1564752876282</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1564752876282</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed hull house but not dice roll">
+      <created>1564757846007</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1564757846007</updated>
+    </task>
+    <task id="LOCAL-00012" summary="too slow">
+      <created>1564989586327</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564989586327</updated>
+    </task>
+    <task id="LOCAL-00013" summary="need to fix full house">
+      <created>1564995995542</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564995995542</updated>
+    </task>
+    <task id="LOCAL-00014" summary="need to fix straight">
+      <created>1565004655385</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1565004655385</updated>
+    </task>
+    <task id="LOCAL-00015" summary="done now to tweak things up">
+      <created>1565005822957</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1565005822957</updated>
+    </task>
+    <task id="LOCAL-00016" summary="smthing went wrong,... again">
+      <created>1565010228316</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1565010228317</updated>
+    </task>
+    <task id="LOCAL-00017" summary="i think is ok for now">
+      <created>1565011332275</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1565011332275</updated>
+    </task>
+    <task id="LOCAL-00018" summary="i think is ok for now">
+      <created>1565011487811</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1565011487811</updated>
+    </task>
+    <task id="LOCAL-00019" summary="i think is ok for now">
+      <created>1565014926624</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1565014926624</updated>
+    </task>
+    <task id="LOCAL-00020" summary="i think is ok for now">
+      <created>1565019679656</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1565019679656</updated>
+    </task>
+    <task id="LOCAL-00021" summary="runs kinda faster &#10;4 min 15 s">
+      <created>1565088504919</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1565088504919</updated>
+    </task>
+    <task id="LOCAL-00022" summary="runs kinda faster &#10;3 min 15 s">
+      <created>1565092272919</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1565092272919</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Pav Fixes">
+      <created>1565102767640</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1565102767640</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fixed a Generala Thing I didnt  notice earlier">
+      <created>1565163454418</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1565163454418</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Last Commit">
+      <created>1565276790112</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1565276790112</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Last Commit">
+      <created>1565618432544</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1565618432544</updated>
+    </task>
+    <task id="LOCAL-00027" summary="latest Commit 13.08.2019">
+      <created>1565698895889</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1565698895890</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Changes made by Dancho">
+      <created>1565773234773</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1565773234773</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Last Commit">
+      <created>1565790747115</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1565790747115</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Last Commit">
+      <created>1565791107987</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1565791107987</updated>
+    </task>
+    <task id="LOCAL-00031" summary="need to finish implementing logf4J&#10;and check about the assert keyword">
+      <created>1565885541962</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1565885541962</updated>
+    </task>
+    <task id="LOCAL-00032" summary="need to refactor Logger, im working on the properties logger file and logger xml file, to be honest i dont know what im doing, make some fixes with the exceptions and imported a newer version of log4j, and made geting properies from game properties file more universal">
+      <created>1566229275045</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1566229275045</updated>
+    </task>
+    <task id="LOCAL-00033" summary="need to fix maven">
+      <created>1566316161549</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1566316161549</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="330253000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49888888" visible="true" weight="0.18603411" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5011111" side_tool="true" weight="0.13006397" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.4288889" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.9266667" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.40222222" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.32995737" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.29211086" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888888" visible="true" weight="0.20948827" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5011111" side_tool="true" weight="0.13006397" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.38666666" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.9266667" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.40333334" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.29211086" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test commit" />
+    <MESSAGE value="Revert &quot;Test commit&quot;&#10;&#10;This reverts commit 15796dc3" />
+    <MESSAGE value="Calculable, took away a class" />
+    <MESSAGE value="fixed things" />
+    <MESSAGE value="still need to fix this spaghetti code" />
+    <MESSAGE value="fix full house,and diceRoll" />
+    <MESSAGE value="fixed hull house but not dice roll" />
+    <MESSAGE value="too slow" />
+    <MESSAGE value="need to fix full house" />
+    <MESSAGE value="need to fix straight" />
+    <MESSAGE value="done now to tweak things up" />
+    <MESSAGE value="smthing went wrong,... again" />
+    <MESSAGE value="i think is ok for now" />
+    <MESSAGE value="runs kinda faster &#10;4 min 15 s" />
+    <MESSAGE value="runs kinda faster &#10;3 min 15 s" />
+    <MESSAGE value="Pav Fixes" />
+    <MESSAGE value="Fixed Concurrent Modification Exception" />
+    <MESSAGE value="Fixed a Generala Thing I didnt  notice earlier" />
+    <MESSAGE value="latest Commit 13.08.2019" />
+    <MESSAGE value="Changes made by Dancho" />
+    <MESSAGE value="Last Commit" />
+    <MESSAGE value="need to finish implementing logf4J&#10;and check about the assert keyword" />
+    <MESSAGE value="need to refactor Logger, im working on the properties logger file and logger xml file, to be honest i dont know what im doing" />
+    <MESSAGE value="need to refactor Logger, im working on the properties logger file and logger xml file, to be honest i dont know what im doing, make some fixes with the exceptions and imported a newer version of log4j, and made geting properies from game properties file more universal" />
+    <MESSAGE value="need to fix maven" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to fix maven" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/net/URLClassLoader.java</url>
+          <line>381</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>GameUtils.getInstance()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>GameUtils.getInstance();</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/org/apache/log4j/AppenderSkeleton.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/org/apache/log4j/PatternLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/org/apache/log4j/Appender.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/org/apache/log4j/ConsoleAppender.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/Printer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/elements/Die.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/elements/PlayerRound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="192" column="51" lean-forward="true" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/constants/CombinationEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+          <folding>
+            <element signature="class#182:328" />
+            <element signature="class#544:690" />
+            <element signature="class#728:868" />
+            <element signature="class#902:1164" />
+            <element signature="method#calculateCombination#0;class#902:1164" />
+            <element signature="e#1041#1098#1" />
+            <element signature="class#1210:1356" />
+            <element signature="class#1417:1590" />
+            <element signature="method#calculateCombination#0;class#1417:1590" />
+            <element signature="method#CombinationEnum#0;class#CombinationEnum#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/interfaces/Calculable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/logger/LogBook.log" />
+    <entry file="file://$PROJECT_DIR$/.project" />
+    <entry file="file://$PROJECT_DIR$/.classpath" />
+    <entry file="file://$PROJECT_DIR$/DiceGame.eml" />
+    <entry file="file://$PROJECT_DIR$/DiceGame-master.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DiceGame.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/dicegame/GameUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/DiceGame/dicegame/elements/Die.class" />
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/META-INF/DEPENDENCIES">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/META-INF/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/META-INF/NOTICE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/jre/lib/rt.jar!/sun/misc/Launcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/META-INF/maven/org.apache.logging.log4j/log4j-1.2-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="60" column="25" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="60" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Microsoft.SkypeApp_kzf8qxf38zg5c!App/All/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="356" column="15" selection-start-line="356" selection-start-column="15" selection-end-line="356" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/org/apache/log4j/Category.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+          <folding>
+            <element signature="e#1964#1965#0" expanded="true" />
+            <element signature="e#2022#2023#0" expanded="true" />
+            <element signature="e#3166#3167#0" expanded="true" />
+            <element signature="e#3226#3227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="406" column="48" lean-forward="true" selection-start-line="406" selection-start-column="48" selection-end-line="406" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/apache-log4j-2.12.1-bin/log4j-1.2-api-2.12.1.jar!/org/apache/log4j/Logger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/elements/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+          <folding>
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="method#compareTo#0;class#Player#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/log4j2.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/constants/CommonConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MAVEN/groupId:DiceGame:1.0-SNAPSHOT">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>groupId:DiceGame:1.0-SNAPSHOT</OriginalElement>
+          <nodes>
+            <node x="" y="">groupId:DiceGame:1.0-SNAPSHOT</node>
+            <node x="" y="">org.apache.logging.log4j:log4j-api:jar:2.12.1</node>
+            <node x="" y="">org.apache.logging.log4j:log4j-core:jar:2.12.1</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="2.2000000000000006" x="114.0" y="55.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outputfiles/log4jLogFile.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logFile.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/ConsolePrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/TextFilePrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/GameUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="54" column="89" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="89" />
+          <folding>
+            <element signature="method#GameUtils#0;class#GameUtils#0" />
+            <element signature="method#fillPlayerList#0;class#GameUtils#0" />
+            <element signature="method#readPropertiesFile#0;class#GameUtils#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/elements/DiceRolled.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+          <folding>
+            <element signature="e#562#681#0" />
+            <element signature="method#DiceRolled#0;class#DiceRolled#0" />
+            <element signature="e#1130#1180#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/GameType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/CustomGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/gametypefactory/GameTypeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/PrinterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/utils/printerfactory/LogFilePrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outputfiles/newTextFile.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/application/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+          <folding>
+            <element signature="method#Game#0;class#Game#0" />
+            <element signature="method#playGame#0;class#Game#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dicegame/application/runner/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outputfiles/resultLogFile.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="330">
+          <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outputfiles/logFile.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>DiceGame:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>DiceGame</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>log4j-1.2-api-2.12.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

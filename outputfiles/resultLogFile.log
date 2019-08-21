@@ -1,0 +1,35 @@
+
+[INFO ] 2019-08-21 18:33:24.018 [main] Application - 1.         Player 1   ->  285
+[INFO ] 2019-08-21 18:34:02.451 [main] Application - 1.         Player 1   ->  181
+[INFO ] 2019-08-21 18:34:02.458 [main] Application - 2.         Player 2   ->  239
+[INFO ] 2019-08-21 18:34:02.458 [main] Application - 3.         Player 10   ->  224
+[INFO ] 2019-08-21 18:34:02.459 [main] Application - 4.         Player 7   ->  219
+[INFO ] 2019-08-21 18:34:02.459 [main] Application - 5.         Player 8   ->  177
+[INFO ] 2019-08-21 18:34:02.459 [main] Application - 6.         Player 3   ->  167
+[INFO ] 2019-08-21 18:34:02.459 [main] Application - 7.         Player 9   ->  167
+[INFO ] 2019-08-21 18:34:02.460 [main] Application - 8.         Player 6   ->  159
+[INFO ] 2019-08-21 18:34:02.460 [main] Application - 9.         Player 5   ->  155
+[INFO ] 2019-08-21 18:34:02.460 [main] Application - 10.         Player 4   ->  125
+[INFO ] 2019-08-21 18:35:13.403 [main] Application - NEW GAME
+[INFO ] 2019-08-21 18:35:13.408 [main] Application - 1.         Player 9   ->  236
+[INFO ] 2019-08-21 18:35:13.408 [main] Application - 2.         Player 10   ->  206
+[INFO ] 2019-08-21 18:35:13.408 [main] Application - 3.         Player 1   ->  178
+[INFO ] 2019-08-21 18:35:13.408 [main] Application - 4.         Player 8   ->  170
+[INFO ] 2019-08-21 18:35:13.408 [main] Application - 5.         Player 4   ->  166
+[INFO ] 2019-08-21 18:35:13.409 [main] Application - 6.         Player 6   ->  156
+[INFO ] 2019-08-21 18:35:13.409 [main] Application - 7.         Player 7   ->  132
+[INFO ] 2019-08-21 18:35:13.409 [main] Application - 8.         Player 5   ->  131
+[INFO ] 2019-08-21 18:35:13.409 [main] Application - 9.         Player 2   ->  126
+[INFO ] 2019-08-21 18:35:13.409 [main] Application - 10.         Player 3   ->  113
+[ERROR] 2019-08-21 18:36:11.699 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 18:43:24.855 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 18:45:35.254 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 18:49:31.011 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+this shouldnt be here :(
+[ERROR] 2019-08-21 18:50:27.813 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 18:57:47.897 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+mew
+[ERROR] 2019-08-21 18:58:14.269 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+[ERROR] 2019-08-21 19:02:02.262 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
+NEW
+[ERROR] 2019-08-21 19:02:20.524 [main] Application - An IllegalPrinterTypeException was thrown :No such printer type: logfile1
