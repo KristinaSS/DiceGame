@@ -114,10 +114,10 @@ PlayerRound {
 
         //System.out.println("Enter straight");
         int i;
-        for (i = 0; i < Die.numberOfSides; i++) {
-            if (timesRepeatedEachDieSideMap.containsKey(Die.numberOfSides - i)) {
+        for (i = 0; i < DiceRolled.Die.numberOfSides; i++) {
+            if (timesRepeatedEachDieSideMap.containsKey(DiceRolled.Die.numberOfSides - i)) {
                 if (straightCounter == 0) {
-                    beginningOfStraight = Die.numberOfSides - i;
+                    beginningOfStraight = DiceRolled.Die.numberOfSides - i;
                 }
                 straightCounter++;
             } else

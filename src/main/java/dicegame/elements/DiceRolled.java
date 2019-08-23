@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 import dicegame.constants.CommonConstants;
 import dicegame.exceptions.IllegalCountException;
@@ -18,12 +19,6 @@ public class DiceRolled {
 
     private final static Map<Integer, Integer> timesRepeatedEachDice = new TreeMap<>(Collections.reverseOrder());
 
- /*   static {
-        for (int i = 0; i < numberOfDice; i++) {
-            diceRolled.add(new Die());
-        }
-    }*/
-    // getters and setters and constructors
 
     private DiceRolled() {
     }
@@ -78,6 +73,25 @@ public class DiceRolled {
             }
         }
         return -1;
+    }
+    static class Die {
+        private int dieSide;
+
+        static final int numberOfSides = Integer
+                .parseInt(GameUtils.readPropertiesFile().getProperty(CommonConstants.NUMBER_OF_SIDES_STR));
+
+        Die() {
+        }
+
+        int getDieSide() {
+            return dieSide;
+        }
+
+        int rollDie() {
+            dieSide = ThreadLocalRandom.current().nextInt(numberOfSides) + 1;
+            return dieSide;
+        }
+
     }
 
 }

@@ -133,3 +133,29 @@ nre
 [INFO ] 2019-08-23 15:10:05.169 [dicegame.application.Application.main()] LogFilePrinter - 8.         Player 2   ->  265
 [INFO ] 2019-08-23 15:10:05.170 [dicegame.application.Application.main()] LogFilePrinter - 9.         Player 7   ->  259
 [INFO ] 2019-08-23 15:10:05.170 [dicegame.application.Application.main()] LogFilePrinter - 10.         Player 9   ->  253
+[INFO ] 2019-08-23 16:40:15.753 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 1.         Player 4   ->  306
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 2.         Player 3   ->  301
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 3.         Player 6   ->  295
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 4.         Player 9   ->  293
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 5.         Player 10   ->  288
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 6.         Player 5   ->  285
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 7.         Player 7   ->  284
+[INFO ] 2019-08-23 16:40:15.757 [main] LogFilePrinter - 8.         Player 8   ->  275
+[INFO ] 2019-08-23 16:40:15.758 [main] LogFilePrinter - 9.         Player 2   ->  256
+[INFO ] 2019-08-23 16:40:15.758 [main] LogFilePrinter - 10.         Player 1   ->  255
+[INFO ] 2019-08-23 16:53:30.584 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-23 16:53:30.587 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 1.         Player 10   ->  318
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 2.         Player 1   ->  316
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 3.         Player 9   ->  299
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 4.         Player 8   ->  296
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 5.         Player 5   ->  285
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 6.         Player 3   ->  282
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 7.         Player 4   ->  277
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 8.         Player 7   ->  269
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 9.         Player 6   ->  268
+[INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 10.         Player 2   ->  262

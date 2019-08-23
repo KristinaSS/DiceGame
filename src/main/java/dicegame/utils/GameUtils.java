@@ -49,7 +49,6 @@ public class GameUtils {
         String property = GameUtils.readPropertiesFile().getProperty(propertyStr);
         /*if (count < 1)
             throw new IllegalCountException("Your " + property + " must be larger than 0");*/
-
         return property;
     }
 
