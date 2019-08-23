@@ -1,6 +1,5 @@
-package dicegame.application.runner;
+package dicegame.application;
 
-import dicegame.application.Game;
 import dicegame.exceptions.IllegalCountException;
 import dicegame.exceptions.IllegalGameTypeException;
 import dicegame.exceptions.IllegalPrinterTypeException;
@@ -14,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Application {
     private static final Logger log = LogManager.getLogger(Application.class);
-        public static long start;
+        static long start;
 
 
     public static void main(String[] args) {

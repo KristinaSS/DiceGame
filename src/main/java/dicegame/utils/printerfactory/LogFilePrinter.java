@@ -13,6 +13,7 @@ public class LogFilePrinter implements Printer{
     public void printEndGamePlayerStats(List<Player> playerList) {
         int placeInGame = 1;
 
+        log.info(System.lineSeparator());
         log.info("NEW GAME");
         for (Player player : playerList) {
             log.info(placeInGame + ".         Player " + player.getPlayerNumber() + "   ->  " + player.getScore());
