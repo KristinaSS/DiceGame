@@ -18,6 +18,7 @@ dicegame\constants\CombinationEnum$1.class
 dicegame\constants\CombinationEnum$4.class
 dicegame\utils\gametypefactory\GameTypeFactory.class
 dicegame\utils\gametypefactory\ShortGame.class
+dicegame\utils\printerfactory\LogFilePrinter.class
 dicegame\exceptions\IllegalCountException.class
 dicegame\elements\Die.class
 dicegame\elements\DiceRolled.class

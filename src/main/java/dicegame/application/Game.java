@@ -3,7 +3,6 @@ package dicegame.application;
 import java.util.Collections;
 import java.util.List;
 
-import dicegame.application.runner.Application;
 import dicegame.elements.DiceRolled;
 import dicegame.exceptions.IllegalCountException;
 import dicegame.exceptions.IllegalPrinterTypeException;
@@ -26,7 +25,7 @@ public class Game {
 
     //play or end Game
 
-    public void playGame() {
+    void playGame() {
         DiceRolled.setNumberOfDice();
 
         PlayerRound currentPlayerRound;
