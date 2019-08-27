@@ -12,8 +12,9 @@ import java.util.Properties;
 import dicegame.constants.CommonConstants;
 import dicegame.elements.Player;
 
-public class GameUtils {
+public final class GameUtils {
     private static Properties prop;
+
 
     private static Path path = Paths.get(CommonConstants.PATH);
 
@@ -22,34 +23,27 @@ public class GameUtils {
 
     // Utils
 
-    public static List<Player> fillPlayerList(int playerNum) {
-        List<Player> playerList = new ArrayList<>();
-        while (playerNum-- > 0) {
-            playerList.add(new Player(playerList.size() + 1));
+    public static List<Player> fillPlayerList(final int playerNum) {
+        final List<Player> playerList = new ArrayList<>();
+        for (int i = playerNum; i > 0; i--) {
+            playerList.add(new Player(playerList.size() + 1)); //NOPMD
         }
         return playerList;
     }
 
-    public static Properties readPropertiesFile() {
+    public static Properties readPropertiesFile() throws IOException {
         if (prop == null) {
             try (InputStream input = Files.newInputStream(path)) {
                 prop = new Properties();
                 prop.load(input);
-
-            } catch (IOException exception) {
-                exception.printStackTrace();
-                System.exit(-1);
             }
         }
-
         return prop;
     }
 
-    public static String getPropertyFromPropFile(String propertyStr){
-        String property = GameUtils.readPropertiesFile().getProperty(propertyStr);
-        /*if (count < 1)
-            throw new IllegalCountException("Your " + property + " must be larger than 0");*/
-        return property;
+    public static String getPropertyFromPropFile(final String propertyStr)
+            throws IOException {
+        return readPropertiesFile()
+                        .getProperty(propertyStr);
     }
-
 }

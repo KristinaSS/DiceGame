@@ -1,15 +1,17 @@
 package dicegame.utils.printerfactory;
 
-public class PrinterFactory {
-    public Printer getPrinter(String printerType) {
-        switch (printerType.toUpperCase()){
-            case "CONSOLE" :
-                return new ConsolePrinter();
+public final class PrinterFactory { //NOPMD
+
+    public Printer getPrinter(final String printerType) {
+        switch (printerType.toUpperCase()) {
+            case "CONSOLE":
+                return new ConsolePrinter(); //NOPMD
             case "TEXTFILE":
-                return new TextFilePrinter();
+                return new TextFilePrinter(); //NOPMD
             case "LOGFILE":
-                return new LogFilePrinter();
-                default: return null;
+                return new LogFilePrinter(); //NOPMD
+            default:
+                return null;
 
         }
     }

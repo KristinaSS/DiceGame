@@ -1,7 +1,7 @@
 package dicegame.exceptions;
 
 public class IllegalCountException extends RuntimeException {
-    public IllegalCountException(String message){
+    public IllegalCountException(final String message) {
         super(message);
     }
 }

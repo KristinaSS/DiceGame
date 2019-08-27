@@ -2,49 +2,55 @@ package dicegame.elements;
 
 import dicegame.constants.CombinationEnum;
 
-import java.util.*;
+import java.util.Set;
+import java.util.HashSet;
 
+//todo JavaDoc
 public final class Player implements Comparable<Player> {
-    private int playerNumber;
+    private final int playerNumber;
 
-    private int score = 0;
+    private int score;
 
-    private Set<CombinationEnum> playedCombinationsSet = new HashSet<>();
+    private final Set<CombinationEnum> playedComboSet = new HashSet<>();
 
     //Methods
-    public Player(int playerNumber) {
-        this.playerNumber = playerNumber;
+    public Player(final int playerCount) {
+        this.playerNumber = playerCount;
     }
 
     public int getPlayerNumber() {
         return playerNumber;
     }
 
-    public Set<CombinationEnum> getPlayedCombinationsSet() {
-        return playedCombinationsSet;
+    public Set<CombinationEnum> getPlayedComboSet() {
+        return playedComboSet;
     }
 
     public int getScore() {
         return score;
     }
 
-    void setScore(int score) {
-        this.score = score;
+    void setScore(final int curScore) { //NOPMD
+        this.score = curScore;
     }
 
-    void rollDice() {
+    void rollDice() { //NOPMD
         DiceRolled.rollAllDice();
     }
 
     @Override
-    public int compareTo(Player player) {
-        boolean hasGeneralaO1 = this.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
-        boolean hasGeneralaO2 = player.getPlayedCombinationsSet().contains(CombinationEnum.GENERALA);
+    public int compareTo(final Player player) {
+        final boolean hasGeneralaO1 = this.getPlayedComboSet()
+                                          .contains(CombinationEnum.GENERALA);
+        final boolean hasGeneralaO2 = player.getPlayedComboSet()
+                                            .contains(CombinationEnum.GENERALA);
 
-        int boolHasGeneralaCompare = Boolean.compare(hasGeneralaO2, hasGeneralaO1);
+        final int hasGenerala//NOPMD
+                = Boolean.compare(hasGeneralaO2, hasGeneralaO1);
 
-        if (boolHasGeneralaCompare != 0)
-            return boolHasGeneralaCompare;
+        if (hasGenerala != 0) {
+            return hasGenerala; //NOPMD
+        }
 
         return Integer.compare(player.getScore(), this.getScore());
     }

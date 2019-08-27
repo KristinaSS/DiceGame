@@ -159,3 +159,155 @@ nre
 [INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 8.         Player 7   ->  269
 [INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 9.         Player 6   ->  268
 [INFO ] 2019-08-23 16:53:30.588 [main] LogFilePrinter - 10.         Player 2   ->  262
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 1.         Player 4   ->  301
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 2.         Player 3   ->  295
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 3.         Player 5   ->  290
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 4.         Player 10   ->  287
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 5.         Player 8   ->  283
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 6.         Player 2   ->  279
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 7.         Player 6   ->  279
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 8.         Player 1   ->  265
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 9.         Player 9   ->  264
+[INFO ] 2019-08-26 18:47:38.456 [main] LogFilePrinter - 10.         Player 7   ->  260
+[INFO ] 2019-08-27 10:54:23.420 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 1.         Player 9   ->  299
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 2.         Player 6   ->  294
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 3.         Player 4   ->  284
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 4.         Player 7   ->  279
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 5.         Player 10   ->  278
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 6.         Player 2   ->  274
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 7.         Player 3   ->  272
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 8.         Player 5   ->  266
+[INFO ] 2019-08-27 10:54:23.424 [main] LogFilePrinter - 9.         Player 8   ->  266
+[INFO ] 2019-08-27 10:54:23.425 [main] LogFilePrinter - 10.         Player 1   ->  259
+[INFO ] 2019-08-27 13:00:40.827 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 13:00:40.830 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 13:00:40.830 [main] LogFilePrinter - 1.         Player 9   ->  318
+[INFO ] 2019-08-27 13:00:40.830 [main] LogFilePrinter - 2.         Player 8   ->  306
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 3.         Player 6   ->  296
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 4.         Player 10   ->  292
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 5.         Player 2   ->  291
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 6.         Player 7   ->  279
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 7.         Player 4   ->  276
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 8.         Player 1   ->  270
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 9.         Player 3   ->  260
+[INFO ] 2019-08-27 13:00:40.831 [main] LogFilePrinter - 10.         Player 5   ->  254
+[INFO ] 2019-08-27 13:02:23.628 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 1.         Player 8   ->  250
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 2.         Player 5   ->  246
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 3.         Player 1   ->  244
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 4.         Player 9   ->  239
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 5.         Player 4   ->  235
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 6.         Player 10   ->  233
+[INFO ] 2019-08-27 13:02:23.632 [main] LogFilePrinter - 7.         Player 3   ->  230
+[INFO ] 2019-08-27 13:02:23.633 [main] LogFilePrinter - 8.         Player 6   ->  226
+[INFO ] 2019-08-27 13:02:23.633 [main] LogFilePrinter - 9.         Player 2   ->  224
+[INFO ] 2019-08-27 13:02:23.633 [main] LogFilePrinter - 10.         Player 7   ->  211
+[INFO ] 2019-08-27 14:40:19.064 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 14:40:19.071 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 14:40:19.071 [main] LogFilePrinter - 1.         Player 4   ->  211
+[INFO ] 2019-08-27 14:40:19.071 [main] LogFilePrinter - 2.         Player 1   ->  156
+[INFO ] 2019-08-27 14:40:19.071 [main] LogFilePrinter - 3.         Player 2   ->  148
+[INFO ] 2019-08-27 14:40:19.071 [main] LogFilePrinter - 4.         Player 10   ->  126
+[INFO ] 2019-08-27 14:40:19.072 [main] LogFilePrinter - 5.         Player 3   ->  124
+[INFO ] 2019-08-27 14:40:19.072 [main] LogFilePrinter - 6.         Player 7   ->  124
+[INFO ] 2019-08-27 14:40:19.072 [main] LogFilePrinter - 7.         Player 5   ->  120
+[INFO ] 2019-08-27 14:40:19.072 [main] LogFilePrinter - 8.         Player 6   ->  81
+[INFO ] 2019-08-27 14:40:19.072 [main] LogFilePrinter - 9.         Player 8   ->  53
+[INFO ] 2019-08-27 14:40:19.072 [main] LogFilePrinter - 10.         Player 9   ->  45
+[INFO ] 2019-08-27 14:48:49.520 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 14:48:49.523 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 14:48:49.523 [main] LogFilePrinter - 1.         Player 5   ->  142
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 2.         Player 6   ->  230
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 3.         Player 7   ->  175
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 4.         Player 1   ->  139
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 5.         Player 10   ->  138
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 6.         Player 8   ->  137
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 7.         Player 4   ->  131
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 8.         Player 9   ->  123
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 9.         Player 3   ->  121
+[INFO ] 2019-08-27 14:48:49.524 [main] LogFilePrinter - 10.         Player 2   ->  113
+[INFO ] 2019-08-27 16:35:26.920 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 1.         Player 2   ->  250
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 2.         Player 5   ->  227
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 3.         Player 1   ->  197
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 4.         Player 10   ->  180
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 5.         Player 8   ->  174
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 6.         Player 7   ->  164
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 7.         Player 4   ->  163
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 8.         Player 6   ->  123
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 9.         Player 3   ->  117
+[INFO ] 2019-08-27 16:35:26.923 [main] LogFilePrinter - 10.         Player 9   ->  100
+[INFO ] 2019-08-27 16:37:06.431 [main] LogFilePrinter - 
+
+[INFO ] 2019-08-27 16:37:06.432 [main] LogFilePrinter - NEW GAME
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 1.         Player 1   ->  209
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 2.         Player 4   ->  136
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 3.         Player 3   ->  131
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 4.         Player 7   ->  123
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 5.         Player 5   ->  122
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 6.         Player 2   ->  112
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 7.         Player 10   ->  99
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 8.         Player 6   ->  80
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 9.         Player 9   ->  76
+[INFO ] 2019-08-27 16:37:06.433 [main] LogFilePrinter - 10.         Player 8   ->  72
+[INFO ] 2019-08-27 16:38:01.929 [main] ConsolePrinter - >>>  RESULTS  <<<<
+[INFO ] 2019-08-27 16:38:01.930 [main] ConsolePrinter - Place       Player       Score
+[INFO ] 2019-08-27 16:38:01.930 [main] ConsolePrinter - 1.         Player 8   ->  284
+[INFO ] 2019-08-27 16:38:01.931 [main] ConsolePrinter - 2.         Player 2   ->  236
+[INFO ] 2019-08-27 16:38:01.931 [main] ConsolePrinter - 3.         Player 5   ->  236
+[INFO ] 2019-08-27 16:38:01.931 [main] ConsolePrinter - 4.         Player 3   ->  230
+[INFO ] 2019-08-27 16:38:01.931 [main] ConsolePrinter - 5.         Player 6   ->  229
+[INFO ] 2019-08-27 16:38:01.932 [main] ConsolePrinter - 6.         Player 10   ->  228
+[INFO ] 2019-08-27 16:38:01.932 [main] ConsolePrinter - 7.         Player 9   ->  221
+[INFO ] 2019-08-27 16:38:01.932 [main] ConsolePrinter - 8.         Player 7   ->  210
+[INFO ] 2019-08-27 16:38:01.932 [main] ConsolePrinter - 9.         Player 4   ->  204
+[INFO ] 2019-08-27 16:38:01.932 [main] ConsolePrinter - 10.         Player 1   ->  201
+[INFO ] 2019-08-27 18:03:25.312 [main] ConsolePrinter - >>>  RESULTS  <<<<
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - Place       Player       Score
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 1.         Player 1   ->  226
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 2.         Player 7   ->  235
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 3.         Player 5   ->  207
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 4.         Player 8   ->  180
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 5.         Player 9   ->  173
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 6.         Player 2   ->  166
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 7.         Player 4   ->  162
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 8.         Player 6   ->  162
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 9.         Player 3   ->  158
+[INFO ] 2019-08-27 18:03:25.313 [main] ConsolePrinter - 10.         Player 10   ->  131
+[INFO ] 2019-08-27 18:38:17.758 [main] ConsolePrinter - >>>  RESULTS  <<<<
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - Place       Player       Score
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 1.         Player 5   ->  232
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 2.         Player 6   ->  232
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 3.         Player 2   ->  228
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 4.         Player 10   ->  226
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 5.         Player 9   ->  221
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 6.         Player 7   ->  214
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 7.         Player 3   ->  212
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 8.         Player 4   ->  212
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 9.         Player 1   ->  208
+[INFO ] 2019-08-27 18:38:17.759 [main] ConsolePrinter - 10.         Player 8   ->  200
+[INFO ] 2019-08-27 18:45:11.950 [main] ConsolePrinter - >>>  RESULTS  <<<<
+[INFO ] 2019-08-27 18:45:11.951 [main] ConsolePrinter - Place       Player       Score
+[INFO ] 2019-08-27 18:45:11.952 [main] ConsolePrinter - 1.         Player 2   ->  240
+[INFO ] 2019-08-27 18:45:11.952 [main] ConsolePrinter - 2.         Player 6   ->  228
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 3.         Player 1   ->  223
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 4.         Player 3   ->  222
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 5.         Player 9   ->  220
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 6.         Player 4   ->  219
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 7.         Player 7   ->  215
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 8.         Player 5   ->  214
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 9.         Player 8   ->  204
+[INFO ] 2019-08-27 18:45:11.953 [main] ConsolePrinter - 10.         Player 10   ->  204

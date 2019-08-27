@@ -2,13 +2,16 @@ package dicegame.utils.gametypefactory;
 
 import dicegame.application.Game;
 
-public class LongGame implements GameType{
+public final class LongGame implements GameType {
+
+    LongGame() { //NOPMD
+    }
 
     @Override
     public Game buildGame() {
         return new Game.Builder()
                 .setRounds(LONG_GAME_ROUNDS)
-                .setPlayerList(LONG_GAME_PLAYER_COUNT)
+                .setPlayerList(LONG_GAME_PLAYER)
                 .build();
     }
 }

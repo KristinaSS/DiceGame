@@ -1,39 +1,48 @@
 package dicegame.elements;
 
-import static dicegame.elements.DiceRolled.findFirstValueGreaterThanOrEqualTo;
-
-import java.util.Map;
+import static dicegame.utils.FindCombinationUtil.*; //NOPMD
 
 import dicegame.constants.CombinationEnum;
+import dicegame.exceptions.LoggerLevelNotEnabledException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class
-PlayerRound {
-    private int round;
+//todo javadoc
+public final class PlayerRound {
+    private final int round;
 
-    private Player player;
+    private final Player player;
 
     private int maxRoundScore;
 
     private CombinationEnum comboForMaxScore;
 
-    public PlayerRound(Player player, int round) {
-        this.round = round;
-        this.player = player;
+    /**
+     * This is a private Logger constant make from Logger class from Log4j.
+     */
+    private static final Logger LOGGER
+            = LogManager.getLogger(PlayerRound.class);
+
+    public PlayerRound(final Player curPlayer,
+                       final int curRound) {
+        this.round = curRound;
+        this.player = curPlayer;
         this.maxRoundScore = 0;
         this.comboForMaxScore = null;
     }
 
     //public methods
 
-    public void playPlayerRound() {
-        int oldScore = player.getScore();
+    public void playPlayerRound() throws LoggerLevelNotEnabledException {
+        final int oldScore = player.getScore();
 
         player.rollDice();
 
         callMethodsToUpdateScore();
 
         if (maxRoundScore > 0) {
-            player.getPlayedCombinationsSet().add(comboForMaxScore);
+            player.getPlayedComboSet()
+                  .add(comboForMaxScore);
             player.setScore(player.getScore() + maxRoundScore);
             printRound(oldScore);
             return;
@@ -45,17 +54,22 @@ PlayerRound {
 
     private void callMethodsToUpdateScore() {
 
+        setPlayer(player);
+
         updateScoreIfGenerala();
 
-        if (player.getPlayedCombinationsSet().size() >= CombinationEnum.values().length - 1 || maxRoundScore > 0)
+        if (player.getPlayedComboSet()
+                  .size() >= CombinationEnum.values().length - 1
+                || maxRoundScore > 0) {
             return;
+        }
 
         updateScoreIfStraight();
 
-        int fourOfAKind = getFourOfAKind();
-        int triple = getTriple(fourOfAKind);
-        int pair = getPair(triple);
-        int secondPair = getSecondPair(pair);
+        final int fourOfAKind = getFourOfAKind();
+        final int triple = getTriple(fourOfAKind);
+        final int pair = getPair(triple);
+        final int secondPair = getSecondPair(pair);
 
         updateScoreIfFourOfAKind(fourOfAKind);
 
@@ -66,146 +80,29 @@ PlayerRound {
         updateRoundScoreIfPairValid(triple, pair);
 
         updateRoundScoreIfDoublePairValid(pair, secondPair);
+
+        comboForMaxScore = getComboForMaxScore();
+        maxRoundScore = getMaxRoundScore();
     }
 
-    private void printRound(int oldScore) {
+    private void printRound(final int oldScore)
+            throws LoggerLevelNotEnabledException {
 
-        System.out.println(">>> round: " + round);
-        System.out.println(">player " + player.getPlayerNumber() + ":");
-        System.out.println("current score: " + oldScore);
-        System.out.println("dice roll:" + DiceRolled.rolledDiceListToString() + "-> " + (comboForMaxScore != null ?
-                comboForMaxScore.getLabel() :
-                "No combination") + " (" + maxRoundScore + ") ");
-        System.out.println("new score: " + player.getScore());
-        System.out.println();
-    }
-
-    private void updateRoundScore(int score, CombinationEnum combo) {
-        if (score > this.maxRoundScore) {
-            this.maxRoundScore = score;
-            this.comboForMaxScore = combo;
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info(">>> round: " + round);
+            LOGGER.info(">player " + player.getPlayerNumber() + ":");
+            LOGGER.info("current score: " + oldScore);
+            LOGGER.info("dice roll:" + DiceRolled.rolledDiceListToString()
+                    + "-> " + (comboForMaxScore == null
+                    ? "No combination"
+                    : comboForMaxScore.getLabel())
+                    + " (" + maxRoundScore + ") ");
+            LOGGER.info("new score: " + player.getScore());
+            LOGGER.info(System.lineSeparator());
+        } else {
+            throw new LoggerLevelNotEnabledException("Info logger level "
+                    + "not enabled!");
         }
     }
 
-    //Updating score and getting combo die numbers
-
-    private void updateScoreIfGenerala() {
-        CombinationEnum generala = CombinationEnum.GENERALA;
-        if (DiceRolled.getTimesRepeatedEachDice().size() != 1)
-            return;
-
-        if (!player.getPlayedCombinationsSet().contains(generala)) {
-            comboForMaxScore = generala;
-            maxRoundScore = generala.calculateCombination(findFirstValueGreaterThanOrEqualTo(generala.getDiceCount()));
-        }
-    }
-
-    private void updateScoreIfStraight() {
-        int straightCounter = 0;
-        int beginningOfStraight = 0;
-        CombinationEnum straight = CombinationEnum.STRAIGHT;
-        Map<Integer, Integer> timesRepeatedEachDieSideMap = DiceRolled.getTimesRepeatedEachDice();
-
-        if (timesRepeatedEachDieSideMap.size() < straight.getDiceCount()) //if mapsize == 5
-            return;
-
-        if (player.getPlayedCombinationsSet().contains(straight)) //if player has already played straight
-            return;
-
-        //System.out.println("Enter straight");
-        int i;
-        for (i = 0; i < DiceRolled.Die.numberOfSides; i++) {
-            if (timesRepeatedEachDieSideMap.containsKey(DiceRolled.Die.numberOfSides - i)) {
-                if (straightCounter == 0) {
-                    beginningOfStraight = DiceRolled.Die.numberOfSides - i;
-                }
-                straightCounter++;
-            } else
-                straightCounter = 0;
-            if (straightCounter == straight.getDiceCount()) {
-                //int temp = straight.calculateCombination(beginningOfStraight);
-                updateRoundScore(straight.calculateCombination(beginningOfStraight), straight);
-            }
-        }
-    }
-
-    private void updateScoreIfFourOfAKind(int foundFourOfAKind) {
-        CombinationEnum fourOfAKind = CombinationEnum.FOUR_OF_A_KIND;
-        if (foundFourOfAKind <= 0)
-            return;
-        if (player.getPlayedCombinationsSet().contains(fourOfAKind))
-            return;
-
-        int tempScore = fourOfAKind.calculateCombination(foundFourOfAKind);
-        updateRoundScore(tempScore, fourOfAKind);
-    }
-
-    private void updateRoundScoreIfTripleValid(int tripleDie) {
-        CombinationEnum triple = CombinationEnum.TRIPLE;
-        if (tripleDie <= 0)
-            return;
-        if (player.getPlayedCombinationsSet().contains(triple))
-            return;
-
-        int tempScore = triple.calculateCombination(tripleDie);
-        updateRoundScore(tempScore, triple);
-    }
-
-    private void updateRoundScoreIfFullHouseValid(int triple, int pair) {
-        CombinationEnum fullHouse = CombinationEnum.FULL_HOUSE;
-        if (triple <= 0 || pair <= 0)
-            return;
-        if (player.getPlayedCombinationsSet().contains(fullHouse))
-            return;
-
-        int tempScore = fullHouse.calculateCombination((3 * triple) + (2 * pair));
-        updateRoundScore(tempScore, fullHouse);
-    }
-
-    private void updateRoundScoreIfPairValid(int tripleDie, int pairDie) {
-        CombinationEnum pair = CombinationEnum.PAIR;
-        int tempScore;
-        if (player.getPlayedCombinationsSet().contains(pair))
-            return;
-        if (tripleDie > 0 && tripleDie > pairDie) {
-            tempScore = pair.calculateCombination(tripleDie);
-            updateRoundScore(tempScore, pair);
-        } else if (pairDie > 0) {
-            tempScore = pair.calculateCombination(pairDie);
-            updateRoundScore(tempScore, pair);
-        }
-    }
-
-    private void updateRoundScoreIfDoublePairValid(int pair, int secondPair) {
-        CombinationEnum doublePair = CombinationEnum.DOUBLE_PAIR;
-        if (secondPair > 0 && !(player.getPlayedCombinationsSet().contains(doublePair))) {
-            int tempScore = doublePair.calculateCombination(pair + secondPair);
-            updateRoundScore(tempScore, doublePair);
-        }
-    }
-
-    private int getFourOfAKind() {
-        System.out.println(CombinationEnum.FOUR_OF_A_KIND.getDiceCount());
-        return findFirstValueGreaterThanOrEqualTo(CombinationEnum.FOUR_OF_A_KIND.getDiceCount());
-    }
-
-    private int getTriple(int fourOfAKind) {
-        int triple = findFirstValueGreaterThanOrEqualTo(CombinationEnum.TRIPLE.getDiceCount());
-        if (fourOfAKind > triple)
-            triple = fourOfAKind;
-        return triple;
-    }
-
-    private int getPair(int triple) {
-        DiceRolled.getTimesRepeatedEachDice().remove(triple);
-        return findFirstValueGreaterThanOrEqualTo(CombinationEnum.PAIR.getDiceCount());
-    }
-
-    private int getSecondPair(int pair) {
-        if (pair > 0) {
-            DiceRolled.getTimesRepeatedEachDice().remove(pair);
-            return findFirstValueGreaterThanOrEqualTo(CombinationEnum.DOUBLE_PAIR.getDiceCount());
-        }
-        return -1;
-    }
 }
